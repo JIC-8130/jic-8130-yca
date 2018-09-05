@@ -14,6 +14,9 @@ Branches
 - Two epic branches will be split from master: Track and Report
 - Branches should follow the naming convention: EpicName/StoryName. Follow UpperCamelCase.
 
+Style
+- We will follow the style guide found here: https://github.com/airbnb/javascript
+
 ### Agile Ceremonies
 
 - The team will participate in sprint planning (grooming) for the upcoming sprint during the last week of the current sprint.
