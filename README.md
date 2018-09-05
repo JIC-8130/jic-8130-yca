@@ -11,8 +11,8 @@ Fork & Pull
 - The team will follow a fork & pull model as described [here](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
 
 Branches
-- Branches will follow a descriptive naming convention that succintly describes the feature or story the branch will be used for
-- A branch will be created for each epic (Track, Report, etc.), and for each story within those epics
+- Two epic branches will be split from master: Track and Report
+- Branches should follow the naming convention: <EpicName>/<StoryName>. Follow UpperCamelCase.
 
 ### Agile Ceremonies
 
