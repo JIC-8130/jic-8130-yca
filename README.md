@@ -8,9 +8,9 @@ We are designing a desktop application for Yokogawa Corporation of America (YCA)
 
 Fork & Pull
 - Each teammate will fork the jic-8130-yca repository to create their own individual workspace for the project.
+- The team will follow a fork & pull model as described [here](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
 
 Branches
-- The team will follow a [fork & pull model](https://gist.github.com/Chaser324/ce0505fbed06b947d962) for their workflow
 - Branches will follow a descriptive naming convention that succintly describes the feature or story the branch will be used for
 - A branch will be created for each epic (Track, Report, etc.), and for each story within those epics
 
