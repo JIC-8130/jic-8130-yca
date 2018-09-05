@@ -12,7 +12,7 @@ Fork & Pull
 
 Branches
 - Two epic branches will be split from master: Track and Report
-- Branches should follow the naming convention: <EpicName>/<StoryName>. Follow UpperCamelCase.
+- Branches should follow the naming convention: EpicName/StoryName. Follow UpperCamelCase.
 
 ### Agile Ceremonies
 
