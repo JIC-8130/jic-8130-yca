@@ -3,15 +3,49 @@
 <html>
 
 <head>
-  <script src="/node_modules/material-design-lite/material.min.js"></script>
+  <!-- <script src="/node_modules/material-design-lite/material.min.js"></script>
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
   <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+
+
+    <!-- These are the required tags to include MDL styling in your page.
+    Pls add these to ur head thx -->
+    <script src="/node_modules/material-design-lite/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-light_blue.min.css">
+    <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
+
+    <div class="header">
+      <!-- Always shows a header, even in smaller screens. -->
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+          <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">ASGARD Production Management</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+              <a class="mdl-navigation__link" href="">About</a>
+              <a class="mdl-navigation__link" href="">Help</a>
+            </nav>
+          </div>
+        </header>
+      </div>
+    </div>
+
+
+
     <h1>Dashboard</h1>
+
 </body>
 
 </html>
