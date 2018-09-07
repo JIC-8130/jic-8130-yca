@@ -5,7 +5,7 @@ const {app, BrowserWindow} = require('electron')
     win = new BrowserWindow({width: 800, height: 600})
   
     // and load the index.html of the app.
-    win.loadFile('src/routes/login/index.html')
+    win.loadFile('src/routes/create-account/createaccount.html')
   }
   
   app.on('ready', createWindow)

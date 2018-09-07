@@ -8,7 +8,7 @@
     "build",
     "node_modules",
     "electron/*",
-    "src/*"
+    "src/*/*/*"
   ],
   "scripts": {
     "start": "electron .",
