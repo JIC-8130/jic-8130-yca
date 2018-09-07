@@ -1,3 +1,4 @@
+//trying to make this work :-(
 function confirmSubmission() {
     var txt;
     if (confirm("** PLEASE VERIFY THE AMOUNT IS CORRECT **")) {
