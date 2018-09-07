@@ -5,7 +5,8 @@ const {app, BrowserWindow} = require('electron')
     win = new BrowserWindow({width: 800, height: 600})
   
     // and load the index.html of the app.
-    win.loadFile('electron/src/routes/create-account/createaccount.html')
+    // win.loadFile('electron/src/routes/create-account/createaccount.html')
+    win.loadFile('electron/src/routes/input-number-of-units/InputNumberOfUnits.html');
   }
   
   app.on('ready', createWindow)
