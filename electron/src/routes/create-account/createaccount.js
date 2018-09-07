@@ -30,6 +30,6 @@ const remote = require('electron').remote
 const main = remote.require('./main.js')
 function dosomething() {
     var window = remote.getCurrentWindow()
-    main.openWindow('../dashboard/index')
+    main.openWindow('/src/routes/dashboard/index')
     window.close()
 }
