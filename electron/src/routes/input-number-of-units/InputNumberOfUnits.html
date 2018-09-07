@@ -1,6 +1,6 @@
 <doctype html>
 <html>
-<head>>
+<head>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <script src="/node_modules/material-design-lite/material.min.js"></script>
     <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
+
+    <title>Input Number of Units</title>
 </head>
 
+<script src="csv-helper.js"></script>
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
@@ -26,13 +29,6 @@
                 </div>
             </header>
 </div>
-
-    <div class="title">
-        <head>
-            <title> Input Number of Units </title>
-            <h3> Input Data </h3>
-        </head>
-    </div>
 
     <div class="content">
         <body>
@@ -51,7 +47,7 @@
                     <button onclick= "confirmSubmission()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                         Submit
                     </button>
-                    <script>
+                    <!-- <script>
                     function confirmSubmission() {
                         var txt;
                         if (confirm("** PLEASE VERIFY THE AMOUNT IS CORRECT **")) {
@@ -67,7 +63,7 @@
                             txt = "Canceled";
                         }
                     }
-                    </script>
+                    </script> -->
                 </div>
 
             </div>
