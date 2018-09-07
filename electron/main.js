@@ -9,3 +9,8 @@ const {app, BrowserWindow} = require('electron')
   }
   
   app.on('ready', createWindow)
+
+  exports.openWindow = (filename) => {
+    let win = new BrowserWindow({with: 800, height: 600})
+    win.loadURL(`file://${__dirname}` + filename + `.html`)
+  }
