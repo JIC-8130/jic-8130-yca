@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+}
+
+
+.title-section {
+    text-align: center;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.big-input-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 400px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex: 1;
+    width: auto;
+}
+
+.header {
+    border: 75px;
+    padding-bottom: 75px;
+}
+
+#create-button {
+    width: auto;
+}
