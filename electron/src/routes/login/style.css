@@ -1,10 +1,5 @@
 body {
     background: #fafafa;
-    /* display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center; */
 }
 
 .content {
@@ -15,7 +10,6 @@ body {
   align-content: center;
   justify-content: center;
   align-items: center;
-
   width: auto;
 }
 
@@ -33,23 +27,8 @@ body {
   /* padding: 100px; */
 }
 
-#createLink {
-  border-top: 1000px;
+.linkdiv{
   padding-top: 100px;
 }
-
-/* .mdl-layout__header-row {
-  align-items: center;
-  justify-content: center;
-}
-.mdl-layout {
-  align-items: center;
-  justify-content: center;
-}
-.mdl-layout__content {
-	padding: 24px;
-  flex: none;
-} */
-
 
 

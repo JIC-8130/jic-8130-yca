@@ -43,28 +43,25 @@
       <main class="mdl-layout__content">
         <div class="page-content">
 
-          <!-- Simple Textfield -->
-          <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="username" />
-              <label class="mdl-textfield__label" for="username">Username</label>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="UserName">
+                <label class="mdl-textfield__label" for="UserName">User Name</label>
             </div>
-          </form>
 
-          <!-- Simple Textfield -->
-          <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="password">
-              <label class="mdl-textfield__label" for="password">Password</label>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="password" id="Password">
+                <label class="mdl-textfield__label" for="Password">Password</label>
             </div>
-          </form>
+
 
           <!-- Raised button with ripple -->
           <button id="LogIn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="dosomething()">
             Log in
           </button>
-
-          <a href="" onclick="openCreateAccountWindow()" id="createLink">Don't have an account? Click here to create one!</a>
+          <div class="linkdiv">
+            <a href="" onclick="openCreateAccountWindow()" id="createLink">Don't have an account? Click here to create one!</a>
+          </div>
         </div>
       </main>
     </div>

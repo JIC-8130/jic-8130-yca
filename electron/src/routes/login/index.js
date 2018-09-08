@@ -2,8 +2,8 @@ const remote = require('electron').remote
 const main = remote.require('./main.js')
 function dosomething() {
 
-    userName = document.getElementById("username").value;
-    passWord = document.getElementById("password").value;
+    userName = document.getElementById("UserName").value;
+    passWord = document.getElementById("Password").value;
 
     if (userName === "") {
         alert("Please enter a user name!");
@@ -33,7 +33,7 @@ function dosomething() {
  */
 function openCreateAccountWindow() {
     var currWindow = remote.getCurrentWindow();
-    main.openWindow("src/routes/create-account/createaccount");
+    main.openWindow("/src/routes/create-account/createaccount");
     currWindow.close();
 }
 
