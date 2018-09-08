@@ -1,9 +1,44 @@
 body {
     background: #fafafa;
-    position: relative;
+    /* display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center; */
 }
 
-.mdl-layout__header-row {
+.content {
+  display: flex;
+  border-top: 100px;
+  padding-top: 200px;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  width: auto;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+
+#LogIn {
+  border: 300px;
+  /* padding: 100px; */
+}
+
+#createLink {
+  border-top: 1000px;
+  padding-top: 100px;
+}
+
+/* .mdl-layout__header-row {
   align-items: center;
   justify-content: center;
 }
@@ -14,7 +49,7 @@ body {
 .mdl-layout__content {
 	padding: 24px;
   flex: none;
-}
+} */
 
 
 

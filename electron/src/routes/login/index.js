@@ -1,10 +1,19 @@
 const remote = require('electron').remote
 const main = remote.require('./main.js')
 function dosomething() {
-    var window = remote.getCurrentWindow()
-    isQA = false;
+
     userName = document.getElementById("username").value;
     passWord = document.getElementById("password").value;
+
+    if (userName === "") {
+        alert("Please enter a user name!");
+        return;
+    } else if (passWord === "") {
+        alert("Please enter a password!");
+    }
+
+    var window = remote.getCurrentWindow()
+    isQA = false;
     if (userName != "" && passWord != "") {
 
         if (userName == "LM" && passWord == "password1"){
@@ -17,6 +26,15 @@ function dosomething() {
             window.close()
         }
     }
+}
+
+/**
+ * Opens the Create a New Account Window when the link is pressed.
+ */
+function openCreateAccountWindow() {
+    var currWindow = remote.getCurrentWindow();
+    main.openWindow("src/routes/create-account/createaccount");
+    currWindow.close();
 }
 
 function getAsText(fileToRead) {
