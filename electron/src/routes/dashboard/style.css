@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+}
+
+.header {
+    border-bottom: 50px;
+    padding-bottom: 50px;
+}
