@@ -1,16 +1,52 @@
 body {
-    background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  background-color: lightgray;
+}
+
+.title-section {
+text-align: center;
+}
+
+.input-section {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-content: center;
+}
+
+.big-input-box {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-content: center;
+align-items: center;
+width: 400px;
 }
 
 .content {
-  display: flex;
-  border-top: 100px;
-  padding-top: 200px;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  width: auto;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-content: center;
+align-items: center;
+flex: 1;
+width: auto;
+}
+
+.header {
+border: 75px;
+padding-bottom: 75px;
+}
+
+.create-link {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-content: center;
+align-items: center;
+padding-top: 25px;
+color: gray;
 }
 
 .page-content {
@@ -20,15 +56,5 @@ body {
   justify-content: center;
   align-items: center;
   width: auto;
+  padding: 75px;
 }
-
-#LogIn {
-  border: 300px;
-  /* padding: 100px; */
-}
-
-.linkdiv{
-  padding-top: 100px;
-}
-
-

@@ -1,6 +1,6 @@
 const remote = require('electron').remote
 const main = remote.require('./main.js')
-function dosomething() {
+function loginButtonClick() {
 
     userName = document.getElementById("UserName").value;
     passWord = document.getElementById("Password").value;

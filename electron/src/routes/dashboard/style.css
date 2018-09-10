@@ -8,3 +8,8 @@ body {
     border-bottom: 50px;
     padding-bottom: 50px;
 }
+
+.mdl-navigation-link {
+    text-decoration: none;
+    color: white;
+}
