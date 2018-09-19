@@ -1,16 +1,18 @@
 const {app, BrowserWindow} = require('electron')
-  
+  let currWin;
   function createWindow () {
     // Create the browser window.
-    win = new BrowserWindow({width: 800, height: 600})
+    currWin = new BrowserWindow({width: 800, height: 600})
   
     // and load the index.html of the app.
-    win.loadFile('src/routes/login/index.html')
+    currWin.loadFile('electron/src/routes/login/index.html')
+    currWin.maximize();
   }
   
   app.on('ready', createWindow)
 
   exports.openWindow = (filename) => {
-    let win = new BrowserWindow({with: 800, height: 600})
+    win = new BrowserWindow({width: currWin.width, height: currWin.height})
     win.loadURL(`file://${__dirname}` + filename + `.html`)
+    win.maximize();
   }

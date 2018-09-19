@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="eng">
+
+<head>
+  <title>ASGARD</title>
+  <script src="/node_modules/material-design-lite/material.min.js"></script>
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-light_blue.min.css">
+  <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+
+  <!-- My custom CSS sheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script src="index.js"></script>
+    <div class="header">
+        <!-- Always shows a header, even in smaller screens. -->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">ASGARD Production Management</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation. We hide it in small screens. -->
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link" href="">About</a>
+                        <a class="mdl-navigation__link" href="">Help</a>
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">ASGARD</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="">About</a>
+                    <a class="mdl-navigation__link" href="">Help</a>
+                </nav>
+            </div>
+            <!-- <main class="mdl-layout__content">
+            <div class="page-content">
+            </div>
+            </main> -->
+        </div> 
+
+    </div>
+
+    <div class="content">
+
+      <main class= "mdl-layout__content">
+        <div class="page-content">
+
+        <h2 id="yeet">Login</h2>
+        <div class="big-input-box">
+          <div class="input-section">
+
+            <!-- Username Input -->
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="UserName">
+                <label class="mdl-textfield__label" for="username">Username</label>
+            </div>
+
+            <!-- Password Input -->
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="password" id="Password">
+                <label class="mdl-textfield__label" for="password">Password</label>
+            </div>
+
+            <!-- Login Button -->
+            <button id="LogIn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="loginButtonClick()">
+                Login
+            </button>
+
+            <!-- Create Account Link -->
+            <a href="" class="create-link" onclick="openCreateAccountWindow()" id="createLink">Don't have an account? Click here to create one!</a>
+
+          </div>
+
+        </div>
+        </div>
+      </main>
+
+      </div>
+    </body>
+
+  </html>

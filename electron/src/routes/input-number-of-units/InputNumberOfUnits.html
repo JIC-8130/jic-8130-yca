@@ -1,0 +1,55 @@
+<doctype html>
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-light_blue.min.css" />
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <script src="/node_modules/material-design-lite/material.min.js"></script>
+        <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
+
+        <title>Input Number of Units</title>
+    </head>
+    <body>
+        <script src="csv-helper.js"></script>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">ASGARD Production Management</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation. We hide it in small screens. -->
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link" href="">About</a>
+                        <a class="mdl-navigation__link" href="">Help</a>
+                    </nav>
+                </div>
+            </header>
+        </div>
+
+            <div class="content">
+                <h3> -- </h3>
+                <div class="input-box">
+                    <h5> Please input the number of units produced </h5>
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                            <label class="mdl-textfield__label" for="sample4">Number...</label>
+                            <span class="mdl-textfield__error">Input is not a number!</span>
+                        </div>
+                    </form>
+
+                    <div class="submit-button">
+                        <button id="subButton" onclick="addToDB()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            Submit
+                        </button>
+                        
+                    </div>
+
+                </div>
+            </div>
+    </body>
+</html>
