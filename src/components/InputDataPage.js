@@ -24,221 +24,188 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 export class FormsPage extends React.Component {
 
-  state = {
-    messageopen: false,
-    messageInfo: {},
-    gender: 'male'
-  }
+    state = {
+        messageopen: false,
+        messageInfo: {},
+        gender: 'male'
+    }
 
-  giveSuccessMessage = (message) => {
-    let newmsg = {
-      message,
-      key: new Date().getTime()
+    giveSuccessMessage = (message) => {
+        let newmsg = {
+            message,
+            key: new Date().getTime()
+        };
+
+        this.setState({
+            messageopen: true,
+            messageInfo: newmsg
+
+        });
     };
 
-    this.setState({
-      messageopen: true,
-      messageInfo: newmsg
+    onSubmit = () => {
+        this.giveSuccessMessage('send successfully ');
+        //this.props.startAddLogin(user);
+        // this.props.history.push('/');
+    };
 
-    });
+    handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.setState({ messageopen: false });
+    };
 
-  };
+    render() {
 
-  onSubmit = () => {
+        const { message, key } = this.state.messageInfo;
 
-    this.giveSuccessMessage('send successfully ');
 
-    //this.props.startAddLogin(user);
+        return (
+            <div className="contact-page-wrapper">
+                <Snackbar
+                    key={key}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
 
-    // this.props.history.push('/');
+                    open={this.state.messageopen}
+                    autoHideDuration={2000}
+                    onClose={this.handleClose}
 
-  };
-  handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
+                    ContentProps={{
+                        'aria-describedby': 'message-id',
+                    }}
+
+                    message={<span id="message-id">{message}</span>}
+                    action={[
+
+                        <IconButton
+                            key="close"
+                            aria-label="Close"
+                            color="inherit"
+
+                            onClick={this.handleClose}
+                        >
+                        <CloseIcon />
+                        </IconButton>,
+                    ]}
+                />
+
+                <Grid container spacing={24} justify="center">
+                    <Grid item xs={12} md={10} style={{ marginTop: 10 }}>
+                        <Paper className="contact-page-paper"><Typography variant="display1" gutterBottom style={{ padding: 15 }}>
+                        Data Input
+                        </Typography>
+
+                            <Grid container spacing={24} >
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="units"
+                                        label="Number of Units Produced"
+                                        placeholder="Number of Units Produced"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="workers"
+                                        label="Number of Workers at a Line"
+                                        placeholder="Number of Workers at a Line"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="defects"
+                                        label="Number of Defects"
+                                        placeholder="Number of Defects"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="overtime"
+                                        label="Assembly Line Overtime"
+                                        placeholder="Assembly Line Overtime"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="quality"
+                                        label="Number of Quality Incidents"
+                                        placeholder="Number of Quality Incidents"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="downtime"
+                                        label="Assembly Line Downtime"
+                                        placeholder="Assembly Line Downtime"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="safety"
+                                        label="Number of Safety Incidents"
+                                        placeholder="Number of Safety Incidents"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="notes"
+                                        label="Notes"
+                                        placeholder="Notes"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={10} md={12} style={{ marginTop: 10, marginLeft:100 }}>
+                                    <TextField
+                                        id="utilization"
+                                        label="High and Low Utilization Reasons"
+                                        multiline
+                                        fullWidth
+                                        rows="4"
+                                        placeholder="High and Low Utilization Reasons"
+
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10, marginBottom: 17 }}>
+                                    <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Submit</Button>
+                                </Grid>
+
+                            </Grid>
+                        </Paper>
+                    </Grid>
+                </Grid>
+            </div>
+        );
     }
-    this.setState({ messageopen: false });
-  };
-
-  handleGenderChange = (event) => {
-
-    this.setState({ gender: event.target.value });
-  };
-
-  render() {
-
-    const { message, key } = this.state.messageInfo;
-
-
-    return (
-      <div className="contact-page-wrapper">
-
-
-        <Snackbar
-          key={key}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          open={this.state.messageopen}
-          autoHideDuration={2000}
-          onClose={this.handleClose}
-
-          ContentProps={{
-            'aria-describedby': 'message-id',
-          }}
-          message={<span id="message-id">{message}</span>}
-          action={[
-
-            <IconButton
-              key="close"
-              aria-label="Close"
-              color="inherit"
-
-              onClick={this.handleClose}
-            >
-              <CloseIcon />
-            </IconButton>,
-          ]}
-        />
-        <Grid container spacing={24} justify="center">
-          <Grid item xs={12} md={10} style={{ marginTop: 10 }}>
-            <Paper className="contact-page-paper"><Typography variant="display1" gutterBottom style={{ padding: 15 }}>
-              Data Input
-      </Typography>
-              <Grid container spacing={24} >
-                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                  <TextField
-                    id="units"
-                    label="Number of Units Produced"
-                    placeholder="Number of Units Produced"
-                    className="contact-page-name-list-field"
-                    margin="normal"
-                  />
-                </Grid>
-
-                {/* <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                  <TextField
-                    id="LastName"
-                    label="LastName"
-                    placeholder="Last Name"
-                    className="contact-page-name-list-field"
-                    margin="normal"
-                  />
-                </Grid>
-
-                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                  <TextField
-                    id="Firstname"
-                    label="Email"
-                    placeholder="Email address"
-                    className="contact-page-name-list-field"
-                    margin="normal"
-                  />
-                </Grid>
-
-
-                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                  <TextField
-                    id="Firstname"
-                    label="Location"
-                    placeholder="Location"
-                    className="contact-page-name-list-field"
-                    margin="normal"
-                  />
-                </Grid>
-
-
-                <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10 }}>
-                  <TextField
-                    id="Firstname"
-                    label="Message"
-                    multiline
-                    rows="2"
-                    placeholder="this is a textarea field"
-                    className="contact-page-name-list-field"
-                    margin="normal"
-                  />
-                </Grid>
-                <Grid item xs={6} style={{ marginTop: 10 }} align="center"><FormControl >
-                  <InputLabel htmlFor="age-simple">Country</InputLabel>
-                  <Select
-                    style={{ width: 200 }}
-                    value={this.state.country}
-                    onChange={this.handleCountryChange}
-                    inputProps={{
-                      name: 'country',
-                      id: 'country',
-                    }}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value="India">India</MenuItem>
-                    <MenuItem value="Australia">Australia</MenuItem>
-                    <MenuItem value="South Africa">South Africa</MenuItem>
-                    <MenuItem value="SriLanka">SriLanka</MenuItem>
-                    <MenuItem value="NewZealand">NewZealand</MenuItem>
-                    <MenuItem value="West Indies">West Indies</MenuItem>
-                    <MenuItem value="England">England</MenuItem>
-                  </Select>
-                </FormControl> </Grid>
-
-
-                <Grid item xs={6} style={{ marginTop: 10 }} align="center"><FormControl >
-
-                  <TextField
-                    id="date"
-                    label="Date of Birth"
-                    type="date"
-                    defaultValue="1997-05-24"
-
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                </FormControl>
-                </Grid>
-
-                <Grid item xs={6} style={{ marginTop: 10 }} align="center">
-                  <FormControl component="fieldset" required style={{
-                    margin: '10px',
-                  }}>
-                    <FormLabel component="legend">Gender</FormLabel>
-                    <RadioGroup
-                      aria-label="gender"
-                      name="gender1"
-
-                      value={this.state.gender}
-                      onChange={this.handleGenderChange}
-                      style={{
-                        margin: `10px 0`,
-                      }} className="forms-page-genderclassname">
-                      <FormControlLabel value="female" control={<Radio />} label="Female" />
-                      <FormControlLabel value="male" control={<Radio />} label="Male" />
-                      <FormControlLabel value="other" control={<Radio />} label="Other" />
-                      <FormControlLabel
-                        value="disabled"
-                        disabled
-                        control={<Radio />}
-                        label="(Disabled option)"
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                    */ }
-                <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10 }}>
-                  <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Submit</Button>
-                </Grid> 
-
-
-              </Grid>
-            </Paper>
-          </Grid>
-        </Grid>
-      </div>
-    );
-  }
 
 
 }

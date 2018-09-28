@@ -16,11 +16,11 @@ const LandingPage = () => (
 <Typography variant="display3" gutterBottom align="center">
         Welcome to ASGARD
       </Typography>
-    
+
    <Grid container spacing={24} >
         <Grid item xs={12} md={12}>
           <Typography variant="body2" gutterBottom align="center">
-        Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy
+        Lorem Ipsum is that it has a more-or-less normal distribution of ihkuhkjhetters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy
       </Typography>
         </Grid>
         <Grid item xs={6}>
@@ -43,7 +43,7 @@ const LandingPage = () => (
       color="inherit" style={{height:40}} imageStyle={{ width: '50', height: '50' }} />
         </Grid>
         <Grid item xs={12}>
-         
+
         </Grid>
        {/* <Grid item xs={6}>
           <Paper >xs=6</Paper>
