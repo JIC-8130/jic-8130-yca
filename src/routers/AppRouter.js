@@ -16,6 +16,8 @@ import GetStartedPage from '../components/GetStartedPage';
 import ProductsPage from '../components/ProductsPage';
 import FormsPage from '../components/FormsPage';
 
+import DataModificationPage from '../components/DataModificationPage';
+
 
 
 
@@ -28,7 +30,7 @@ const AppRouter = () => (
         
         <PublicRoute path="/" component={LandingPage} exact={true} />
          <PrivateRoute path="/home" component={DashboardPage} />
-         <PrivateRoute path="/input" component={InputDataPage} />
+         <PublicRoute path="/input" component={InputDataPage} />
         <Route path="/login" component={LoginPage}  />
         <PublicRoute path="/about" component={AboutPage} />
         <PublicRoute path="/products" component={ProductsPage} />
@@ -37,6 +39,8 @@ const AppRouter = () => (
         <PublicRoute path="/start" component={GetStartedPage} />
         <PublicRoute path="/contact" component={ContactPage} />
         <PublicRoute path="/FAQ" component={FAQPage} />
+        <PublicRoute path="/data" component={DataModificationPage} />
+
          
          <Route path="/services" component={ServicesPage} />
         <Route component={NotFoundPage} />
