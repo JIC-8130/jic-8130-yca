@@ -16,6 +16,7 @@ import GetStartedPage from '../components/GetStartedPage';
 import ProductsPage from '../components/ProductsPage';
 import FormsPage from '../components/FormsPage';
 
+import DataModificationPage from '../components/DataModificationPage';
 const AppRouter = () => (
   <BrowserRouter>
     <div>
@@ -32,7 +33,8 @@ const AppRouter = () => (
         <PublicRoute path="/start" component={GetStartedPage} />
         <PublicRoute path="/contact" component={ContactPage} />
         <PublicRoute path="/FAQ" component={FAQPage} />
-        <Route path="/services" component={ServicesPage} />
+        <PublicRoute path="/data" component={DataModificationPage} />
+         <Route path="/services" component={ServicesPage} />
         <Route component={NotFoundPage} />
       </Switch>
 
