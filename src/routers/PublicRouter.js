@@ -12,11 +12,11 @@ export const PublicRoute = ({
 
 
     <Route {...rest} component={(props) => (
-      isAuthenticated ? (
+      // isAuthenticated ? (
 
-          <Redirect to="/home" />
+      //     <Redirect to="/input" />
         
-      ) : (
+      // ) : (
         
         <React.Fragment>
          <Header/>
@@ -27,7 +27,7 @@ export const PublicRoute = ({
           
            <Footer/>
       </React.Fragment>
-        )
+       // )
     )} />
   );
 

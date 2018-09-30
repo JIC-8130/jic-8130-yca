@@ -17,7 +17,7 @@ export class LoginPage extends React.Component {
 
   OnClickLogin = () => {
     this.props.startLogin('QA');
-    this.props.history.push('/home');
+    this.props.history.push('/input');
   };
 
   render() {
