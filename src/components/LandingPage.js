@@ -37,7 +37,7 @@ const LandingPage = () => (
       </Button>
       </Typography>
         </Grid>
-         <Grid item xs={6}>
+         <Grid item xs={8}>
           <Image
         src={bulb}
       color="inherit" style={{height:40}} imageStyle={{ width: '50', height: '50' }} />
