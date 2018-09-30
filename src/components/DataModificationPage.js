@@ -23,6 +23,11 @@ const dataPage = () => (
     
    <Grid container spacing={24}>
         <Grid item xs={12} style={{marginTop:10}}>
+
+        <Typography variant="display1" gutterBottom style={{ padding: 15, align: "center"  }}>
+            Line Data
+        </Typography>
+
             <Paper className="data-page">
 
                  <Table baseId="table-with-interactions" className="data-table">
@@ -82,8 +87,6 @@ const dataPage = () => (
                          </TableRow>
                      </TableBody>
                  </Table>
-
-
 
             </Paper>
         </Grid>
