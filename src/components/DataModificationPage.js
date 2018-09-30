@@ -9,127 +9,85 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import fusioncharts from 'fusioncharts';
-// Load the charts module
-import charts from 'fusioncharts/fusioncharts.charts';
-import ReactFC from 'react-fusioncharts';
 
 
-// Pass fusioncharts as a dependency of charts
-charts(FusionCharts)
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import TableBody from '@material-ui/core/TableBody';
+import { Table } from '@material-ui/core';
 
-
-
-var chartConfigs = {
-  
-    type: "Column2D",
-   width:"80%",height:400,
-    className: "fc-column2d", // ReactJS attribute-name for DOM classes
-    dataFormat: "JSON",
-    dataSource: {
-        chart:{ caption:"Harry's SuperMart",subCaption:"Top 5 stores in last month by revenue",numberPrefix:"$", theme: "zune",
-        palettecolors: "#0075c2"},
-        data: [{label:"Bakersfield Central",value:"880000"},{label:"Garden Groove harbour",value:"730000"},{label:"Los Angeles Topanga",value:"590000"},{label:"Compton-Rancho Dom",value:"520000"},{label:"Daly City Serramonte",value:"330000"}]
-    }
-};
-
-
-
-
-
-var pieChartConfig={
-
-type:"Pie3d",
-width:"80%",
-height:"400",
-className:'fc-pie3d',
-dataFormat:"JSON",
-dataSource:
-  {
-    chart: {
-        caption: "Sales Per Employee for 2014",
-        "palette": "2",
-        "animation": "1",
-        "formatnumberscale": "1",
-        "decimals": "0",
-        "numberprefix": "$",
-        "pieslicedepth": "30",
-        "startingangle": "125",
-        "showborder": "0"
-    },
-    "data": [
-        {
-            "label": "Leverling",
-            "value": "100524",
-            "issliced": "1"
-        },
-        {
-            "label": "Fuller",
-            "value": "87790",
-            "issliced": "1"
-        },
-        {
-            "label": "Davolio",
-            "value": "81898",
-            "issliced": "0"
-        },
-        {
-            "label": "Peacock",
-            "value": "76438",
-            "issliced": "0"
-        },
-        {
-            "label": "King",
-            "value": "57430",
-            "issliced": "0"
-        },
-        {
-            "label": "Callahan",
-            "value": "55091",
-            "issliced": "0"
-        },
-        {
-            "label": "Dodsworth",
-            "value": "43962",
-            "issliced": "0"
-        },
-        {
-            "label": "Suyama",
-            "value": "22474",
-            "issliced": "0"
-        },
-        {
-            "label": "Buchanan",
-            "value": "21637",
-            "issliced": "0"
-        }
-    ]
-}
-
-
-};
-  
 
 const dataPage = () => (
   <React.Fragment>
     
    <Grid container spacing={24}>
         <Grid item xs={12} style={{marginTop:10}}>
-            <Paper className="lineOne">
-            <Typography variant="display1" align='center' gutterBottom style={{ padding: 15 }}>
-              Line 1
-            </Typography>
+            <Paper className="data-page">
+
+                 <Table baseId="table-with-interactions" className="data-table">
+                     <TableHead className="table-head">
+                         <TableRow>
+                            <TableCell numeric>Line Number</TableCell>
+                            <TableCell numeric>Units</TableCell>
+                            <TableCell numeric>Workers</TableCell>
+                            <TableCell numeric>Defects</TableCell>
+                            <TableCell numeric>Overtime</TableCell>
+                            <TableCell numeric>Quality Incidents</TableCell>
+                            <TableCell numeric>Downtime</TableCell>
+                            <TableCell>Notes</TableCell>
+                            <TableCell>Utilization</TableCell>
+                        </TableRow>
+                     </TableHead>
+
+                     <TableBody className="table-body">
+
+                         {/* The first row of data in table */}
+                         <TableRow>
+                             <TableCell>1</TableCell>
+                             <TableCell>100</TableCell>
+                             <TableCell>25</TableCell>
+                             <TableCell>13</TableCell>
+                             <TableCell>33</TableCell>
+                             <TableCell>5</TableCell>
+                             <TableCell>21</TableCell>
+                             <TableCell>Running as scheduled</TableCell>
+                             <TableCell>1</TableCell>
+                         </TableRow>
+
+                        {/* Second row of data */}
+                         <TableRow>
+                            <TableCell>2</TableCell>
+                             <TableCell>230</TableCell>
+                             <TableCell>18</TableCell>
+                             <TableCell>9</TableCell>
+                             <TableCell>17</TableCell>
+                             <TableCell>11</TableCell>
+                             <TableCell>32</TableCell>
+                             <TableCell>Maintenance Required</TableCell>
+                             <TableCell>4</TableCell>
+                         </TableRow>
+
+                        {/* Third row of data */}
+                         <TableRow>
+                            <TableCell>3</TableCell>
+                             <TableCell>97</TableCell>
+                             <TableCell>14</TableCell>
+                             <TableCell>28</TableCell>
+                             <TableCell>50</TableCell>
+                             <TableCell>0</TableCell>
+                             <TableCell>19</TableCell>
+                             <TableCell>Running as scheduled</TableCell>
+                             <TableCell>1</TableCell>
+                         </TableRow>
+                     </TableBody>
+                 </Table>
+
+
 
             </Paper>
         </Grid>
 
-        <Grid item xs={12} style={{marginTop:10}}>
-            <Paper className="lineTwo">
-            <Typography variant="display1" align='center' gutterBottom style={{ padding: 15 }}>
-              Line 2
-            </Typography>
-            
-            </Paper>
-        </Grid>
     </Grid>
   </React.Fragment>
 );

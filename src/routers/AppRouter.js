@@ -25,9 +25,9 @@ import DataModificationPage from '../components/DataModificationPage';
 const AppRouter = () => (
   <BrowserRouter>
     <div>
-      
+
       <Switch>
-        
+
         <PublicRoute path="/" component={LandingPage} exact={true} />
          <PrivateRoute path="/home" component={DashboardPage} />
          <PublicRoute path="/input" component={InputDataPage} />
@@ -35,17 +35,15 @@ const AppRouter = () => (
         <PublicRoute path="/about" component={AboutPage} />
         <PublicRoute path="/products" component={ProductsPage} />
         <PublicRoute path="/forms" component={FormsPage} />
-        
+
         <PublicRoute path="/start" component={GetStartedPage} />
         <PublicRoute path="/contact" component={ContactPage} />
         <PublicRoute path="/FAQ" component={FAQPage} />
         <PublicRoute path="/data" component={DataModificationPage} />
-
-         
          <Route path="/services" component={ServicesPage} />
         <Route component={NotFoundPage} />
       </Switch>
-      
+
     </div>
   </BrowserRouter>
 );
