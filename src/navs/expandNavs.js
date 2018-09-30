@@ -36,7 +36,7 @@ handleClose = event => {
   };
 
 render(){
-    
+
     return (<List component="nav">
  <ListItem button onClick={this.handleClick}>
             <ListItemIcon className="innernavitem">
@@ -56,11 +56,10 @@ render(){
               </NavLink>
             </List>
           </Collapse>
-           </List>); 
+           </List>);
 }
 
 }
 
 
 export default ExpandNav;
-

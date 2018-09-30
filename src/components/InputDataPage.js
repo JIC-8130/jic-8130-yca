@@ -47,6 +47,7 @@ export class FormsPage extends React.Component {
         this.giveSuccessMessage('send successfully ');
         //this.props.startAddLogin(user);
         // this.props.history.push('/');
+        // needs to only work with acceptable data
     };
 
     handleClose = (event, reason) => {
