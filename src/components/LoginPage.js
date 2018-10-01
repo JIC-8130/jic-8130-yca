@@ -16,9 +16,25 @@ import Button from '@material-ui/core/Button';
 export class LoginPage extends React.Component {
 
   OnClickLogin = () => {
-    this.props.startLogin('QA');
-    this.props.history.push('/input');
+      this.props.startLogin('QA');
+      this.props.history.push('/home');
+
   };
+
+  handleChange(e) {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+
+    if (e.target.name === 'username') {
+      username: e.target.value;
+    }
+
+  }
 
   render() {
     return (
@@ -37,7 +53,7 @@ export class LoginPage extends React.Component {
 
               <AccountCircle />
 
-              <TextField id="input-username" label="Username" />
+              <TextField id="input-username" label="username" />
 
             </div>
             <div className="loginformgroup">

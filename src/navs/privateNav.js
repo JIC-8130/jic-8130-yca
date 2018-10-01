@@ -29,9 +29,9 @@ export const publicNavs = [
         icon:<ExtensionIcon/>
     },
     {
-        url:'/movies',
-        name:'Movies',
-        icon:<PhoneIcon/>
+        url:'/data',
+        name: 'Data Screen',
+        icon:<ExtensionIcon/>
     },
     // add new Nav links here as a json object, in this file the public navigations
 ];
