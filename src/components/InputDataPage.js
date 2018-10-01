@@ -48,6 +48,7 @@ export class FormsPage extends React.Component {
         //this.props.startAddLogin(user);
         // this.props.history.push('/');
         // needs to only work with acceptable data
+        // only alpha + numbers
     };
 
     handleClose = (event, reason) => {
@@ -105,6 +106,8 @@ export class FormsPage extends React.Component {
                                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
                                     <TextField
                                         id="units"
+                                        type="text"
+                                        pattern="-?[0-9]*(\.[0-9]+)?"
                                         label="Number of Units Produced"
                                         placeholder="Number of Units Produced"
                                         className="contact-page-name-list-field"
