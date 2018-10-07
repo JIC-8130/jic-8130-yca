@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../store/actions/auth';
 import Typography from '@material-ui/core/Typography';
