@@ -8,7 +8,7 @@ export default ()=>(
     <div className="footer-container-box">
 
         <Typography variant="headline" gutterBottom>
-        My Company Name
+        Yokogawa Corporation of America
       </Typography>
 
         

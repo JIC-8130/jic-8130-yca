@@ -13,17 +13,15 @@ import fusioncharts from 'fusioncharts';
 import charts from 'fusioncharts/fusioncharts.charts';
 import ReactFC from 'react-fusioncharts';
 
-
 // Pass fusioncharts as a dependency of charts
+
 charts(FusionCharts)
-
-
 
 var chartConfigs = {
   
     type: "Column2D",
    width:"80%",height:400,
-    className: "fc-column2d", // ReactJS attribute-name for DOM classes
+    className: "fc-column2d", // ReactJS attribute-name for DOM classes 1
     dataFormat: "JSON",
     dataSource: {
         chart:{ caption:"Harry's SuperMart",subCaption:"Top 5 stores in last month by revenue",numberPrefix:"$", theme: "zune",
@@ -31,10 +29,6 @@ var chartConfigs = {
         data: [{label:"Bakersfield Central",value:"880000"},{label:"Garden Groove harbour",value:"730000"},{label:"Los Angeles Topanga",value:"590000"},{label:"Compton-Rancho Dom",value:"520000"},{label:"Daly City Serramonte",value:"330000"}]
     }
 };
-
-
-
-
 
 var pieChartConfig={
 
@@ -107,29 +101,97 @@ dataSource:
 
 
 };
-  
+
 
 const HomePage = () => (
-  <React.Fragment>
-    
-   <Grid container spacing={24}>
-        <Grid item xs={12} style={{marginTop:10}}>
-          <Paper className="homepagepaper">
-            <Typography variant="body1" gutterBottom align="center">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </Typography>
+    <React.Fragment>
+        <Grid container spacing={24}>
+            <Grid item xs={12} style={{marginTop:5}}>
+                <Paper className="homepagepaper">
+                    <Typography variant="display3" gutterBottom align="center">
+                        Welcome
+                    </Typography>
+                </Paper>
+
+            </Grid>
             
-            </Paper>
+            <Grid item xs={12}>
+                <Typography variant="title" gutterBottom align="center">
+                    Cost Centers
+                </Typography>
+            </Grid>
+
+            <Grid item xs={3} style={{marginLeft:45}}>
+                <Typography variant="subheading" gutterBottom align="left">
+                    <ul>
+                        <li><a href="#"> 6212 YDC Receiving </a></li>
+                        <li><a href="#"> 6213 YDC Stores </a></li>
+                        <li><a href="#"> 6234 YC Shipping </a></li>
+                        <li><a href="#"> 6322 Parts & Repair </a></li>
+                        <li><a href="#"> 6401 Parts & Manufacturing </a></li>
+                    </ul>
+                </Typography>
+            </Grid>
+
+            <Grid item xs={3}>
+                <Typography variant="subheading" gutterBottom align="left">
+                    <ul>
+                        <li><a href="#"> 6422 Machine Shop </a></li>
+                        <li><a href="#"> 6511 SMT </a></li>
+                        <li><a href="#"> 6521 Meter Assembly </a></li>
+                        <li><a href="#"> 6522 Analytical Manufacturing </a></li>
+                        <li><a href="#"> 6526 Transmitter Manufacturing </a></li>
+                        </ul>
+                </Typography>
+            </Grid>
+                        
+            <Grid item xs={3}>
+                <Typography variant="subheading" gutterBottom align="left">
+                    <ul>
+                        <li><a href="#"> 6533 Yewflo Manufacturing </a></li>
+                        <li><a href="#"> 6534 Loop Indicator </a></li>
+                        <li><a href="#"> 6542 Newnan TDLS </a></li>
+                        <li><a href="#"> 6915 Production Control </a></li>
+                        <li><a href="#"> 6931 Manufacturing QA </a></li>
+                        </ul>
+                </Typography>
+            </Grid>
+                       
+            <Grid item xs={2}>
+                <Typography variant="subheading" gutterBottom align="left">
+                    <ul>
+                        <li><a href="#"> 6951 Mod Line </a></li>
+                        <li><a href="#"> 6955 Cal Lab </a></li>
+                        <li><a href="#"> 6956 Cal Lab </a></li>
+                        <li><a href="#"> 6957 Cal Lab </a></li>
+                        <li><a href="#"> 8501 R&D </a></li>
+                        </ul>
+                </Typography>
+            </Grid>
+
+            <Grid item xs={12}>
+                <Typography variant="title" gutterBottom align="center">
+                    Data Visualizations
+                </Typography>
+            </Grid>
+
+            <Grid item xs={5} style={{marginLeft:20}}>
+                <ReactFC {...chartConfigs} />
+            </Grid>
+            <Grid item xs={5}>
+                <ReactFC {...pieChartConfig}/>
+            </Grid>
+
+            <Grid item xs={12} align="right">
+                <Button color="primary">
+                    Generate Report
+                </Button>
+                <Button color="primary">
+                    Edit Data
+                </Button>
+            </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <ReactFC {...chartConfigs} />
-         
-        </Grid>
-        <Grid item xs={6}>
-          <ReactFC {...pieChartConfig}/>
-        </Grid>
-        </Grid>
-  </React.Fragment>
+    </React.Fragment>
 );
 
 export default HomePage;
