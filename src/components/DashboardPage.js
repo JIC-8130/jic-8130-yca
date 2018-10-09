@@ -183,10 +183,10 @@ const HomePage = () => (
             </Grid>
 
             <Grid item xs={12} align="right">
-                <Button color="primary">
+                <Button color="primary" variant="raised" size="large">
                     Generate Report
                 </Button>
-                <Button color="primary">
+                <Button color="primary" variant="outlined" style={{marginLeft:10}}>
                     Edit Data
                 </Button>
             </Grid>
