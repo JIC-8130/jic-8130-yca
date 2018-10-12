@@ -13,7 +13,7 @@ function connectToDB() {
             if (err) 
             {
                 console.log(err);
-                return null;
+                return false;
             }
             else
             {
@@ -51,4 +51,4 @@ function queryDatabase() {
      connection.execSql(request);
 }
 
-queryDatabase();
+// queryDatabase();
