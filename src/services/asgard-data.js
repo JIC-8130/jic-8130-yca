@@ -2,17 +2,8 @@ var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 
 // Create connection to database
-var config = 
-{
-    userName: 'dbadmin8130', // update me
-    password: 'JuniorDesigndb!', // update me
-    server: 'asgard-data.database.windows.net', // update me
-    options: 
-       {
-          database: 'asgard-db' //update me
-          , encrypt: true
-       }
-  }
+var config = require("../../secrets/db-config.json");
+
 var connection = new Connection(config);
 
 
