@@ -1,28 +1,22 @@
 var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 
+// Create connection to database
+var config = 
+{
+    userName: 'dbadmin8130', // update me
+    password: 'JuniorDesigndb!', // update me
+    server: 'asgard-data.database.windows.net', // update me
+    options: 
+       {
+          database: 'asgard-db' //update me
+          , encrypt: true
+       }
+  }
+var connection = new Connection(config);
 
-/**
- * Attempts to connect to the database by creating a new Connection. 
- * Returns the Connection if successful, otherwise returns null.
- */
+
 function connectToDB() {
-
-    // Necessary data to access the db.
-    var config = 
-    {
-        userName: 'dbadmin8130', 
-        password: 'JuniorDesigndb!', //TODO: this should probably be encrypted lol
-        server: 'asgard-data.database.windows.net',
-        options: 
-        {
-            database: 'asgard-db'
-            , encrypt: true
-        }
-    }
-
-
-    var connection = new Connection(config);
     connection.on('connect', function(err) 
         {
             if (err) 
@@ -33,7 +27,7 @@ function connectToDB() {
             else
             {
                 queryDatabase();
-                return connection;
+                return true;
             }
         }
     );
@@ -65,5 +59,5 @@ function queryDatabase() {
              });
      connection.execSql(request);
 }
-//Uncomment this if you wanna run it with node asgard-data.js
-// queryDatabase();
+
+queryDatabase();
