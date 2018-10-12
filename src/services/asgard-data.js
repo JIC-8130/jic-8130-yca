@@ -2,7 +2,6 @@ var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 
 
-
 /**
  * Attempts to connect to the database by creating a new Connection. 
  * Returns the Connection if successful, otherwise returns null.
@@ -66,5 +65,5 @@ function queryDatabase() {
              });
      connection.execSql(request);
 }
-
-queryDatabase();
+//Uncomment this if you wanna run it with node asgard-data.js
+// queryDatabase();
