@@ -1,40 +1,57 @@
 var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 
-// Create connection to database
-var config = 
-{
-    userName: 'dbadmin8130', // update me
-    password: 'JuniorDesigndb!', // update me
-    server: 'asgard-data.database.windows.net', // update me
-    options: 
-       {
-          database: 'asgard-db' //update me
-          , encrypt: true
-       }
-  }
-var connection = new Connection(config);
 
+
+/**
+ * Attempts to connect to the database by creating a new Connection. 
+ * Returns the Connection if successful, otherwise returns null.
+ */
+function connectToDB() {
+
+    // Necessary data to access the db.
+    var config = 
+    {
+        userName: 'dbadmin8130', 
+        password: 'JuniorDesigndb!', //TODO: this should probably be encrypted lol
+        server: 'asgard-data.database.windows.net',
+        options: 
+        {
+            database: 'asgard-db'
+            , encrypt: true
+        }
+    }
+
+
+    var connection = new Connection(config);
+    connection.on('connect', function(err) 
+        {
+            if (err) 
+            {
+                console.log(err);
+                return null;
+            }
+            else
+            {
+                queryDatabase();
+                return connection;
+            }
+        }
+    );
+}
 // Attempt to connect and execute queries if connection goes through
-connection.on('connect', function(err) 
-   {
-     if (err) 
-       {
-          console.log(err)
-       }
-    else
-       {
-           queryDatabase()
-       }
-   }
- );
 
-function queryDatabase()
-   { console.log('Reading rows from the Table...');
+
+function queryDatabase() {
+    var accessDenied = connectToDB();
+    if (accessDenied) {
+        throw "Database access failed!";
+    }
+    console.log('Reading rows from the Table...');
 
        // Read all rows from table
      request = new Request(
-          "SELECT * FROM ACCOUNTS",
+          "SELECT * FROM Users",
              function(err, rowCount, rows) 
                 {
                     console.log(rowCount + ' row(s) returned');
@@ -48,4 +65,6 @@ function queryDatabase()
          });
              });
      connection.execSql(request);
-   }
+}
+
+queryDatabase();
