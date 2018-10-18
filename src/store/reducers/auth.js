@@ -1,11 +1,19 @@
-export default (state={},action)=>{
-switch(action.type){
-    case 'LOGIN': return {
-        uid:action.uid
-    };
+const initialState = { auth: { username: '' } }
 
-    case 'LOGOUT': return {};
+export default (state = initialState, action) => {
+    switch (action.type) {
+        case 'LOGIN': return {
+            uid: action.uid
+        };
 
-    default: return state;
-}
+        case 'LOGOUT': return {};
+
+        case 'SET_USERNAME': {
+            const { payload: { username } } = action
+            const auth = { username }
+            return { ...state, auth }
+        }
+
+        default: return state;
+    }
 };
