@@ -63,7 +63,6 @@ export class LoginPage extends React.Component {
       email: '',
       password: ''
     });
-    console.log("yeet");
   }
 
 
