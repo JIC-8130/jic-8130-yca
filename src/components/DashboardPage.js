@@ -250,4 +250,4 @@ const HomePage = () => (
 
 export default HomePage;
 
-HomePage();
+// HomePage();

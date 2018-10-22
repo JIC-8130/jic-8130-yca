@@ -26,6 +26,7 @@
     "fusioncharts": "^3.12.2",
     "material-ui-image": "^3.0.0",
     "react": "^16.3.2",
+    "react-chartjs-2": "^2.7.4",
     "react-chartkick": "^0.3.0",
     "react-dom": "^16.3.2",
     "react-fusioncharts": "^1.0.5",
