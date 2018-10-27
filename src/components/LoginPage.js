@@ -35,8 +35,8 @@ export class LoginPage extends React.Component {
 
 
   render() {
-    let {email, password} = this.state;
-    let {isLoginPending, isLoginSuccess, loginError} = this.props;
+    let { email, password } = this.state;
+    let { isLoginPending, isLoginSuccess, loginError } = this.props;
     return (
       <div className="login-page-class">
         <Paper className="loginPaper">
@@ -51,7 +51,7 @@ export class LoginPage extends React.Component {
           <form onSubmit={this.onSubmit}>
             <div className="loginformgroup">
               <AccountCircle />
-              <TextField 
+              <TextField
                 id="outlined-email-input"
                 label="Email"
                 type="email"
@@ -59,8 +59,8 @@ export class LoginPage extends React.Component {
                 autoComplete="email"
                 margin="normal"
                 variant="outlined"
-                onChange={e => this.setState({email: e.target.value})}
-                value={email}/>
+                onChange={e => this.setState({ email: e.target.value })}
+                value={email} />
 
 
 
@@ -74,17 +74,17 @@ export class LoginPage extends React.Component {
                 variant="outlined"
                 type="password"
                 name="password"
-                onChange={e => this.setState({password: e.target.value})}
-                value={password}/>
+                onChange={e => this.setState({ password: e.target.value })}
+                value={password} />
             </div>
 
             <Button type="submit" value="login" variant="raised" color="primary">
-                Login
+              Login
             </Button>
 
-            { isLoginPending && <Snackbar open={true} autoHideDuration={6000} message={<span>Logging you in...</span>} />}
-            { isLoginSuccess &&  <Redirect to="/products"/>}
-            { loginError && <Snackbar open={true} autoHideDuration={6000} message={<span>Login failed: invalid credentials</span>} />}
+            {isLoginPending && <Snackbar open={true} autoHideDuration={6000} message={<span>Logging you in...</span>} />}
+            {isLoginSuccess && <Redirect to="/data" />}
+            {loginError && <Snackbar open={true} autoHideDuration={6000} message={<span>Login failed: invalid credentials</span>} />}
           </form>
 
 
