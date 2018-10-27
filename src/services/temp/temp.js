@@ -21,4 +21,4 @@ const newData = {
 // InputData.addAddToCostCenter(newData);
 // InputData.getAllFrom(newData.costCenter);
 var cc6256data = InputData.getDataFrom("CC6526", "2018-01-01");
-// console.log(cc6256data);
+console.log(cc6256data);

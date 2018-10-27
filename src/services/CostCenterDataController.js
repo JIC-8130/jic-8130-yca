@@ -5,6 +5,7 @@ const jsonSql = require("json-sql")({valuesPrefix: "@"});
 
 const DEBUG = true;
 
+//TODO: find out if you have to manually close connections.
 
 /**
  * Creates the connection to the database.
@@ -38,7 +39,8 @@ function getAllDataFrom(costCenter) {
 
 
 /**
- * Helper function for getAllFrom. Creates the 
+ * Helper function for getAllFrom. Creates the Request (query) to get all
+ * rows from the cost center's table.
  * @param {string} costCenter the cost center ID code.
  */
 function queryGetAll(costCenter) {
@@ -71,8 +73,10 @@ function queryGetAll(costCenter) {
 }
 
 /**
- * 
- * @param {*} ccData 
+ * Queries db for data from a particular date.
+ * @param {string} costCenter The cost center we want data from.
+ * @param {string} date The date to select data from.
+ * @returns false if there is a DB error.
  */
 function getDataFrom(costCenter, date) {
     var connection = createConnection();
@@ -86,7 +90,7 @@ function getDataFrom(costCenter, date) {
                 connection.execSql(queryGetCCData(costCenter, date, jsonData));
                 // connection.close();
                 // console.log("This is the jsonData obj: \n" + JSON.stringify(jsonData));
-                return true;
+                return jsonData;
             }
         }
     );
@@ -124,9 +128,7 @@ function queryGetCCData(costCenter, date, jsonData) {
     request.on('row', function(columns) {
         columns.forEach(
             function(column) {
-                // console.log("%s\t%s", column.metadata.colName, column.value);
                 jsonData[column.metadata.colName] = column.value;
-                // console.log(JSON.stringify(jsonData));
             }
         );
     });
@@ -181,7 +183,12 @@ function addToCostCenter(ccData) {
 }
 
 
-
+/**
+ * Creates a Request for adding the given data to the db.
+ * @param {object} ccData The data to add to the db. See comment on addToCostCenter
+ * for formatting.
+ * @returns The Request for adding the data to the db. 
+ */
 function addCCRow(ccData) {
 
     var addStmt1 = jsonSql.build({
@@ -209,44 +216,6 @@ function addCCRow(ccData) {
     return addReq;
 }
 
-
-//Doesn't work, but maybe one day...
-// function loadBulkData() {
-//   var option = { keepNulls: false }; // option to honor null
-//   var table = "CC6526";
-//   var bulkLoad = connection.newBulkLoad(table, option, function(err, rowCont) {
-//     if (err) {
-//       throw err;
-//     }
-//     console.log('rows inserted :', rowCont);
-//     connection.close();
-//   });
-//   // setup columns
-//   bulkLoad.addColumn("Date", TYPES.Date, { nullable: false });
-//   bulkLoad.addColumn('UnitsProduced', TYPES.Int, { nullable: true });
-//   bulkLoad.addColumn('Defects', TYPES.Int, { nullable: true });
-//   bulkLoad.addColumn('WorkerTotal', TYPES.Int, { nullable: true });
-//   bulkLoad.addColumn('Overtime', TYPES.Int, { nullable: true });
-//   bulkLoad.addColumn("Downtime", TYPES.Int, { nullable: true });
-//   bulkLoad.addColumn('SafetyInc', TYPES.Int, { nullable: true });
-//   bulkLoad.addColumn('QualityInc', TYPES.Int, { nullable: true });
-//   bulkLoad.addColumn('HighUtil', TYPES.Text, { nullable: true });
-//   bulkLoad.addColumn('LoUtil', TYPES.Text, { nullable: true });
-
-//   // add rows
-//   bulkLoad.addRow({ Date: "2018-10-11"});
-//         // UnitsProduced: 99,
-//         // Defects: 99,
-//         // WorkerTotal: 99,
-//         // OverTime: 99,
-//         // DownTime: 99,
-//         // SafetyInc: 99,
-//         // QualityInc: 99,
-//         // HighUtil: "Lorem Ipsum",
-//         // LoUtil: "It really do be like that ! !!"
-//   // perform bulk insert
-//   connection.execBulkLoad(bulkLoad);
-// }
 
 //Expose our top-level functions for use elsewhere!
 module.exports = {
