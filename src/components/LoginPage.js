@@ -8,13 +8,17 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import Key from '@material-ui/icons/VpnKey';
 import Button from '@material-ui/core/Button';
 import Snackbar from "@material-ui/core/Snackbar"
+import Redirect from "react-router-dom/Redirect"
 
 export class LoginPage extends React.Component {
 
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      email: "",
+      password: ""
+    };
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -79,7 +83,7 @@ export class LoginPage extends React.Component {
             </Button>
 
             { isLoginPending && <Snackbar open={true} autoHideDuration={6000} message={<span>Logging you in...</span>} />}
-            { isLoginSuccess && <Snackbar open={true} autoHideDuration={4000} message={<span>Login successful!</span>} />}
+            { isLoginSuccess &&  <Redirect to="/products"/>}
             { loginError && <Snackbar open={true} autoHideDuration={6000} message={<span>Login failed: invalid credentials</span>} />}
           </form>
 
