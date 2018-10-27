@@ -14,34 +14,36 @@ import Paper from '@material-ui/core/Paper';
 
 
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PublicNavList from '../navs/publicNav';
 import PrivateNavList from '../navs/privateNav';
 import ExpandNavList from '../navs/expandNavs'
-import {logout} from '../store/actions/auth';
-import {NavLink} from 'react-router-dom';
+import { logout } from '../store/actions/auth';
+import { NavLink } from 'react-router-dom';
 
 
-class Header extends React.Component{
+class Header extends React.Component {
 
   constructor(props) {
 
-   
+
     super(props);
-    this.state = {value: 1,open:false,
-      componentsmenuopen:false};
+    this.state = {
+      value: 1, open: false,
+      componentsmenuopen: false
+    };
 
 
-     console.log('inside header component ',this.props.userid);
-    
+    console.log('inside header component ', this.props.userid);
+
   }
 
-  handleChange = (event, index, value) => this.setState({value});
-    onLeftIconButtonClick = (event, index, value) => {
-        console.log('hi;');
-       this.setState({open: !this.state.open});
-    
- };
+  handleChange = (event, index, value) => this.setState({ value });
+  onLeftIconButtonClick = (event, index, value) => {
+    console.log('hi;');
+    this.setState({ open: !this.state.open });
+
+  };
 
   toggleDrawer = (open) => () => {
     this.setState({
@@ -49,90 +51,78 @@ class Header extends React.Component{
     });
   };
 
-  handleClick=()=>{
+  handleClick = () => {
     console.log('clicked');
-    this.setState({componentsmenuopen:!this.state.componentsmenuopen});
+    this.setState({ componentsmenuopen: !this.state.componentsmenuopen });
   };
 
-handleClose = event => {
+  handleClose = event => {
     if (this.target1.contains(event.target) || this.target2.contains(event.target)) {
       return;
     }
 
     this.setState({ componentsmenuopen: false });
   };
- conditRenderEssential =()=>this.props.userid?(
-             <Button color="inherit" align="right" onClick={this.props.startLogout}> Logout</Button>):(<Button color="inherit" align="right"><Link to="/login"> Login</Link></Button>)
-   
-  render() { 
+  conditRenderEssential = () => this.props.userid ? (
+    <Button color="inherit" align="right" onClick={this.props.startLogout}> Logout</Button>) : (<Button color="inherit" align="right"><Link to="/login"> Login</Link></Button>)
 
-      const { open } = this.state.componentsmenuopen;
-      return (
-    <div>
+  render() {
 
- 
+    const { open } = this.state.componentsmenuopen;
+    return (
+      <div>
 
-         <Drawer open={this.state.open} onClose={this.toggleDrawer(false)} >
+
+
+        <Drawer open={this.state.open} onClose={this.toggleDrawer(false)} >
           <div
             tabIndex={0}
             role="button"
-            
-           >
+
+          >
             <div className="sidelistwrapper">
-      
 
 
-      {!this.props.userid && (<React.Fragment><PublicNavList/> <ExpandNavList/></React.Fragment>)}
+
+              {!this.props.userid && (<React.Fragment><PublicNavList /> <ExpandNavList /></React.Fragment>)}
 
 
-      {/*start if testing*/}
- 
-{this.props.userid && (<React.Fragment>
-  <PrivateNavList/>
-  </React.Fragment>
-  )}
-        {/* end of testing */}
-            
-         
-        
-      </div>
+              {/*start if testing*/}
+
+              {this.props.userid && (<React.Fragment>
+                <PrivateNavList />
+              </React.Fragment>
+              )}
+              {/* end of testing */}
+
+
+
+            </div>
           </div>
         </Drawer>
-<div className="appbarwrapper">
-  
-        <AppBar position="static">
-        <Toolbar>
-          <IconButton className="iconbuttonsyle" color="inherit" aria-label="Menu" onClick={this.onLeftIconButtonClick}>
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="title" color="inherit" className="headertypoclass" >
-            ASGARD
+        <div className="appbarwrapper">
+
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton className="iconbuttonsyle" color="inherit" aria-label="Menu" onClick={this.onLeftIconButtonClick}>
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="title" color="inherit" className="headertypoclass" >
+                ASGARD
           </Typography>
 
-          {
-            this.conditRenderEssential()
-             }
-          
-        </Toolbar>
-      </AppBar>
+              {
+                this.conditRenderEssential()
+              }
+
+            </Toolbar>
+          </AppBar>
+        </div>
       </div>
-</div>
-      );
+    );
   };
 }
 
-
-
-
-
-
-// const mapStateToProps = (state) => ({
-//   // userid: state.auth.uid
-// });
-
-// const mapDispatchToProps = (dispatch,props)=>({
-//   startLogout: ()=> dispatch(logout())
-// });
 const mapStateToProps = (state) => {
   return {
     isLoginPending: state.isLoginPending,
@@ -147,4 +137,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
