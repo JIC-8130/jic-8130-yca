@@ -28,7 +28,6 @@ export const PublicRoute = ({
         <Component {...props} />
          
           
-        <Footer/>
       </React.Fragment>
        // )
     )} />
