@@ -126,13 +126,25 @@ handleClose = event => {
 
 
 
-const mapStateToProps = (state) => ({
-  userid: state.auth.uid
-});
+// const mapStateToProps = (state) => ({
+//   // userid: state.auth.uid
+// });
 
-const mapDispatchToProps = (dispatch,props)=>({
-  startLogout: ()=> dispatch(logout())
-});
+// const mapDispatchToProps = (dispatch,props)=>({
+//   startLogout: ()=> dispatch(logout())
+// });
+const mapStateToProps = (state) => {
+  return {
+    isLoginPending: state.isLoginPending,
+    isLoginSuccess: state.isLoginSuccess,
+    loginError: state.loginError
+  };
+}
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (email, password) => dispatch(login(email, password))
+  };
+}
 
 export default connect(mapStateToProps,mapDispatchToProps)(Header);

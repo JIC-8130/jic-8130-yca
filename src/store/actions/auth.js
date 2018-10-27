@@ -24,3 +24,12 @@ export const logout = () => ({
     type: 'LOGOUT',
 
 });
+
+export const setUsername = (username) => {
+    return {
+        type: 'SET_USERNAME',
+        payload: {
+            username,
+        }
+    }
+}
