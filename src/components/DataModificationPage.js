@@ -51,7 +51,7 @@ export class DataModificationPage extends React.Component {
       button = <Button variant="raised" color="primary" onClick={this.handleDoneClick}><Typography variant="button" gutterBottom className="logintypography">
         Done</Typography></Button>
 
-      table = <Table baseId="table-with-interactions" className="data-table">
+      table = <Table baseid="table-with-interactions" className="data-table">
         <TableHead className="table-head">
           <TableRow>
             <TableCell numeric>Line Number</TableCell>
@@ -116,7 +116,7 @@ export class DataModificationPage extends React.Component {
       button = <Button variant="raised" color="primary" onClick={this.handleEditClick}><Typography variant="button" className="logintypography">
         Edit </Typography></Button>
 
-      table = <Table baseId="table-with-interactions" className="editable-data-table">
+      table = <Table baseid="table-with-interactions" className="editable-data-table">
         <TableHead className="table-head">
           <TableRow>
             <TableCell numeric>Line Number</TableCell>
@@ -188,11 +188,11 @@ export class DataModificationPage extends React.Component {
             </Typography>
 
             <div>
-            <Paper className="data-page">
+              <Paper className="data-page">
 
-              {table}
+                {table}
 
-            </Paper>
+              </Paper>
             </div>
 
             {button}
