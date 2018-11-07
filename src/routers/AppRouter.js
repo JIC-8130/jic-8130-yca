@@ -10,7 +10,6 @@ import NotFoundPage from '../components/NotFoundPage';
 import ServicesPage from '../components/ServicesPage';
 
 import PublicRoute from './PublicRouter';
-import PrivateRoute from './PrivateRouter';
 import LoginPage from '../components/LoginPage';
 import GetStartedPage from '../components/GetStartedPage';
 import ProductsPage from '../components/ProductsPage';
@@ -24,7 +23,7 @@ const AppRouter = () => (
       <Switch>
 
         <PublicRoute path="/" component={LandingPage} exact={true} />
-        <PrivateRoute path="/home" component={DashboardPage} />
+        <PublicRoute path="/home" component={DashboardPage} />
         <PublicRoute path="/input" component={InputDataPage} />
         <Route path="/login" component={LoginPage} />
         <PublicRoute path="/about" component={AboutPage} />
@@ -34,7 +33,7 @@ const AppRouter = () => (
         <PublicRoute path="/contact" component={ContactPage} />
         <PublicRoute path="/FAQ" component={FAQPage} />
         <PublicRoute path="/data" component={DataModificationPage} />
-         <Route path="/services" component={ServicesPage} />
+        <Route path="/services" component={ServicesPage} />
         <Route component={NotFoundPage} />
       </Switch>
 

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import CssBaseline from "@material-ui/core/CssBaseline"
+
 
 export const PublicRoute = ({
   isAuthenticated,
@@ -18,21 +20,27 @@ export const PublicRoute = ({
         
       // ) : (
         
-        <React.Fragment>
-         <Header/>
+      <React.Fragment>
+        <CssBaseline/>
+        <Header/>
+          
+          
+        <Component {...props} />
          
           
-          <Component {...props} />
-         
-          
-           <Footer/>
       </React.Fragment>
        // )
     )} />
   );
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: !!state.auth.uid
-});
+const mapStateToProps = (state) => {
+  // isAuthenticated: !!state.auth.uid
+  return {
+    isLoginPending: state.isLoginPending,
+    isLoginSuccess: state.isLoginSuccess,
+    loginError: state.loginError
+  }
+}
 
 export default connect(mapStateToProps)(PublicRoute);
+// export default connect()(PublicRoute);
