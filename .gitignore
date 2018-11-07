@@ -7,4 +7,5 @@ npm-debug.log
 *.csv
 package-lock.json
 yarn.lock
+secrets/
 .vscode/
