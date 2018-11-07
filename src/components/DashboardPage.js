@@ -169,15 +169,14 @@ export class DashboardPage extends React.Component {
                         <Paper className="homepagepaper">
                             <Typography variant="display3" gutterBottom align="center">
                                 Welcome
-                    </Typography>
+                            </Typography>
                         </Paper>
-
                     </Grid>
 
                     <Grid item xs={12}>
                         <Typography variant="title" gutterBottom align="center">
                             Cost Centers
-                </Typography>
+                        </Typography>
                     </Grid>
 
                     <Grid item xs={3} style={{ marginLeft: 45 }}>
@@ -230,27 +229,26 @@ export class DashboardPage extends React.Component {
 
                     <Grid item xs={12}>
                         <Typography variant="title" gutterBottom align="center">
-                            Data Visualizations
-                </Typography>
+                            Data Visualization
+                        </Typography>
                     </Grid>
 
-                    <Grid item xs={5} style={{ marginLeft: 20 }}>
-
+                    <Grid item xs={12} style={{ marginLeft: 20 }}>
+                        < div id="chart" >
+                            <Line data={chartData} />
+                        </div >
                     </Grid>
 
 
                     <Grid item xs={12} align="right">
                         <Button color="primary" variant="raised" size="large">
                             Generate Report
-                </Button>
+                        </Button>
                         <Button color="primary" variant="outlined" style={{ marginLeft: 10 }}>
-                            Edit Data
-                </Button>
+                            View Table
+                        </Button>
                     </Grid>
                 </Grid>
-                < div id="chart" >
-                    <Line data={chartData} />
-                </div >
             </React.Fragment>
 
         );
