@@ -9,11 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
-import ReactChartkick, { LineChart} from 'react-chartkick'
-import Chart from 'chart.js'
-
-//const CHART = document.getElementById("lineChart");
-//console.log("chart" + CHART); //null
+import ReactChartkick, { LineChart } from 'react-chartkick'
+import { Chart, Line } from 'react-chartjs-2';
 
 var producedData = {
     label: "Number of Units Produced",
@@ -30,9 +27,9 @@ var producedData = {
     pointBorderWidth: 2,
     pointStyle: 'circle',
     // Set More Options
-  };
-     
-  var defectsData = {
+};
+
+var defectsData = {
     label: "Number of Defects",
     data: [10, 5, 11, 2, 6, 4],
     lineTension: 0.3,
@@ -47,9 +44,9 @@ var producedData = {
     pointHitRadius: 30,
     pointBorderWidth: 2,
     pointStyle: 'circle'
-  };
+};
 
-  var qiData = {
+var qiData = {
     label: "Number of Quality Incidents",
     data: [15, 10, 17, 7, 2, 11],
     lineTension: 0.3,
@@ -64,9 +61,9 @@ var producedData = {
     pointHitRadius: 30,
     pointBorderWidth: 2,
     pointStyle: 'circle'
-  };
+};
 
-  var safetyData = {
+var safetyData = {
     label: "Number of Safety Incidents",
     data: [2, 0, 0, 0, 1, 0],
     lineTension: 0.3,
@@ -81,9 +78,9 @@ var producedData = {
     pointHitRadius: 30,
     pointBorderWidth: 2,
     pointStyle: 'circle'
-  };
+};
 
-  var workerData = {
+var workerData = {
     label: "Number of Workers at Line",
     data: [21, 18, 18, 19, 21, 16],
     lineTension: 0.3,
@@ -98,9 +95,9 @@ var producedData = {
     pointHitRadius: 30,
     pointBorderWidth: 2,
     pointStyle: 'circle'
-  };
+};
 
-  var overtimeData = {
+var overtimeData = {
     label: "Assembly Line Overtime",
     data: [8, 12, 15, 10, 12, 13],
     lineTension: 0.3,
@@ -115,9 +112,9 @@ var producedData = {
     pointHitRadius: 30,
     pointBorderWidth: 2,
     pointStyle: 'circle'
-  };
+};
 
-  var downtimeData = {
+var downtimeData = {
     label: "Assemly Line Downtime",
     data: [0, 0, 1, 0, 0, 3],
     lineTension: 0.3,
@@ -132,122 +129,133 @@ var producedData = {
     pointHitRadius: 30,
     pointBorderWidth: 2,
     pointStyle: 'circle'
-  };
-     
-  var productionData = {
+};
+
+var productionData = {
     labels: ["10-15-2018", "10-16-2018", "10-17-2018", "10-18-2018", "10-19-2018", "10-20-2018"],
     datasets: [producedData, defectsData, qiData, safetyData, workerData, overtimeData, downtimeData]
-  };
+};
 
-  var chartOptions = {
+var chartOptions = {
     legend: {
-      display: true,
-      position: 'top',
-      labels: {
-        boxWidth: 80,
-        fontColor: 'black'
-      }
+        display: true,
+        position: 'top',
+        labels: {
+            boxWidth: 80,
+            fontColor: 'black'
+        }
     }
-  };
+};
 
-var ctx = document.getElementById("lineChart");
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: productionData,
-    options: chartOptions
-});
+export class DashboardPage extends React.Component {
+    render() {
 
-const HomePage = () => (
-    <React.Fragment>
-        <Grid container spacing={24}>
-            <Grid item xs={12} style={{marginTop:5}}>
-                <Paper className="homepagepaper">
-                    <Typography variant="display3" gutterBottom align="center">
-                        Welcome
+        const chartData = (canvas) => {
+            const ctx = canvas.getContext("2d")
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: productionData,
+                options: chartOptions
+            });
+            return {
+                myChart
+            }
+        }
+
+        return (
+            <React.Fragment>
+                <Grid container spacing={24}>
+                    <Grid item xs={12} style={{ marginTop: 5 }}>
+                        <Paper className="homepagepaper">
+                            <Typography variant="display3" gutterBottom align="center">
+                                Welcome
                     </Typography>
-                </Paper>
+                        </Paper>
 
-            </Grid>
-            
-            <Grid item xs={12}>
-                <Typography variant="title" gutterBottom align="center">
-                    Cost Centers
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <Typography variant="title" gutterBottom align="center">
+                            Cost Centers
                 </Typography>
-            </Grid>
+                    </Grid>
 
-            <Grid item xs={3} style={{marginLeft:45}}>
-                <Typography variant="subheading" gutterBottom align="left">
-                    <ul>
-                        <li><a href="#"> 6212 YDC Receiving </a></li>
-                        <li><a href="#"> 6213 YDC Stores </a></li>
-                        <li><a href="#"> 6234 YC Shipping </a></li>
-                        <li><a href="#"> 6322 Parts & Repair </a></li>
-                        <li><a href="#"> 6401 Parts & Manufacturing </a></li>
-                    </ul>
+                    <Grid item xs={3} style={{ marginLeft: 45 }}>
+                        <Typography variant="subheading" gutterBottom align="left">
+                            <ul>
+                                <li><a href="#"> 6212 YDC Receiving </a></li>
+                                <li><a href="#"> 6213 YDC Stores </a></li>
+                                <li><a href="#"> 6234 YC Shipping </a></li>
+                                <li><a href="#"> 6322 Parts & Repair </a></li>
+                                <li><a href="#"> 6401 Parts & Manufacturing </a></li>
+                            </ul>
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={3}>
+                        <Typography variant="subheading" gutterBottom align="left">
+                            <ul>
+                                <li><a href="#"> 6422 Machine Shop </a></li>
+                                <li><a href="#"> 6511 SMT </a></li>
+                                <li><a href="#"> 6521 Meter Assembly </a></li>
+                                <li><a href="#"> 6522 Analytical Manufacturing </a></li>
+                                <li><a href="#"> 6526 Transmitter Manufacturing </a></li>
+                            </ul>
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={3}>
+                        <Typography variant="subheading" gutterBottom align="left">
+                            <ul>
+                                <li><a href="#"> 6533 Yewflo Manufacturing </a></li>
+                                <li><a href="#"> 6534 Loop Indicator </a></li>
+                                <li><a href="#"> 6542 Newnan TDLS </a></li>
+                                <li><a href="#"> 6915 Production Control </a></li>
+                                <li><a href="#"> 6931 Manufacturing QA </a></li>
+                            </ul>
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={2}>
+                        <Typography variant="subheading" gutterBottom align="left">
+                            <ul>
+                                <li><a href="#"> 6951 Mod Line </a></li>
+                                <li><a href="#"> 6955 Cal Lab </a></li>
+                                <li><a href="#"> 6956 Cal Lab </a></li>
+                                <li><a href="#"> 6957 Cal Lab </a></li>
+                                <li><a href="#"> 8501 R&D </a></li>
+                            </ul>
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                        <Typography variant="title" gutterBottom align="center">
+                            Data Visualizations
                 </Typography>
-            </Grid>
+                    </Grid>
 
-            <Grid item xs={3}>
-                <Typography variant="subheading" gutterBottom align="left">
-                    <ul>
-                        <li><a href="#"> 6422 Machine Shop </a></li>
-                        <li><a href="#"> 6511 SMT </a></li>
-                        <li><a href="#"> 6521 Meter Assembly </a></li>
-                        <li><a href="#"> 6522 Analytical Manufacturing </a></li>
-                        <li><a href="#"> 6526 Transmitter Manufacturing </a></li>
-                        </ul>
-                </Typography>
-            </Grid>
-                        
-            <Grid item xs={3}>
-                <Typography variant="subheading" gutterBottom align="left">
-                    <ul>
-                        <li><a href="#"> 6533 Yewflo Manufacturing </a></li>
-                        <li><a href="#"> 6534 Loop Indicator </a></li>
-                        <li><a href="#"> 6542 Newnan TDLS </a></li>
-                        <li><a href="#"> 6915 Production Control </a></li>
-                        <li><a href="#"> 6931 Manufacturing QA </a></li>
-                        </ul>
-                </Typography>
-            </Grid>
-                       
-            <Grid item xs={2}>
-                <Typography variant="subheading" gutterBottom align="left">
-                    <ul>
-                        <li><a href="#"> 6951 Mod Line </a></li>
-                        <li><a href="#"> 6955 Cal Lab </a></li>
-                        <li><a href="#"> 6956 Cal Lab </a></li>
-                        <li><a href="#"> 6957 Cal Lab </a></li>
-                        <li><a href="#"> 8501 R&D </a></li>
-                        </ul>
-                </Typography>
-            </Grid>
+                    <Grid item xs={5} style={{ marginLeft: 20 }}>
 
-            <Grid item xs={12}>
-                <Typography variant="title" gutterBottom align="center">
-                    Data Visualizations
-                </Typography>
-            </Grid>
+                    </Grid>
 
-            <Grid item xs={5} style={{marginLeft:20}}>
 
-            </Grid>
-            <Grid item xs={5}>
-                {/* chart1 */}
-            </Grid>
-
-            <Grid item xs={12} align="right">
-                <Button color="primary" variant="raised" size="large">
-                    Generate Report
+                    <Grid item xs={12} align="right">
+                        <Button color="primary" variant="raised" size="large">
+                            Generate Report
                 </Button>
-                <Button color="primary" variant="outlined" style={{marginLeft:10}}>
-                    Edit Data
+                        <Button color="primary" variant="outlined" style={{ marginLeft: 10 }}>
+                            Edit Data
                 </Button>
-            </Grid>
-        </Grid>
-    </React.Fragment>
-);
+                    </Grid>
+                </Grid>
+                < div id="chart" >
+                    <Line data={chartData} />
+                </div >
+            </React.Fragment>
 
-export default HomePage;
+        );
 
-// HomePage();
+    }
+}
+
+export default DashboardPage;
