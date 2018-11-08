@@ -8,38 +8,47 @@ import {Link} from 'react-router-dom';
 
 const LandingPage = () => (
   <div className="landingPagebodyComponent">
-
       <Typography variant="display3" gutterBottom align="center">
-        Welcome to ASGARD
+          Welcome to ASGARD
       </Typography>
 
       <Grid container spacing={24} justify="center" alignContent="center" alignItems="center">
-        <Grid item xs={12} md={12}>
-          <Typography variant="body2" gutterBottom align="center">
-            Welcome to ASGARD, YCA's cost center data collection tool!
-          </Typography>
-        </Grid>
-        <Grid container item xs={6} justify="center" alignContent="center" alignItems="center" direction="column">
-          <Typography gutterBottom align="center" style={{paddingLeft:20}}>
-            {`
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet
-            `}
-          </Typography>
-          <Link to="/start">
-            <Button color="primary"  align="left" style={{marginLeft:20}}>
-              Get Started
-            </Button>
-          </Link>
+          <Grid item xs={12} md={12}>
+              <Typography variant="body2" gutterBottom align="center">
+                  YCA's Cost Center Data Collection Tool
+              </Typography>
+          </Grid>
 
-          <Button color="primary"  align="left" style={{marginLeft:20}}>
-            Know More
-          </Button>
-        </Grid>
+          <Grid container item xs={6} justify="center" alignContent="center" alignItems="center" direction="column">
+              <Typography gutterBottom align="center" style={{paddingLeft:20}}>
+              {`
+                  The application we have designed is called ASGARD, which stands for Assembly Statistics Gatherer and Recorder. The core functionality of our application is broken down into 2 parts: data gathering and data reporting.            `}
+              </Typography>
+
+              <p></p>
+
+              <Typography variant="body2" gutterBottom align="center" style={{paddingLeft:20}}>
+                  {`Get started by creating an account.   `}
+              </Typography>
+
+              <Link to="/createacc">
+                  <Button color="primary"  align="left" style={{marginLeft:20}}>
+                      Create Account
+                  </Button>
+              </Link>
+
+              {/* <Link to ="/">
+                  <Button color="primary"  align="left" style={{marginLeft:20}}>
+                      Know More
+                  </Button>
+              </Link> */}
+          </Grid>
       </Grid>
+
       <Grid item xs={8}>
-        <Image
-          src={bulb}
-          color="inherit" style={{height:40}} imageStyle={{ width: '30', height: '30' }} />
+          <Image
+              src={bulb}
+              color="inherit" style={{height:40}} imageStyle={{ width: '30', height: '30' }} />
       </Grid>
 
 
