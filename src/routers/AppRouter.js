@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, NavLink, Router } from 'react-router-dom';
 import LandingPage from '../components/LandingPage';
 import AboutPage from '../components/AboutPage';
 import DashboardPage from '../components/DashboardPage';
@@ -14,10 +14,11 @@ import LoginPage from '../components/LoginPage';
 import GetStartedPage from '../components/GetStartedPage';
 import ProductsPage from '../components/ProductsPage';
 import FormsPage from '../components/FormsPage';
+import history from "./asgard-history";
 
 import DataModificationPage from '../components/DataModificationPage';
 const AppRouter = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <div>
 
       <Switch>
@@ -38,7 +39,7 @@ const AppRouter = () => (
       </Switch>
 
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRouter;
