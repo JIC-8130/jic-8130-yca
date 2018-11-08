@@ -22,184 +22,238 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 
-const styles = theme => ({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    formControl: {
-      margin: theme.spacing.unit,
-      minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing.unit * 2,
-    },
-  });
-
 export class FormsPage extends React.Component {
 
-    state = {
-        messageopen: false,
-        messageInfo: {},
-        position: null
+  state = {
+    messageopen: false,
+    messageInfo: {},
+    gender: 'male',
+    position: null
+  }
+
+  giveSuccessMessage = (message) => {
+    let newmsg = {
+      message,
+      key: new Date().getTime()
+    };
+
+    this.setState({
+      messageopen: true,
+      messageInfo: newmsg
+
+    });
+
+  };
+
+  onSubmit = () => {
+
+    this.giveSuccessMessage('send successfully ');
+
+    //this.props.startAddLogin(user);
+
+    // this.props.history.push('/');
+
+  };
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
     }
+    this.setState({ messageopen: false });
+  };
 
-    giveSuccessMessage = (message) => {
-        let newmsg = {
-            message,
-            key: new Date().getTime()
-        };
+  handlePositionChange = (event) => {
 
-        this.setState({
-            messageopen: true,
-            messageInfo: newmsg
-        });
-    };
+    this.setState({ position: event.target.value });
+  };
 
-    onSubmit = () => {
-        this.giveSuccessMessage(' Account Created ');
-        //this.props.startAddLogin(user);
-        // this.props.history.push('/');
-        // needs to only work with acceptable data
-        // only alpha + numbers
-    };
+  render() {
 
-    handleChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
-      };
-
-    handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        this.setState({ messageopen: false });
-    };
-
-    render() {
-
-        const { message, key } = this.state.messageInfo;
+    const { message, key } = this.state.messageInfo;
 
 
-        return (
-            <div className="contact-page-wrapper">
-                <Snackbar
-                    key={key}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}
+    return (
+      <div className="contact-page-wrapper">
 
-                    open={this.state.messageopen}
-                    autoHideDuration={2000}
-                    onClose={this.handleClose}
 
-                    ContentProps={{
-                        'aria-describedby': 'message-id',
-                    }}
+        <Snackbar
+          key={key}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.messageopen}
+          autoHideDuration={2000}
+          onClose={this.handleClose}
 
-                    message={<span id="message-id">{message}</span>}
-                    action={[
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id">{message}</span>}
+          action={[
 
-                        <IconButton
-                            key="close"
-                            aria-label="Close"
-                            color="inherit"
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
 
-                            onClick={this.handleClose}
-                        >
-                        <CloseIcon />
-                        </IconButton>,
-                    ]}
-                />
-
-                <Grid container spacing={24} justify="center">
-                    <Grid item xs={12} md={10} style={{ marginTop: 10 }}>
-                        <Paper className="contact-page-paper"><Typography variant="display1" gutterBottom style={{ padding: 15 }}>
-                            Account Creation
-                        </Typography>
-
-                            <Grid container spacing={24} >
-
-                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="fname"
-                                        label="First Name"
-                                        placeholder="First Name"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="lname"
-                                        label="Last Name"
-                                        placeholder="Last Name"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="email"
-                                        label="YCA Email"
-                                        placeholder="YCA Email"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="id"
-                                        label="YCA ID#"
-                                        placeholder="YCA ID#"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="pw"
-                                        type="password"
-                                        label="Password"
-                                        placeholder="Password"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="confirmpw"
-                                        type="password"
-                                        label="Confirm Password"
-                                        placeholder="Confirm Password"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} lg={10} md={12} style={{ marginTop: 10, marginLeft:100 }}>
-                                    <select>
-                                        <option selected value="Line Manager">Line Manager</option>
-                                        <option value="QA Engineer">QA Engineer</option>
-                                    </select>
-                                </Grid>
-
-                                <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10, marginBottom: 17 }}>
-                                    <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Create</Button>
-                                </Grid>
-
-                            </Grid>
-                        </Paper>
-                    </Grid>
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>,
+          ]}
+        />
+        <Grid container spacing={24} justify="center">
+          <Grid item xs={12} md={10} style={{ marginTop: 10 }}>
+            <Paper className="contact-page-paper"><Typography variant="display1" gutterBottom style={{ padding: 15 }}>
+              Account Creation
+      </Typography>
+              <Grid container spacing={24} >
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="f_name"
+                    label="First Name"
+                    placeholder="First Name"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                  />
                 </Grid>
-            </div>
-        );
-    }
+
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="l_name"
+                    label="LastName"
+                    placeholder="Last Name"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                  />
+                </Grid>
+
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="yca_email"
+                    type= "email"
+                    label="YCA Email"
+                    placeholder="YCA Email"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                  />
+                </Grid>
+
+
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="yca_id"
+                    label="YCA ID#"
+                    placeholder="YCA ID#"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                  />
+                </Grid>
+
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="pw"
+                    type= "password"
+                    label="Password"
+                    placeholder="Password"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                  />
+                </Grid>
+
+
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="confirm_pw"
+                    type="password"
+                    label="Confirm Password"
+                    placeholder="Confirm Password"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                  />
+                </Grid>
+
+
+                {/* <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="Firstname"
+                    label="Message"
+                    multiline
+                    rows="2"
+                    placeholder="this is a textarea field"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                  />
+                </Grid> */}
+
+
+                <Grid item xs={12} style={{ marginTop: 10 }} align="center"><FormControl >
+                  <InputLabel htmlFor="age-simple">Position</InputLabel>
+                  <Select
+                    style={{ width: 200 }}
+                    value={this.state.position}
+                    onChange={this.handlePositionChange}
+                    inputProps={{
+                      name: 'pos',
+                      id: 'pos',
+                    }}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value="Line Manager">Line Manager</MenuItem>
+                    <MenuItem value="QA Engineer">QA Engineer</MenuItem>
+                  </Select>
+                </FormControl> </Grid>
+
+
+                {/* <Grid item xs={6} style={{ marginTop: 10 }} align="center"><FormControl >
+
+                  <TextField
+                    id="date"
+                    label="Date of Birth"
+                    type="date"
+                    defaultValue="1997-05-24"
+
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </FormControl>
+                </Grid> */}
+
+                {/* <Grid item xs={12} style={{ marginTop: 10 }} align="center">
+                  <FormControl component="fieldset" required style={{
+                    margin: '10px',
+                  }}>
+                    <FormLabel component="legend">Position</FormLabel>
+                    <RadioGroup
+                      aria-label="position"
+                      name="position1"
+
+                      value={this.state.position}
+                      onChange={this.handlePositionChange}
+                      style={{
+                        margin: `10px 0`,
+                      }} className="forms-page-genderclassname">
+                      <FormControlLabel value="QA Engineer" control={<Radio />} label="QA Engineer" />
+                      <FormControlLabel value="Line Manager" control={<Radio />} label="Line Manager" />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid> */}
+
+                <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10 }}>
+                  <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Submit</Button>
+                </Grid>
+
+
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+      </div>
+    );
+  }
 
 
 }
