@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 import ReactChartkick, { LineChart } from 'react-chartkick'
 import { Chart, Line } from 'react-chartjs-2';
+import Redirect from 'react-router-dom/Redirect';
 
 var producedData = {
     label: "Number of Units Produced",
@@ -148,6 +149,15 @@ var chartOptions = {
 };
 
 export class DashboardPage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            viewTableClicked: false,
+            costCenterSelected: ""
+        }
+    }
+
     render() {
 
         const chartData = (canvas) => {
@@ -161,6 +171,8 @@ export class DashboardPage extends React.Component {
                 myChart
             }
         }
+
+
 
         return (
             <React.Fragment>
@@ -244,9 +256,10 @@ export class DashboardPage extends React.Component {
                         <Button color="primary" variant="raised" size="large">
                             Generate Report
                         </Button>
-                        <Button color="primary" variant="outlined" style={{ marginLeft: 10 }}>
+                        <Button color="primary" variant="outlined" style={{ marginLeft: 10 }} onClick= {e => this.setState({ viewTableClicked: true })}>
                             View Table
                         </Button>
+                        {this.state.viewTableClicked && <Redirect to="/data"/>}
                     </Grid>
                 </Grid>
             </React.Fragment>
