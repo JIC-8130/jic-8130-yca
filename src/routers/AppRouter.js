@@ -4,7 +4,7 @@ import LandingPage from '../components/LandingPage';
 import AboutPage from '../components/AboutPage';
 import DashboardPage from '../components/DashboardPage';
 import InputDataPage from '../components/InputDataPage';
-import ContactPage from '../components/ContactPage';
+import CreateAccount from '../components/CreateAccount';
 import FAQPage from '../components/FAQPage';
 import NotFoundPage from '../components/NotFoundPage';
 import ServicesPage from '../components/ServicesPage';
@@ -30,7 +30,7 @@ const AppRouter = () => (
         <PublicRoute path="/products" component={ProductsPage} />
         <PublicRoute path="/forms" component={FormsPage} />
         <PublicRoute path="/start" component={GetStartedPage} />
-        <PublicRoute path="/contact" component={ContactPage} />
+        <PublicRoute path="/createacc" component={CreateAccount} />
         <PublicRoute path="/FAQ" component={FAQPage} />
         <PublicRoute path="/data" component={DataModificationPage} />
         <Route path="/services" component={ServicesPage} />
