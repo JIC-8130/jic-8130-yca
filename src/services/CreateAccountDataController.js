@@ -53,7 +53,6 @@ function getUserHelper(userID) {
         });
     }
     request.addParameter("p1", TYPES.BigInt, parseInt(userID));
-
     return request;
 }
 
@@ -144,5 +143,5 @@ function addUserHelper(userData) {
 
 module.exports = {
     addUser: addUser,
-    getUser: getUserHelper
+    getUser: getUser
 }
