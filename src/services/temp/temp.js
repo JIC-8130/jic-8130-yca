@@ -1,4 +1,5 @@
 var InputData = require("../CostCenterDataController.js");
+var CreateUserData = require("../CreateAccountDataController");
 
 const newData = {
      costCenter: "CC6526",
@@ -18,7 +19,14 @@ const newData = {
      }
 };
 
+const newUser = {
+    values: {
+        YCA_ID: "234"
+    }
+}
+
 // InputData.addAddToCostCenter(newData);
 // InputData.getAllFrom(newData.costCenter);
-var cc6256data = InputData.getDataFrom("CC6526", "2018-01-01");
-console.log(cc6256data);
+// var cc6256data = InputData.getDataFrom("CC6526", "2018-01-01");
+// console.log(cc6256data);
+CreateUserData.getUser("12345678");
