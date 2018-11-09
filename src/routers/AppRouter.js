@@ -20,8 +20,8 @@ const AppRouter = () => (
         <PublicRoute path="/input" component={InputDataPage} />
         <Route path="/login" component={LoginPage} />
         <PublicRoute path="/data" component={DataModificationPage} />
-        <Route component={NotFoundPage} />
         <PublicRoute path="/create-account" component={CreateAccount} />
+        <Route component={NotFoundPage} />
       </Switch>
 
     </div>
