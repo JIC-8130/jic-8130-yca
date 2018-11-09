@@ -31,7 +31,7 @@ const LandingPage = () => (
                   {`Get started by creating an account.   `}
               </Typography>
 
-              <Link to="/createacc">
+              <Link to="/create-account">
                   <Button color="primary"  align="left" style={{marginLeft:20}}>
                       Create Account
                   </Button>

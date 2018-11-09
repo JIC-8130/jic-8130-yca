@@ -121,7 +121,7 @@ export class FormsPage extends React.Component {
                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
                   <TextField
                     id="l_name"
-                    label="LastName"
+                    label="Last Name"
                     placeholder="Last Name"
                     className="contact-page-name-list-field"
                     margin="normal"
