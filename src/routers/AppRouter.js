@@ -14,12 +14,10 @@ const AppRouter = () => (
     <div>
 
       <Switch>
-
         <PublicRoute path="/" component={LandingPage} exact={true} />
         <PublicRoute path="/dashboard" component={DashboardPage} />
         <PublicRoute path="/input" component={InputDataPage} />
         <Route path="/login" component={LoginPage} />
-
         <PublicRoute path="/data" component={DataModificationPage} />
         <Route component={NotFoundPage} />
       </Switch>
