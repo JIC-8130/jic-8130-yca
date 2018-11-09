@@ -84,7 +84,8 @@ export class LoginPage extends React.Component {
             </Button>
 
             {isLoginPending && <Snackbar open={true} autoHideDuration={6000} message={<span>Logging you in...</span>} />}
-            {isLoginSuccess && <Redirect to="/data" />}
+            {/* TODO: find a way to make this conditional on what type of user you are */}
+            {isLoginSuccess && <Redirect to="/dashboard" />}
             {loginError && <Snackbar open={true} autoHideDuration={6000} message={<span>Login failed: invalid credentials</span>} />}
           </form>
 

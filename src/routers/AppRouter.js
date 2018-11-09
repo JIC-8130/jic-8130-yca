@@ -1,43 +1,31 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, NavLink, Router } from 'react-router-dom';
 import LandingPage from '../components/LandingPage';
-import AboutPage from '../components/AboutPage';
 import DashboardPage from '../components/DashboardPage';
 import InputDataPage from '../components/InputDataPage';
-import CreateAccount from '../components/CreateAccount';
-import FAQPage from '../components/FAQPage';
 import NotFoundPage from '../components/NotFoundPage';
-import ServicesPage from '../components/ServicesPage';
-
 import PublicRoute from './PublicRouter';
 import LoginPage from '../components/LoginPage';
-import GetStartedPage from '../components/GetStartedPage';
-import ProductsPage from '../components/ProductsPage';
-
+import history from "./asgard-history";
 import DataModificationPage from '../components/DataModificationPage';
+import CreateAccount from "../components/CreateAccount";
+
 const AppRouter = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <div>
 
       <Switch>
-
         <PublicRoute path="/" component={LandingPage} exact={true} />
-        <PublicRoute path="/home" component={DashboardPage} />
+        <PublicRoute path="/dashboard" component={DashboardPage} />
         <PublicRoute path="/input" component={InputDataPage} />
         <Route path="/login" component={LoginPage} />
-        <PublicRoute path="/about" component={AboutPage} />
-        <PublicRoute path="/products" component={ProductsPage} />
-        {/* <PublicRoute path="/forms" component={FormsPage} /> */}
-        <PublicRoute path="/start" component={GetStartedPage} />
-        <PublicRoute path="/create-account" component={CreateAccount} />
-        <PublicRoute path="/FAQ" component={FAQPage} />
         <PublicRoute path="/data" component={DataModificationPage} />
-        <Route path="/services" component={ServicesPage} />
         <Route component={NotFoundPage} />
+        <PublicRoute path="/create-account" component={CreateAccount} />
       </Switch>
 
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default AppRouter;
