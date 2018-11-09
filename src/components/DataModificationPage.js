@@ -180,7 +180,7 @@ export class DataModificationPage extends React.Component {
     return (
       <React.Fragment>
 
-        <Grid container spacing={24}>
+        <Grid container>
           <Grid item xs={12} style={{ marginTop: 10 }}>
 
             <Typography variant="display1" gutterBottom style={{ padding: 15, align: "center" }}>

@@ -171,7 +171,7 @@ export class DashboardPage extends React.Component {
 
         return (
             <React.Fragment>
-                <Grid container spacing={24}>
+                <Grid container>
                     <Grid item xs={12} style={{ marginTop: 5 }}>
                         <Paper className="homepagepaper">
                             <Typography variant="display3" gutterBottom align="center">
