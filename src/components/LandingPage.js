@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Image from 'material-ui-image';
 import bulb from '../assets/img/yokogawa-logo.png';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => (
     <div className="landingPagebodyComponent">
@@ -12,7 +12,7 @@ const LandingPage = () => (
             Welcome to ASGARD
         </Typography>
 
-        <Grid container spacing={24} justify="center" alignContent="center" alignItems="center">
+        <Grid container justify="center" alignContent="center" alignItems="center">
             <Grid item xs={12} md={12}>
                 <Typography variant="body2" gutterBottom align="center">
                     YCA's Cost Center Data Collection Tool
@@ -20,20 +20,20 @@ const LandingPage = () => (
             </Grid>
 
             <Grid container item xs={6} justify="center" alignContent="center" alignItems="center" direction="column">
-                <Typography gutterBottom align="center" style={{paddingLeft:20}}>
-                {`
+                <Typography gutterBottom align="center" style={{ paddingLeft: 20 }}>
+                    {`
                   The application we have designed is called ASGARD, which stands for Assembly Statistics Gatherer and Recorder. The core functionality of our application is broken down into 2 parts: data gathering and data reporting.            
                 `}
                 </Typography>
 
                 <p></p>
 
-                <Typography variant="body2" gutterBottom align="center" style={{paddingLeft:20}}>
+                <Typography variant="body2" gutterBottom align="center" style={{ paddingLeft: 20 }}>
                     {`Get started by creating an account.   `}
                 </Typography>
 
                 <Link to="/create-account">
-                    <Button color="primary"  align="left" style={{marginLeft:20}}>
+                    <Button color="primary" align="left" style={{ marginLeft: 20 }}>
                         Create Account
                     </Button>
                 </Link>
@@ -49,7 +49,7 @@ const LandingPage = () => (
         <Grid item xs={8}>
             <Image
                 src={bulb}
-                color="inherit" style={{height:40}} imageStyle={{ width: '30', height: '30' }} />
+                color="inherit" style={{ height: 40 }} imageStyle={{ width: '30', height: '30' }} />
         </Grid>
 
 
