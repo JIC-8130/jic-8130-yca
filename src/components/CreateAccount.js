@@ -1,4 +1,8 @@
 import React from 'react';
+
+import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -207,9 +211,10 @@ export class FormsPage extends React.Component {
                 </Grid>
 
                 <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10 }}>
-                  <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Create</Button>
+                  <Link to="/login">
+                    <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Create</Button>
+                  </Link>
                 </Grid>
-
 
               </Grid>
             </Paper>

@@ -233,18 +233,18 @@ export class DashboardPage extends React.Component {
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={12} style={{ marginLeft: 20 }}>
+                    <Grid item xs={12} style={{ marginLeft: 15 }}>
                         < div id="chart" >
                             <Line data={chartData} />
                         </div >
                     </Grid>
 
 
-                    <Grid item xs={12} align="right">
+                    <Grid item xs={12} align="right" style={{ marginRight: 30 }}>
                         <Button color="primary" variant="raised" size="large">
                             Generate Report
                         </Button>
-                        <Button color="primary" variant="outlined" style={{ marginLeft: 10 }}>
+                        <Button color="primary" variant="outlined"  style={{  marginLeft: 15 }}>
                             View Table
                         </Button>
                     </Grid>
