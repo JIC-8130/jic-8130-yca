@@ -1,16 +1,13 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Key from '@material-ui/icons/VpnKey';
 import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
-import ReactChartkick, { LineChart } from 'react-chartkick'
 import { Chart, Line } from 'react-chartjs-2';
+import history from "../routers/asgard-history";
+import { Route } from "react-router-dom";
+import Data from "./DataModificationPage"
 
 var producedData = {
     label: "Number of Units Produced",
@@ -148,6 +145,15 @@ var chartOptions = {
 };
 
 export class DashboardPage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            costCenterSelected: ""
+        }
+        this.onViewTableClick = this.onViewTableClick.bind(this);
+    }
+
     render() {
 
         const chartData = (canvas) => {
@@ -162,9 +168,10 @@ export class DashboardPage extends React.Component {
             }
         }
 
+
         return (
             <React.Fragment>
-                <Grid container spacing={24}>
+                <Grid container>
                     <Grid item xs={12} style={{ marginTop: 5 }}>
                         <Paper className="homepagepaper">
                             <Typography variant="display3" gutterBottom align="center">
@@ -244,7 +251,7 @@ export class DashboardPage extends React.Component {
                         <Button color="primary" variant="raised" size="large">
                             Generate Report
                         </Button>
-                        <Button color="primary" variant="outlined" style={{ marginLeft: 10 }}>
+                        <Button color="primary" variant="outlined" style={{ marginLeft: 10 }} onClick={this.onViewTableClick}>
                             View Table
                         </Button>
                     </Grid>
@@ -252,6 +259,15 @@ export class DashboardPage extends React.Component {
             </React.Fragment>
 
         );
+
+    }
+
+    onViewTableClick() {
+        // TODO: find a way to determine which Cost Center is selected
+        this.setState({ costCenterSelected: "yeet" });
+        console.log(this.state.costCenterSelected);
+        // And now we call our magical push function!
+        history.push("/data");
 
     }
 }
