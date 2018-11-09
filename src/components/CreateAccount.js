@@ -22,10 +22,11 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+import history from '../routers/asgard-history';
 
 
 
-export class FormsPage extends React.Component {
+export class CreateAccount extends React.Component {
 
   state = {
     messageopen: false,
@@ -45,12 +46,14 @@ export class FormsPage extends React.Component {
       messageInfo: newmsg
 
     });
+    
 
   };
 
   onSubmit = () => {
 
-    this.giveSuccessMessage(' Created Successfully ');
+    this.giveSuccessMessage(' Account Created! Redirecting to Login... ');
+   
     // UserDataController.addUser(
     //   {
     //     values: {
@@ -74,6 +77,7 @@ export class FormsPage extends React.Component {
       return;
     }
     this.setState({ messageopen: false });
+    history.push("/login");
   };
 
   handlePositionChange = (event) => {
@@ -211,9 +215,7 @@ export class FormsPage extends React.Component {
                 </Grid>
 
                 <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10 }}>
-                  <Link to="/login">
                     <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Create</Button>
-                  </Link>
                 </Grid>
 
               </Grid>
@@ -230,4 +232,4 @@ export class FormsPage extends React.Component {
 
 
 
-export default FormsPage;
+export default CreateAccount;
