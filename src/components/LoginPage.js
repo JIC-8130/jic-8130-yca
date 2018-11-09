@@ -45,6 +45,7 @@ export class LoginPage extends React.Component {
               Login
             </Typography>
           </div>
+          <p></p>
           <Typography variant="headline" component="h3">
             Login to your account
           </Typography>

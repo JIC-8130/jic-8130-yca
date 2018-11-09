@@ -47,7 +47,7 @@ export class FormsPage extends React.Component {
 
   onSubmit = () => {
 
-    this.giveSuccessMessage('send successfully ');
+    this.giveSuccessMessage(' Created Successfully ');
 
     //this.props.startAddLogin(user);
 
@@ -187,7 +187,7 @@ export class FormsPage extends React.Component {
                 </Grid> */}
 
 
-                <Grid item xs={12} style={{ marginTop: 10 }} align="center"><FormControl >
+                {/* <Grid item xs={12} style={{ marginTop: 10 }} align="center"><FormControl >
                   <InputLabel htmlFor="age-simple">Position</InputLabel>
                   <Select
                     style={{ width: 200 }}
@@ -204,7 +204,7 @@ export class FormsPage extends React.Component {
                     <MenuItem value="Line Manager">Line Manager</MenuItem>
                     <MenuItem value="QA Engineer">QA Engineer</MenuItem>
                   </Select>
-                </FormControl> </Grid>
+                </FormControl> </Grid> */}
 
 
                 {/* <Grid item xs={6} style={{ marginTop: 10 }} align="center"><FormControl >
@@ -222,7 +222,7 @@ export class FormsPage extends React.Component {
                 </FormControl>
                 </Grid> */}
 
-                {/* <Grid item xs={12} style={{ marginTop: 10 }} align="center">
+                <Grid item xs={12} style={{ marginTop: 10 }} align="center">
                   <FormControl component="fieldset" required style={{
                     margin: '10px',
                   }}>
@@ -240,10 +240,10 @@ export class FormsPage extends React.Component {
                       <FormControlLabel value="Line Manager" control={<Radio />} label="Line Manager" />
                     </RadioGroup>
                   </FormControl>
-                </Grid> */}
+                </Grid>
 
                 <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10 }}>
-                  <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Submit</Button>
+                  <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Create</Button>
                 </Grid>
 
 
