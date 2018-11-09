@@ -1,7 +1,4 @@
 import React from 'react';
-
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -21,6 +18,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+
+
 
 export class FormsPage extends React.Component {
 
@@ -48,6 +47,18 @@ export class FormsPage extends React.Component {
   onSubmit = () => {
 
     this.giveSuccessMessage(' Created Successfully ');
+    // UserDataController.addUser(
+    //   {
+    //     values: {
+    //       YCA_ID: "4444",
+    //       FirstName: "Allan",
+    //       LastName: "Serna",
+    //       Email: "allan.serna@us.yokogawa.com",
+    //       UsrType: "LM",
+    //       password: "password"
+    //     }
+    //   }
+    // );
 
     //this.props.startAddLogin(user);
 
@@ -104,9 +115,10 @@ export class FormsPage extends React.Component {
         />
         <Grid container spacing={24} justify="center">
           <Grid item xs={12} md={10} style={{ marginTop: 10 }}>
-            <Paper className="contact-page-paper"><Typography variant="display1" gutterBottom style={{ padding: 15 }}>
-              Account Creation
-      </Typography>
+            <Paper className="contact-page-paper">
+              <Typography variant="display1" gutterBottom style={{ padding: 15 }}>
+                Account Creation
+              </Typography>
               <Grid container spacing={24} >
                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
                   <TextField
@@ -131,7 +143,7 @@ export class FormsPage extends React.Component {
                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
                   <TextField
                     id="yca_email"
-                    type= "email"
+                    type="email"
                     label="YCA Email"
                     placeholder="YCA Email"
                     className="contact-page-name-list-field"
@@ -153,7 +165,7 @@ export class FormsPage extends React.Component {
                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
                   <TextField
                     id="pw"
-                    type= "password"
+                    type="password"
                     label="Password"
                     placeholder="Password"
                     className="contact-page-name-list-field"
@@ -173,54 +185,6 @@ export class FormsPage extends React.Component {
                   />
                 </Grid>
 
-
-                {/* <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10 }}>
-                  <TextField
-                    id="Firstname"
-                    label="Message"
-                    multiline
-                    rows="2"
-                    placeholder="this is a textarea field"
-                    className="contact-page-name-list-field"
-                    margin="normal"
-                  />
-                </Grid> */}
-
-
-                {/* <Grid item xs={12} style={{ marginTop: 10 }} align="center"><FormControl >
-                  <InputLabel htmlFor="age-simple">Position</InputLabel>
-                  <Select
-                    style={{ width: 200 }}
-                    value={this.state.position}
-                    onChange={this.handlePositionChange}
-                    inputProps={{
-                      name: 'pos',
-                      id: 'pos',
-                    }}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value="Line Manager">Line Manager</MenuItem>
-                    <MenuItem value="QA Engineer">QA Engineer</MenuItem>
-                  </Select>
-                </FormControl> </Grid> */}
-
-
-                {/* <Grid item xs={6} style={{ marginTop: 10 }} align="center"><FormControl >
-
-                  <TextField
-                    id="date"
-                    label="Date of Birth"
-                    type="date"
-                    defaultValue="1997-05-24"
-
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                  />
-                </FormControl>
-                </Grid> */}
 
                 <Grid item xs={12} style={{ marginTop: 10 }} align="center">
                   <FormControl component="fieldset" required style={{
