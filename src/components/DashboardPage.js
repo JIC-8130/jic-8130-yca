@@ -180,7 +180,7 @@ export class DashboardPage extends React.Component {
                         </Paper>
                     </Grid>
 
-                    <Grid item xs={12}>
+                    <Grid item xs={12} style={{ marginTop: 35 }}>
                         <Typography variant="title" gutterBottom align="center">
                             Cost Centers
                         </Typography>
@@ -234,24 +234,24 @@ export class DashboardPage extends React.Component {
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={12}>
+                    <Grid item xs={12} style={{ marginTop: 25, marginBottom:10 }}>
                         <Typography variant="title" gutterBottom align="center">
                             Data Visualization
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={12} style={{ marginLeft: 20 }}>
+                    <Grid item xs={12} style={{ marginLeft: 15 }}>
                         < div id="chart" >
                             <Line data={chartData} />
                         </div >
                     </Grid>
 
 
-                    <Grid item xs={12} align="right">
-                        <Button color="primary" variant="raised" size="large">
+                    <Grid item xs={12} align="right" style={{ marginTop: 15 }}>
+                        <Button color="primary" variant="raised" size="large" style={{ marginRight: 15 }}>
                             Generate Report
                         </Button>
-                        <Button color="primary" variant="outlined" style={{ marginLeft: 10 }} onClick={this.onViewTableClick}>
+                        <Button color="primary" variant="outlined" style={{ marginRight: 20 }} onClick={this.onViewTableClick}>
                             View Table
                         </Button>
                     </Grid>
