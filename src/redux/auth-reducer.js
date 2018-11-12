@@ -4,6 +4,7 @@ import jdCrypto from "../services/encryption";
 const SET_LOGIN_PENDING = 'SET_LOGIN_PENDING';
 const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
 const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
+const SET_USER_TYPE = "SET_USER_TYPE";
 
 function setLoginPending(isLoginPending) {
   return {
@@ -26,6 +27,13 @@ function setLoginError(loginError) {
   }
 }
 
+function setUserType(userType) {
+  return {
+    type: SET_USER_TYPE,
+    userType
+  };
+}
+
 function callLoginApi(email, password, callback) {
   // setTimeout(() => {
   //   if (email === 'admin@example.com' && password === 'admin') {
@@ -42,9 +50,13 @@ function callLoginApi(email, password, callback) {
     // do something with myJson
     if (jdCrypto.authenticate(password, myJson.password, myJson.Salt)) {
       // alert("Correct password!");
-      return callback(null);
+      if (myJson.UsrType == "QA") {
+        return callback({ userType: "/dashboard", error: null });
+      } else {
+        return callback({ userType: "/input", error: null });
+      }
     } else {
-      return callback(new Error("Invalid ID and password!"));
+      return callback({ userType: null, error: new Error("Invalid ID and password!") });
     }
   }
   f(email);
@@ -55,13 +67,15 @@ export function login(email, password) {
     dispatch(setLoginPending(true));
     dispatch(setLoginSuccess(false));
     dispatch(setLoginError(null));
+    dispatch(setUserType(null));
 
-    callLoginApi(email, password, error => {
+    callLoginApi(email, password, retVal => {
       dispatch(setLoginPending(false));
-      if (!error) {
+      if (!retVal.error) {
         dispatch(setLoginSuccess(true));
+        dispatch(setUserType(retVal.userType));
       } else {
-        dispatch(setLoginError(error));
+        dispatch(setLoginError(retVal.error));
       }
     });
   }
@@ -70,7 +84,8 @@ export function login(email, password) {
 export default function auth_reducer(state = {
   isLoginSuccess: false,
   isLoginPending: false,
-  loginError: null
+  loginError: null,
+  userType: null
 }, action) {
   switch (action.type) {
     case SET_LOGIN_PENDING:
@@ -87,6 +102,12 @@ export default function auth_reducer(state = {
       return Object.assign({}, state, {
         loginError: action.loginError
       });
+    case SET_USER_TYPE:
+      return Object.assign(
+        {},
+        state,
+        { userType: action.userType }
+      );
 
     default:
       return state;
