@@ -38,7 +38,7 @@ export class CreateAccount extends React.Component {
       FirstName: "",
       LastName: "",
       Email: "",
-      UsrType: "QA",
+      UsrType: "",
       password: "",
     }
 
@@ -100,7 +100,18 @@ export class CreateAccount extends React.Component {
   };
 
   handlePositionChange = (event) => {
-    this.setState({ position: event.target.value });
+    this.setState({
+      messageopen: this.state.messageopen,
+      messageInfo: this.state.messageInfo,
+      values: {
+        YCA_ID: this.state.values.YCA_ID,
+        FirstName: this.state.values.FirstName,
+        LastName: this.state.values.LastName,
+        Email: this.state.values.Email,
+        UsrType: event.target.value,
+        password: this.state.values.password,
+      }
+    });
   };
 
   render() {
@@ -286,13 +297,13 @@ export class CreateAccount extends React.Component {
                       aria-label="position"
                       name="position1"
 
-                      value={this.state.position}
+                      value={this.state.values.UsrType}
                       onChange={this.handlePositionChange}
                       style={{
                         margin: `10px 0`,
                       }} className="forms-page-genderclassname">
-                      <FormControlLabel value="QA Engineer" control={<Radio />} label="QA Engineer" />
-                      <FormControlLabel value="Line Manager" control={<Radio />} label="Line Manager" />
+                      <FormControlLabel value="QA" control={<Radio />} label="QA Engineer" />
+                      <FormControlLabel value="LM" control={<Radio />} label="Line Manager" />
                     </RadioGroup>
                   </FormControl>
                 </Grid>
