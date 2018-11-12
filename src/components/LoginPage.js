@@ -16,7 +16,7 @@ export class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      ID: "",
       password: ""
     };
     this.onSubmit = this.onSubmit.bind(this);
@@ -24,8 +24,8 @@ export class LoginPage extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    let { email, password } = this.state;
-    this.props.login(email, password);
+    let { ID, password } = this.state;
+    this.props.login(ID, password);
     this.setState({
       email: '',
       password: ''
@@ -36,7 +36,7 @@ export class LoginPage extends React.Component {
 
 
   render() {
-    let { email, password } = this.state;
+    let { ID, password } = this.state;
     let { isLoginPending, isLoginSuccess, loginError, userType } = this.props;
     return (
       <div className="login-page-class">
@@ -55,14 +55,13 @@ export class LoginPage extends React.Component {
               <AccountCircle />
               <TextField
                 id="outlined-email-input"
-                label="Email"
+                label="YCA ID"
                 // type="email"
-                name="email"
-                autoComplete="email"
+                name="ID"
                 margin="normal"
                 variant="outlined"
-                onChange={e => this.setState({ email: e.target.value })}
-                value={email} />
+                onChange={e => this.setState({ ID: e.target.value })}
+                value={ID} />
 
 
 
@@ -113,8 +112,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password) => {
-      login(email, password)(dispatch);
+    login: (ID, password) => {
+      login(ID, password)(dispatch);
     }
   };
 }
