@@ -97,7 +97,7 @@ export class FormsPage extends React.Component {
 
                 <Grid container spacing={24} justify="center">
                     <Grid item xs={12} md={10} style={{ marginTop: 10 }}>
-                        <Paper className="contact-page-paper"><Typography variant="display1" gutterBottom style={{ padding: 15 }}>
+                        <Paper className="contact-page-paper"><Typography variant="display1" gutterBottom style={{ padding: 5 }}>
                         Data Input
                         </Typography>
 
@@ -105,7 +105,7 @@ export class FormsPage extends React.Component {
 
                                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
                                     <TextField
-                                        id="units"
+                                        id="UnitsProduced"
                                         type="text"
                                         pattern="-?[0-9]*(\.[0-9]+)?"
                                         label="Number of Units Produced"
@@ -117,17 +117,7 @@ export class FormsPage extends React.Component {
 
                                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
                                     <TextField
-                                        id="workers"
-                                        label="Number of Workers at a Line"
-                                        placeholder="Number of Workers at a Line"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="defects"
+                                        id="Defects"
                                         label="Number of Defects"
                                         placeholder="Number of Defects"
                                         className="contact-page-name-list-field"
@@ -137,39 +127,9 @@ export class FormsPage extends React.Component {
 
                                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
                                     <TextField
-                                        id="overtime"
-                                        label="Assembly Line Overtime"
-                                        placeholder="Assembly Line Overtime"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="quality"
-                                        label="Number of Quality Incidents"
-                                        placeholder="Number of Quality Incidents"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="downtime"
-                                        label="Assembly Line Downtime"
-                                        placeholder="Assembly Line Downtime"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid>
-
-                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="safety"
-                                        label="Number of Safety Incidents"
-                                        placeholder="Number of Safety Incidents"
+                                        id="WorkerTotal"
+                                        label="Number of Workers at a Line"
+                                        placeholder="Number of Workers at a Line"
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                     />
@@ -185,7 +145,87 @@ export class FormsPage extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} lg={10} md={12} style={{ marginTop: 10, marginLeft:100 }}>
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="Downtime"
+                                        label="Assembly Line Downtime"
+                                        placeholder="Assembly Line Downtime"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="Overtime"
+                                        label="Assembly Line Overtime"
+                                        placeholder="Assembly Line Overtime"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="SInc_Num"
+                                        label="Number of Safety Incidents"
+                                        placeholder="Number of Safety Incidents"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="QInc_Num"
+                                        label="Number of Quality Incidents"
+                                        placeholder="Number of Quality Incidents"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="Sinc_Reason"
+                                        label="Saftey Incident Reason"
+                                        placeholder="Saftey Incident Reason"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="Qinc_reason"
+                                        label="Quality Incident Reason"
+                                        placeholder="Quality Incident Reason"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="Lo Util"
+                                        label="Low Utility Reason"
+                                        placeholder="Low Utility Reason"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                                    <TextField
+                                        id="HighUtil"
+                                        label="High Utility Reason"
+                                        placeholder="High Utility Reason"
+                                        className="contact-page-name-list-field"
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                {/* <Grid item xs={12} lg={10} md={12} style={{ marginTop: 10, marginLeft:100 }}>
                                     <TextField
                                         id="utilization"
                                         label="High and Low Utilization Reasons"
@@ -197,7 +237,7 @@ export class FormsPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                     />
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10, marginBottom: 17 }}>
                                     <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Submit</Button>
