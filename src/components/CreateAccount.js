@@ -23,193 +23,291 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import history from '../routers/asgard-history';
+import fetch from "node-fetch";
+import regeneratorRuntime from "regenerator-runtime";
 
 
 
 export class CreateAccount extends React.Component {
 
-    state = {
-        messageopen: false,
-        messageInfo: {},
-        firstName: '',
-        lastName: '',
-        email: '',
-        id: null,
-        password:'',
-        position: null
+  state = {
+    messageopen: false,
+    messageInfo: {},
+    values: {
+      YCA_ID: "",
+      FirstName: "",
+      LastName: "",
+      Email: "",
+      UsrType: "QA",
+      password: "",
     }
 
-    giveSuccessMessage = (message) => {
-        let newmsg = {
-            message,
-            key: new Date().getTime()
-        };
+  }
 
-        this.setState({
-            messageopen: true,
-            messageInfo: newmsg
-        });
+  giveSuccessMessage = (message) => {
+    let newmsg = {
+      message,
+      key: new Date().getTime()
     };
 
-    onSubmit = () => {
-        this.giveSuccessMessage(' Account Created! Redirecting to Login... ');
-    };
+    this.setState({
+      messageopen: true,
+      messageInfo: newmsg
+    });
+  };
 
-    handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
+  onSubmit = () => {
+    // alert(JSON.stringify(this.state.values));
+    let formBody = [];
+    for (let property in this.state.values) {
+      let encodedKey = encodeURIComponent(property);
+      let encodedValue = encodeURIComponent(this.state.values[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+    async function newUserFetch(vals, component) {
+      const response = fetch(`https://asgard-api.azurewebsites.net/users/new-user`, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "no-cors", // no-cors, cors, *same-origin
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, contentType, Content-Type, Accept, Authorization",
+          "X-Powered-By": "Express"
 
-        this.setState({ messageopen: false });
-        history.push("/login");
-    };
+        },
+        redirect: "follow", // manual, *follow, error
+        body: formBody, // body data type must match "Content-Type" header
+      }).then(
+        component.giveSuccessMessage(' Account Created! Redirecting to Login... ')
+      );
+    }
+    newUserFetch(this.state.values, this);
+  };
 
-    handleFirstNameChange = (event) => {
-        this.setState({ firstName: event.target.value });
-    };
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
 
-    handlePositionChange = (event) => {
-        this.setState({ position: event.target.value });
-    };
+    this.setState({ messageopen: false });
+    history.push("/login");
+  };
 
-    render() {
-        const { message, key } = this.state.messageInfo;
+  handleFirstNameChange = (event) => {
+    this.setState({ firstName: event.target.value });
+  };
+
+  handlePositionChange = (event) => {
+    this.setState({ position: event.target.value });
+  };
+
+  render() {
+    const { message, key } = this.state.messageInfo;
 
 
-        return (
-            <div className="contact-page-wrapper">
+    return (
+      <div className="contact-page-wrapper">
 
-                <Snackbar
-                  key={key}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  open={this.state.messageopen}
-                  autoHideDuration={2000}
-                  onClose={this.handleClose}
+        <Snackbar
+          key={key}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.messageopen}
+          autoHideDuration={2000}
+          onClose={this.handleClose}
 
-                  ContentProps={{
-                    'aria-describedby': 'message-id',
-                  }}
-                  message={<span id="message-id">{message}</span>}
-                  action={[
+          ContentProps={{
+            'aria-describedby': 'message-id',
+          }}
+          message={<span id="message-id">{message}</span>}
+          action={[
 
-                    <IconButton
-                      key="close"
-                      aria-label="Close"
-                      color="inherit"
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
 
-                      onClick={this.handleClose}
-                    >
-                      <CloseIcon />
-                    </IconButton>,
-                  ]}
-                />
-                <Grid container spacing={24} justify="center">
-                  <Grid item xs={12} md={10} style={{ marginTop: 10 }}>
-                    <Paper className="contact-page-paper">
-                      <Typography variant="display1" gutterBottom style={{ padding: 15 }}>
-                        Account Creation
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>,
+          ]}
+        />
+        <Grid container spacing={24} justify="center">
+          <Grid item xs={12} md={10} style={{ marginTop: 10 }}>
+            <Paper className="contact-page-paper">
+              <Typography variant="display1" gutterBottom style={{ padding: 15 }}>
+                Account Creation
                       </Typography>
-                      <Grid container spacing={24} >
-                        <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                          <TextField
-                            id="f_name"
-                            label="First Name"
-                            placeholder="First Name"
-                            className="contact-page-name-list-field"
-                            margin="normal"
-                          />
-                        </Grid>
+              <Grid container spacing={24} >
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="f_name"
+                    label="First Name"
+                    placeholder="First Name"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                    onChange={e => this.setState({
+                      messageopen: this.state.messageopen,
+                      messageInfo: this.state.messageInfo,
+                      values: {
+                        YCA_ID: this.state.values.YCA_ID,
+                        FirstName: e.target.value,
+                        LastName: this.state.values.LastName,
+                        Email: this.state.values.Email,
+                        UsrType: this.state.values.UsrType,
+                        password: this.state.values.password,
+                      }
+                    }
 
-                        <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                          <TextField
-                            id="l_name"
-                            label="Last Name"
-                            placeholder="Last Name"
-                            className="contact-page-name-list-field"
-                            margin="normal"
-                          />
-                        </Grid>
-
-                        <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                          <TextField
-                            id="yca_email"
-                            type="email"
-                            label="YCA Email"
-                            placeholder="YCA Email"
-                            className="contact-page-name-list-field"
-                            margin="normal"
-                          />
-                        </Grid>
-
-
-                        <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                          <TextField
-                            id="yca_id"
-                            label="YCA ID#"
-                            placeholder="YCA ID#"
-                            className="contact-page-name-list-field"
-                            margin="normal"
-                          />
-                        </Grid>
-
-                        <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                          <TextField
-                            id="pw"
-                            type="password"
-                            label="Password"
-                            placeholder="Password"
-                            className="contact-page-name-list-field"
-                            margin="normal"
-                          />
-                        </Grid>
-
-
-                        <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                          <TextField
-                            id="confirm_pw"
-                            type="password"
-                            label="Confirm Password"
-                            placeholder="Confirm Password"
-                            className="contact-page-name-list-field"
-                            margin="normal"
-                          />
-                        </Grid>
-
-
-                        <Grid item xs={12} style={{ marginTop: 10 }} align="center">
-                          <FormControl component="fieldset" required style={{
-                            margin: '10px',
-                          }}>
-                            <FormLabel component="legend">Position</FormLabel>
-                            <RadioGroup
-                              aria-label="position"
-                              name="position1"
-
-                              value={this.state.position}
-                              onChange={this.handlePositionChange}
-                              style={{
-                                margin: `10px 0`,
-                              }} className="forms-page-genderclassname">
-                              <FormControlLabel value="QA Engineer" control={<Radio />} label="QA Engineer" />
-                              <FormControlLabel value="Line Manager" control={<Radio />} label="Line Manager" />
-                            </RadioGroup>
-                          </FormControl>
-                        </Grid>
-
-                        <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10 }}>
-                            <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Create</Button>
-                        </Grid>
-
-                      </Grid>
-                    </Paper>
-                  </Grid>
+                    )}
+                  />
                 </Grid>
-            </div>
-        );
-    }
+
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="l_name"
+                    label="Last Name"
+                    placeholder="Last Name"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                    onChange={e => this.setState({
+                      messageopen: this.state.messageopen,
+                      messageInfo: this.state.messageInfo,
+                      values: {
+                        YCA_ID: this.state.values.YCA_ID,
+                        FirstName: this.state.values.FirstName,
+                        LastName: e.target.value,
+                        Email: this.state.values.Email,
+                        UsrType: this.state.values.UsrType,
+                        password: this.state.values.password,
+                      }
+                    }
+                    )}
+                  />
+                </Grid>
+
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="yca_email"
+                    type="email"
+                    label="YCA Email"
+                    placeholder="YCA Email"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                    onChange={e => this.setState({
+                      messageopen: this.state.messageopen,
+                      messageInfo: this.state.messageInfo,
+                      values: {
+                        YCA_ID: this.state.values.YCA_ID,
+                        FirstName: this.state.values.FirstName,
+                        LastName: this.state.values.LastName,
+                        Email: e.target.value,
+                        UsrType: this.state.values.UsrType,
+                        password: this.state.values.password,
+                      }
+                    }
+                    )}
+                  />
+                </Grid>
+
+
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="yca_id"
+                    label="YCA ID#"
+                    placeholder="YCA ID#"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                    onChange={e => this.setState({
+                      messageopen: this.state.messageopen,
+                      messageInfo: this.state.messageInfo,
+                      values: {
+                        YCA_ID: e.target.value,
+                        FirstName: this.state.values.FirstName,
+                        LastName: this.state.values.LastName,
+                        Email: this.state.values.Email,
+                        UsrType: this.state.values.UsrType,
+                        password: this.state.values.password,
+                      }
+                    }
+                    )}
+                  />
+                </Grid>
+
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="pw"
+                    type="password"
+                    label="Password"
+                    placeholder="Password"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+                    onChange={e => this.setState({
+                      messageopen: this.state.messageopen,
+                      messageInfo: this.state.messageInfo,
+                      values: {
+                        YCA_ID: this.state.values.YCA_ID,
+                        FirstName: this.state.values.FirstName,
+                        LastName: this.state.values.LastName,
+                        Email: this.state.values.Email,
+                        UsrType: this.state.values.UsrType,
+                        password: e.target.value,
+                      }
+                    }
+                    )}
+                  />
+                </Grid>
+
+
+                <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
+                  <TextField
+                    id="confirm_pw"
+                    type="password"
+                    label="Confirm Password"
+                    placeholder="Confirm Password"
+                    className="contact-page-name-list-field"
+                    margin="normal"
+
+                  />
+                </Grid>
+
+
+                <Grid item xs={12} style={{ marginTop: 10 }} align="center">
+                  <FormControl component="fieldset" required style={{
+                    margin: '10px',
+                  }}>
+                    <FormLabel component="legend">Position</FormLabel>
+                    <RadioGroup
+                      aria-label="position"
+                      name="position1"
+
+                      value={this.state.position}
+                      onChange={this.handlePositionChange}
+                      style={{
+                        margin: `10px 0`,
+                      }} className="forms-page-genderclassname">
+                      <FormControlLabel value="QA Engineer" control={<Radio />} label="QA Engineer" />
+                      <FormControlLabel value="Line Manager" control={<Radio />} label="Line Manager" />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+
+                <Grid item xs={12} lg={12} md={12} style={{ marginTop: 10 }}>
+                  <Button type="button" color="primary" variant="raised" onClick={this.onSubmit}>Create</Button>
+                </Grid>
+
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+      </div>
+    );
+  }
 
 
 }
