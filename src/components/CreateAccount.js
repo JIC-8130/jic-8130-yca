@@ -23,9 +23,8 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import history from '../routers/asgard-history';
-import fetch from "node-fetch";
-import regeneratorRuntime from "regenerator-runtime";
 import bodyConstructor from "../services/bodyConstructor";
+import regeneratorRuntime from "regenerator-runtime";
 
 
 
@@ -64,14 +63,7 @@ export class CreateAccount extends React.Component {
   };
 
   onSubmit = () => {
-    // alert(JSON.stringify(this.state.values));
-    // let formBody = [];
-    // for (let property in this.state.values) {
-    //   let encodedKey = encodeURIComponent(property);
-    //   let encodedValue = encodeURIComponent(this.state.values[property]);
-    //   formBody.push(encodedKey + "=" + encodedValue);
-    // }
-    // formBody = formBody.join("&");
+
     var reqBody = bodyConstructor.createBody(this.state.values);
     async function newUserFetch(vals, component) {
       const response = fetch(`https://asgard-api.azurewebsites.net/users/new-user`, {
