@@ -27,7 +27,7 @@ export class LoginPage extends React.Component {
     let { ID, password } = this.state;
     this.props.login(ID, password);
     this.setState({
-      email: '',
+      ID: '',
       password: ''
     });
   }
@@ -37,7 +37,7 @@ export class LoginPage extends React.Component {
 
   render() {
     let { ID, password } = this.state;
-    let { isLoginPending, isLoginSuccess, loginError, userType } = this.props;
+    let { isLoginPending, isLoginSuccess, loginError, userPath } = this.props;
     return (
       <div className="login-page-class">
         <Paper className="loginPaper">
@@ -84,7 +84,7 @@ export class LoginPage extends React.Component {
             </Button>
             {isLoginPending && <Snackbar open={true} autoHideDuration={6000} message={<span>Logging you in...</span>} />}
             {/* TODO: find a way to make this conditional on what type of user you are */}
-            {isLoginSuccess && userType != null && <Redirect to={userType} />}
+            {isLoginSuccess && userPath != null && <Redirect to={userPath} />}
             {/* {isLoginSuccess && (userType == "LM") && <Redirect to="/input" />} */}
             {/* {userType == "QA" && <Redirect to="/dashboard" />} */}
             {loginError && <Snackbar open={true} autoHideDuration={6000} message={<span>Login failed: invalid credentials</span>} />}
@@ -106,7 +106,7 @@ const mapStateToProps = (state) => {
     isLoginPending: state.isLoginPending,
     isLoginSuccess: state.isLoginSuccess,
     loginError: state.loginError,
-    userType: state.userType
+    userPath: state.userPath
   };
 }
 

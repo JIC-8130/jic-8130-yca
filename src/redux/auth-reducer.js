@@ -4,7 +4,7 @@ import jdCrypto from "../services/encryption";
 const SET_LOGIN_PENDING = 'SET_LOGIN_PENDING';
 const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
 const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
-const SET_USER_TYPE = "SET_USER_TYPE";
+const SET_USER_PATH = "SET_USER_PATH";
 
 function setLoginPending(isLoginPending) {
   return {
@@ -27,14 +27,14 @@ function setLoginError(loginError) {
   }
 }
 
-function setUserType(userType) {
+function setUserPath(userPath) {
   return {
-    type: SET_USER_TYPE,
-    userType
+    type: SET_USER_PATH,
+    userPath
   };
 }
 
-function callLoginApi(email, password, callback) {
+function callLoginApi(ID, password, callback) {
   // setTimeout(() => {
   //   if (email === 'admin@example.com' && password === 'admin') {
   //     return callback(null);
@@ -51,29 +51,29 @@ function callLoginApi(email, password, callback) {
     if (jdCrypto.authenticate(password, myJson.password, myJson.Salt)) {
       // alert("Correct password!");
       if (myJson.UsrType == "QA") {
-        return callback({ userType: "/dashboard", error: null });
+        return callback({ userPath: "/dashboard", error: null });
       } else {
-        return callback({ userType: "/input", error: null });
+        return callback({ userPath: "/input", error: null });
       }
     } else {
-      return callback({ userType: null, error: new Error("Invalid ID and password!") });
+      return callback({ userPath: null, error: new Error("Invalid ID and password!") });
     }
   }
-  f(email);
+  f(ID);
 }
 
-export function login(email, password) {
+export function login(ID, password) {
   return dispatch => {
     dispatch(setLoginPending(true));
     dispatch(setLoginSuccess(false));
     dispatch(setLoginError(null));
-    dispatch(setUserType(null));
+    dispatch(setUserPath(null));
 
-    callLoginApi(email, password, retVal => {
+    callLoginApi(ID, password, retVal => {
       dispatch(setLoginPending(false));
       if (!retVal.error) {
         dispatch(setLoginSuccess(true));
-        dispatch(setUserType(retVal.userType));
+        dispatch(setUserPath(retVal.userPath));
       } else {
         dispatch(setLoginError(retVal.error));
       }
@@ -85,7 +85,7 @@ export default function auth_reducer(state = {
   isLoginSuccess: false,
   isLoginPending: false,
   loginError: null,
-  userType: null
+  userPath: null
 }, action) {
   switch (action.type) {
     case SET_LOGIN_PENDING:
@@ -102,11 +102,11 @@ export default function auth_reducer(state = {
       return Object.assign({}, state, {
         loginError: action.loginError
       });
-    case SET_USER_TYPE:
+    case SET_USER_PATH:
       return Object.assign(
         {},
         state,
-        { userType: action.userType }
+        { userPath: action.userPath }
       );
 
     default:
