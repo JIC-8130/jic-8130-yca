@@ -55,7 +55,7 @@ export class LoginPage extends React.Component {
               <TextField
                 id="outlined-email-input"
                 label="Email"
-                type="email"
+                // type="email"
                 name="email"
                 autoComplete="email"
                 margin="normal"
