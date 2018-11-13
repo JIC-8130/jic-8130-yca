@@ -65,7 +65,7 @@ export class CreateAccount extends React.Component {
     onSubmit = () => {
 
         var reqBody = bodyConstructor.createBody(this.state.values);
-        async function newUserFetch(vals, component) {
+        async function newUserFetch(component) {
             const response = fetch(`https://asgard-api.azurewebsites.net/users/new-user`, {
                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                 mode: "no-cors", // no-cors, cors, *same-origin
@@ -83,7 +83,7 @@ export class CreateAccount extends React.Component {
                 component.giveSuccessMessage(' Account Created! Redirecting to Login... ')
             );
         }
-        newUserFetch(this.state.values, this);
+        newUserFetch(this);
     };
 
     handleClose = (event, reason) => {
