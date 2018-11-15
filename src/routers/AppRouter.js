@@ -9,6 +9,7 @@ import LoginPage from '../components/LoginPage';
 import history from "./asgard-history";
 import DataModificationPage from '../components/DataModificationPage';
 import CreateAccount from "../components/CreateAccount";
+import DemoTablePage from "../components/DemoTablePage";
 
 const AppRouter = () => (
   <Router history={history}>
@@ -21,6 +22,7 @@ const AppRouter = () => (
         <Route path="/login" component={LoginPage} />
         <PublicRoute path="/data" component={DataModificationPage} />
         <PublicRoute path="/create-account" component={CreateAccount} />
+        <PublicRoute path="/demotable" component={DemoTablePage} />
         <Route component={NotFoundPage} />
       </Switch>
 

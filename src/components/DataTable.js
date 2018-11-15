@@ -6,20 +6,19 @@ import { EditingState } from '@devexpress/dx-react-grid';
 
 const getRowId = row => row.id;
 
-class DemoTable extends React.PureComponent {
+class DataTable extends React.PureComponent {
     constructor(props) {
         super(props);
 
         this.state = {
             columns: [
                 { name: 'name', title: 'Name' },
-                { name: 'sex', title: 'Sex' },
                 { name: 'city', title: 'City' },
                 { name: 'car', title: 'Car' },
             ],
             rows:
                 [
-                    { name: "John Doe", title: "King", city: "ATL", sex: "Male", car: "Toyota" }
+                    { name: "John Doe", title: "King", city: "ATL", car: "Toyota" }
                 ]
         };
 
@@ -74,3 +73,5 @@ class DemoTable extends React.PureComponent {
         );
     }
 }
+
+export default DataTable;
