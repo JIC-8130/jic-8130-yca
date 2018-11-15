@@ -2,28 +2,49 @@ import React from 'react';
 import { Grid, Table, TableHeaderRow, TableEditRow, TableEditColumn } from '@devexpress/dx-react-grid-material-ui';
 import Paper from "@material-ui/core/Paper";
 import { EditingState } from '@devexpress/dx-react-grid';
-
+import fetch from "node-fetch";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import regeneratorRuntime from "regenerator-runtime";
+import ReactGrid from "@material-ui/core/Grid";
 
 const getRowId = row => row.id;
 
 class DataTable extends React.PureComponent {
+
+
     constructor(props) {
         super(props);
-
         this.state = {
             columns: [
-                { name: 'name', title: 'Name' },
-                { name: 'city', title: 'City' },
-                { name: 'car', title: 'Car' },
+                { name: "InputDate", title: "Date" },
+                { name: "UnitsProduced", title: "Units Produced" },
+                { name: "Defects", title: "Defects" },
+                { name: "WorkerTotal", title: "Worker Total" },
+                { name: "SInc_Num", title: "# of Safety Incidents" },
+                { name: "QInc_Num", title: "# of Quality Incidents" },
+                { name: "SInc_Reason", title: "Safety Incident Reasons" },
+                { name: "QInc_Reason", title: "Quality Incident Reasons" },
+                { name: "HighUtil", title: "High Utilization" },
+                { name: "LoUtil", title: "Low Utilization" },
+                { name: "Overtime", title: "Overtime" }
             ],
-            rows:
-                [
-                    { name: "John Doe", title: "King", city: "ATL", car: "Toyota" }
-                ]
+            rows: [],
+            isLoading: false
         };
 
         this.commitChanges = this.commitChanges.bind(this);
     }
+
+    componentDidMount() {
+        alert("yeet");
+        this.setState({ isLoading: true });
+
+        fetch(`https://asgard-api.azurewebsites.net/costcenters/CC6526`)
+            .then(response => response.json())
+            .then(data => this.setState({ rows: data, isLoading: false }))
+    }
+
+
 
     commitChanges({ added, changed, deleted }) {
         let { rows } = this.state;
@@ -48,7 +69,15 @@ class DataTable extends React.PureComponent {
     }
 
     render() {
-        const { rows, columns } = this.state;
+        const { columns, rows, isLoading } = this.state;
+        if (isLoading) {
+            return (
+                <ReactGrid container justify="center" alignContent="center" alignItems="center" style={{ padding: 200 }}>
+
+                    <CircularProgress />
+                </ReactGrid>
+            );
+        }
 
         return (
             <Paper>
