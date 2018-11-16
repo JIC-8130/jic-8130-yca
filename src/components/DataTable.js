@@ -6,6 +6,7 @@ import fetch from "node-fetch";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import regeneratorRuntime from "regenerator-runtime";
 import ReactGrid from "@material-ui/core/Grid";
+import bodyConstructor from "../services/bodyConstructor";
 
 const getRowId = row => row.id;
 
@@ -30,7 +31,8 @@ class DataTable extends React.PureComponent {
                 { name: "Overtime", title: "Overtime" }
             ],
             rows: [],
-            isLoading: false
+            isLoading: false,
+            changedRows: []
         };
 
         this.commitChanges = this.commitChanges.bind(this);
@@ -42,12 +44,39 @@ class DataTable extends React.PureComponent {
         fetch(`https://asgard-api.azurewebsites.net/costcenters/CC6526`)
             .then(response => response.json())
             .then(data => this.setState({ rows: data, isLoading: false }))
+
     }
 
+    // This method gets run when the state changes. We change the state in commitChanges so that
+    // the DB sync included in this method gets triggered.
     componentDidUpdate() {
-        console.log(JSON.stringify(EditingState.defaultAddedRows));
+
+        if (this.state.changedRows.length != 0) {
+            // We use an arrow function here to maintain the correct "this" context
+            this.state.changedRows.forEach((i) => {
+                fetch("https://asgard-api.azurewebsites.net/costcenters/CC6526/update?date=" + this.state.rows[i - 1].InputDate, {
+                    method: "POST", // *GET, POST, PUT, DELETE, etc.
+                    mode: "no-cors", // no-cors, cors, *same-origin
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, contentType, Content-Type, Accept, Authorization",
+                        "X-Powered-By": "Express"
+
+                    },
+                    redirect: "follow", // manual, *follow, error
+                    body: bodyConstructor.createBody(this.state.rows[i - 1]), // body data type must match "Content-Type" header
+                });
+            });
+            // Reset to accept the next set of changes
+            this.setState({ changedRows: [] });
+        } else {
+            console.log("No changes");
+        }
     }
 
+    // Changes the state to reflect changes made to the rows of the table.
     commitChanges({ added, changed, deleted }) {
         let { rows } = this.state;
         // if (added) {
@@ -62,6 +91,17 @@ class DataTable extends React.PureComponent {
         // }
         if (changed) {
             rows = rows.map(row => (changed[row.id] ? { ...row, ...changed[row.id] } : row));
+            // rows.map(row => (this.setState({ changedRows: this.state.changedRows.push(row.id) })));
+            // console.log(this.state);
+            var i;
+            for (i = 1; i <= rows.length; i++) {
+                if (changed[i] != null) {
+                    // console.log(changed[i]);
+                    var copy = this.state.changedRows;
+                    copy.push(i);
+                    this.setState({ changedRows: copy });
+                }
+            }
         }
         // if (deleted) {
         //     const deletedSet = new Set(deleted);
@@ -95,9 +135,7 @@ class DataTable extends React.PureComponent {
                     <TableHeaderRow />
                     <TableEditRow />
                     <TableEditColumn
-                        // showAddCommand
                         showEditCommand
-                    // showDeleteCommand
                     />
                 </Grid>
             </Paper>
