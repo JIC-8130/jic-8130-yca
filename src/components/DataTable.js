@@ -36,7 +36,6 @@ class DataTable extends React.PureComponent {
     }
 
     componentDidMount() {
-        alert("yeet");
         this.setState({ isLoading: true });
 
         fetch(`https://asgard-api.azurewebsites.net/costcenters/CC6526`)
@@ -78,7 +77,6 @@ class DataTable extends React.PureComponent {
                 </ReactGrid>
             );
         }
-
         return (
             <Paper>
                 <Grid
