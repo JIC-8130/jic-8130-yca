@@ -146,8 +146,8 @@ var chartOptions = {
 
 function extractUnits(data) {
     var retVals = []
-    data.forEach(date => {
-        retVals.push(date.UnitsProduced);
+    data.forEach(row => {
+        retVals.push(row.UnitsProduced);
     });
     return retVals;
 }
