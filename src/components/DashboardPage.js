@@ -144,14 +144,53 @@ var chartOptions = {
     }
 };
 
+function extractUnits(data) {
+    var retVals = []
+    data.forEach(date => {
+        retVals.push(date.UnitsProduced);
+    });
+    return retVals;
+}
+
 export class DashboardPage extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            costCenterSelected: ""
+            costCenterSelected: "",
+
+            producedData: {}
         }
         this.onViewTableClick = this.onViewTableClick.bind(this);
+    }
+
+    componentDidMount() {
+
+        fetch(`https://asgard-api.azurewebsites.net/costcenters/CC6526`)
+            .then(response => response.json())
+            .then(data => this.setState(//console.log(extractUnits(data)));//this.setState({ loadedData: extractUnits(data) }))
+
+                {
+                    producedData: {
+                        labels: ["10-15-2018", "10-16-2018", "10-17-2018", "10-18-2018"],
+                        datasets: [{
+                            label: "Number of Units Produced",
+                            data: extractUnits(data),
+                            lineTension: 0.3,
+                            fill: false,
+                            borderColor: 'rgba(51, 255, 107, 0.4)',
+                            backgroundColor: 'rgba(51, 255, 107, 0.5)',
+                            pointBorderColor: 'rgba(51, 255, 107, 0.4)',
+                            pointBackgroundColor: 'rgba(51, 255, 107, 1)',
+                            pointRadius: 5,
+                            pointHoverRadius: 15,
+                            pointHitRadius: 30,
+                            pointBorderWidth: 2,
+                            pointStyle: 'circle'
+                        }]
+                        // Set More Options
+                    }
+                }));
     }
 
     render() {
@@ -160,13 +199,15 @@ export class DashboardPage extends React.Component {
             const ctx = canvas.getContext("2d")
             const myChart = new Chart(ctx, {
                 type: 'line',
-                data: productionData,
+                // data: productionData,
+                data: this.state.producedData,
                 options: chartOptions
             });
             return {
                 myChart
             }
         }
+
 
 
         return (
@@ -234,7 +275,7 @@ export class DashboardPage extends React.Component {
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={12} style={{ marginTop: 25, marginBottom:10 }}>
+                    <Grid item xs={12} style={{ marginTop: 25, marginBottom: 10 }}>
                         <Typography variant="title" gutterBottom align="center">
                             Data Visualization
                         </Typography>
