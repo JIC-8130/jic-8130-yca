@@ -9,6 +9,7 @@ import ReactGrid from "@material-ui/core/Grid";
 
 const getRowId = row => row.id;
 
+
 class DataTable extends React.PureComponent {
 
 
@@ -43,28 +44,31 @@ class DataTable extends React.PureComponent {
             .then(data => this.setState({ rows: data, isLoading: false }))
     }
 
-
+    componentDidUpdate() {
+        console.log(JSON.stringify(EditingState.defaultAddedRows));
+    }
 
     commitChanges({ added, changed, deleted }) {
         let { rows } = this.state;
-        if (added) {
-            const startingAddedId = rows.length > 0 ? rows[rows.length - 1].id + 1 : 0;
-            rows = [
-                ...rows,
-                ...added.map((row, index) => ({
-                    id: startingAddedId + index,
-                    ...row,
-                })),
-            ];
-        }
+        // if (added) {
+        //     const startingAddedId = rows.length > 0 ? rows[rows.length - 1].id + 1 : 0;
+        //     rows = [
+        //         ...rows,
+        //         ...added.map((row, index) => ({
+        //             id: startingAddedId + index,
+        //             ...row,
+        //         })),
+        //     ];
+        // }
         if (changed) {
             rows = rows.map(row => (changed[row.id] ? { ...row, ...changed[row.id] } : row));
         }
-        if (deleted) {
-            const deletedSet = new Set(deleted);
-            rows = rows.filter(row => !deletedSet.has(row.id));
-        }
+        // if (deleted) {
+        //     const deletedSet = new Set(deleted);
+        //     rows = rows.filter(row => !deletedSet.has(row.id));
+        // }
         this.setState({ rows });
+        // console.log(JSON.stringify(this.state.rows));
     }
 
     render() {
@@ -91,9 +95,9 @@ class DataTable extends React.PureComponent {
                     <TableHeaderRow />
                     <TableEditRow />
                     <TableEditColumn
-                        showAddCommand
+                        // showAddCommand
                         showEditCommand
-                        showDeleteCommand
+                    // showDeleteCommand
                     />
                 </Grid>
             </Paper>
