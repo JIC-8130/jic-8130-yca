@@ -158,19 +158,44 @@ export class DashboardPage extends React.Component {
         super(props);
         this.state = {
             costCenterSelected: "",
-
-            producedData: {}
+            producedData: {},
+            loadingData: false
         }
         this.onViewTableClick = this.onViewTableClick.bind(this);
     }
 
     componentDidMount() {
 
-        fetch(`https://asgard-api.azurewebsites.net/costcenters/${this.state.costCenterSelected}`)
-            .then(response => response.json())
-            .then(data => this.setState(//console.log(extractUnits(data)));//this.setState({ loadedData: extractUnits(data) }))
+        // fetch(`https://asgard-api.azurewebsites.net/costcenters/${this.state.costCenterSelected}`)
+        //     .then(response => response.json())
+        //     .then(data => this.setState({
+        //         producedData: {
+        //             labels: ["10-15-2018", "10-16-2018", "10-17-2018", "10-18-2018"],
+        //             datasets: [{
+        //                 label: "Number of Units Produced",
+        //                 data: extractUnits(data),
+        //                 lineTension: 0.3,
+        //                 fill: false,
+        //                 borderColor: 'rgba(51, 255, 107, 0.4)',
+        //                 backgroundColor: 'rgba(51, 255, 107, 0.5)',
+        //                 pointBorderColor: 'rgba(51, 255, 107, 0.4)',
+        //                 pointBackgroundColor: 'rgba(51, 255, 107, 1)',
+        //                 pointRadius: 5,
+        //                 pointHoverRadius: 15,
+        //                 pointHitRadius: 30,
+        //                 pointBorderWidth: 2,
+        //                 pointStyle: 'circle'
+        //             }]
+        //             // Set More Options
+        //         }
+        //     }));
+    }
 
-                {
+    componentDidUpdate() {
+        if (this.state.loadingData) {
+            fetch(`https://asgard-api.azurewebsites.net/costcenters/${this.state.costCenterSelected}`)
+                .then(response => response.json())
+                .then(data => this.setState({
                     producedData: {
                         labels: ["10-15-2018", "10-16-2018", "10-17-2018", "10-18-2018"],
                         datasets: [{
@@ -189,12 +214,14 @@ export class DashboardPage extends React.Component {
                             pointStyle: 'circle'
                         }]
                         // Set More Options
-                    }
+                    },
+                    loadingData: false
                 }));
+        }
     }
 
     render() {
-
+        console.log("RENDER CALLED\nCURRENT COST CENTER: " + this.state.costCenterSelected);
         const chartData = (canvas) => {
             const ctx = canvas.getContext("2d")
             const myChart = new Chart(ctx, {
@@ -245,8 +272,8 @@ export class DashboardPage extends React.Component {
                                 <li><a href="#"> 6422 Machine Shop </a></li>
                                 <li><a href="#"> 6511 SMT </a></li>
                                 <li><a href="#"> 6521 Meter Assembly </a></li>
-                                <li><Button variant="outlined" onClick={() => { this.setState({ costCenterSelected: "CC6522" }) }}> 6522 Analytical Manufacturing </Button></li>
-                                <li><Button variant="outlined" onClick={() => { this.setState({ costCenterSelected: "CC6526" }) }}> 6526 Transmitter Manufacturing </Button></li>
+                                <li><Button variant="outlined" onClick={() => { this.setState({ costCenterSelected: "CC6522", loadingData: true }) }}> 6522 Analytical Manufacturing </Button></li>
+                                <li><Button variant="outlined" onClick={() => { this.setState({ costCenterSelected: "CC6526", loadingData: true }) }}> 6526 Transmitter Manufacturing </Button></li>
                             </ul>
                         </Typography>
                     </Grid>
@@ -304,7 +331,6 @@ export class DashboardPage extends React.Component {
     }
 
     onViewTableClick() {
-        // TODO: find a way to determine which Cost Center is selected
         console.log(this.state.costCenterSelected);
         // And now we call our magical push function!
         history.push("/data", { costCenter: this.state.costCenterSelected });
