@@ -35,19 +35,11 @@ function setUserPath(userPath) {
 }
 
 function callLoginApi(ID, password, callback) {
-  // setTimeout(() => {
-  //   if (email === 'admin@example.com' && password === 'admin') {
-  //     return callback(null);
-  //   } else {
-  //     return callback(new Error('Invalid email and password'));
-  //   }
-  // }, 1000);
-  async function f(idnum) {
+
+  async function loginAuth(idnum) {
     let ID_NUM = idnum;
     const response = await fetch(`https://asgard-api.azurewebsites.net/users/${ID_NUM}`);
     const myJson = await response.json(); //extract JSON from the http response
-    // alert(JSON.stringify(myJson));
-    // do something with myJson
     if (jdCrypto.authenticate(password, myJson.password, myJson.Salt)) {
       // alert("Correct password!");
       if (myJson.UsrType == "QA") {
@@ -59,7 +51,7 @@ function callLoginApi(ID, password, callback) {
       return callback({ userPath: null, error: new Error("Invalid ID and password!") });
     }
   }
-  f(ID);
+  loginAuth(ID);
 }
 
 export function login(ID, password) {
