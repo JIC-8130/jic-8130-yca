@@ -16,7 +16,7 @@ export class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      ID: "",
       password: ""
     };
     this.onSubmit = this.onSubmit.bind(this);
@@ -24,19 +24,20 @@ export class LoginPage extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    let { email, password } = this.state;
-    this.props.login(email, password);
+    let { ID, password } = this.state;
+    this.props.login(ID, password);
     this.setState({
-      email: '',
+      ID: '',
       password: ''
     });
   }
 
 
 
+
   render() {
-    let { email, password } = this.state;
-    let { isLoginPending, isLoginSuccess, loginError } = this.props;
+    let { ID, password } = this.state;
+    let { isLoginPending, isLoginSuccess, loginError, userPath } = this.props;
     return (
       <div className="login-page-class">
         <Paper className="loginPaper">
@@ -54,14 +55,13 @@ export class LoginPage extends React.Component {
               <AccountCircle />
               <TextField
                 id="outlined-email-input"
-                label="Email"
-                type="email"
-                name="email"
-                autoComplete="email"
+                label="YCA ID"
+                // type="email"
+                name="ID"
                 margin="normal"
                 variant="outlined"
-                onChange={e => this.setState({ email: e.target.value })}
-                value={email} />
+                onChange={e => this.setState({ ID: e.target.value })}
+                value={ID} />
 
 
 
@@ -82,10 +82,8 @@ export class LoginPage extends React.Component {
             <Button type="submit" value="login" variant="raised" color="primary">
               Login
             </Button>
-
             {isLoginPending && <Snackbar open={true} autoHideDuration={6000} message={<span>Logging you in...</span>} />}
-            {/* TODO: find a way to make this conditional on what type of user you are */}
-            {isLoginSuccess && <Redirect to="/dashboard" />}
+            {isLoginSuccess && userPath != null && <Redirect to={userPath} />}
             {loginError && <Snackbar open={true} autoHideDuration={6000} message={<span>Login failed: invalid credentials</span>} />}
           </form>
 
@@ -104,14 +102,15 @@ const mapStateToProps = (state) => {
   return {
     isLoginPending: state.isLoginPending,
     isLoginSuccess: state.isLoginSuccess,
-    loginError: state.loginError
+    loginError: state.loginError,
+    userPath: state.userPath
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password) => {
-      login(email, password)(dispatch);
+    login: (ID, password) => {
+      login(ID, password)(dispatch);
     }
   };
 }
