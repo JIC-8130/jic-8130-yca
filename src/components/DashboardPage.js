@@ -166,7 +166,7 @@ export class DashboardPage extends React.Component {
 
     componentDidMount() {
 
-        fetch(`https://asgard-api.azurewebsites.net/costcenters/CC6526`)
+        fetch(`https://asgard-api.azurewebsites.net/costcenters/${this.state.costCenterSelected}`)
             .then(response => response.json())
             .then(data => this.setState(//console.log(extractUnits(data)));//this.setState({ loadedData: extractUnits(data) }))
 
@@ -245,8 +245,8 @@ export class DashboardPage extends React.Component {
                                 <li><a href="#"> 6422 Machine Shop </a></li>
                                 <li><a href="#"> 6511 SMT </a></li>
                                 <li><a href="#"> 6521 Meter Assembly </a></li>
-                                <li><a href="#"> 6522 Analytical Manufacturing </a></li>
-                                <li><a href="#"> 6526 Transmitter Manufacturing </a></li>
+                                <li><Button variant="outlined" onClick={() => { this.setState({ costCenterSelected: "CC6522" }) }}> 6522 Analytical Manufacturing </Button></li>
+                                <li><Button variant="outlined" onClick={() => { this.setState({ costCenterSelected: "CC6526" }) }}> 6526 Transmitter Manufacturing </Button></li>
                             </ul>
                         </Typography>
                     </Grid>
@@ -297,7 +297,7 @@ export class DashboardPage extends React.Component {
                         </Button>
                     </Grid>
                 </Grid>
-            </React.Fragment>
+            </React.Fragment >
 
         );
 
@@ -305,10 +305,9 @@ export class DashboardPage extends React.Component {
 
     onViewTableClick() {
         // TODO: find a way to determine which Cost Center is selected
-        this.setState({ costCenterSelected: "yeet" });
         console.log(this.state.costCenterSelected);
         // And now we call our magical push function!
-        history.push("/data");
+        history.push("/data", { costCenter: this.state.costCenterSelected });
 
     }
 }

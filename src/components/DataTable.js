@@ -15,6 +15,8 @@ class DataTable extends React.PureComponent {
 
 
     constructor(props) {
+        console.log("IN THE DATATABLE");
+        console.log(props);
         super(props);
         this.state = {
             columns: [
@@ -35,13 +37,14 @@ class DataTable extends React.PureComponent {
             changedRows: []
         };
 
+
         this.commitChanges = this.commitChanges.bind(this);
     }
 
     componentDidMount() {
         this.setState({ isLoading: true });
 
-        fetch(`https://asgard-api.azurewebsites.net/costcenters/CC6526`)
+        fetch(`https://asgard-api.azurewebsites.net/costcenters/${this.props.costcenter}`)
             .then(response => response.json())
             .then(data => this.setState({ rows: data, isLoading: false }))
 
@@ -54,7 +57,7 @@ class DataTable extends React.PureComponent {
         if (this.state.changedRows.length != 0) {
             // We use an arrow function here to maintain the correct "this" context
             this.state.changedRows.forEach((i) => {
-                fetch("https://asgard-api.azurewebsites.net/costcenters/CC6526/update?date=" + this.state.rows[i - 1].InputDate, {
+                fetch(`https://asgard-api.azurewebsites.net/costcenters/${this.props.costcenter}/update?date=` + this.state.rows[i - 1].InputDate, {
                     method: "POST", // *GET, POST, PUT, DELETE, etc.
                     mode: "no-cors", // no-cors, cors, *same-origin
                     headers: {

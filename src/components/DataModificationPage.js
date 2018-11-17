@@ -22,10 +22,11 @@ import DataTable from "./DataTable";
 export class DataModificationPage extends React.Component {
     constructor(props) {
         super(props);
+        console.log(props);
     }
 
     render() {
-        return (<DataTable />);
+        return (<DataTable costcenter={this.props.location.state.costCenter} />);
     }
 }
 
