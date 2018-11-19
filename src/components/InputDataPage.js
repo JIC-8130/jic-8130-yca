@@ -196,7 +196,7 @@ export class InputDataPage extends React.Component {
 
                                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 0 }}>
                                     <TextField
-                                        id="Lo Util"
+                                        id="LoUtil"
                                         label="Low Utility Reason"
                                         placeholder="Low Utility Reason"
                                         className="contact-page-name-list-field"
