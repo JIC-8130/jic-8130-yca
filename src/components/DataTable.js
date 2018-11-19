@@ -85,7 +85,6 @@ class DataTable extends React.PureComponent {
             var i;
             for (i = 1; i <= rows.length; i++) {
                 if (changed[i] != null) {
-                    // console.log(changed[i]);
                     var copy = this.state.changedRows;
                     copy.push(i);
                     this.setState({ changedRows: copy });
