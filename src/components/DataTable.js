@@ -82,36 +82,19 @@ class DataTable extends React.PureComponent {
     // Changes the state to reflect changes made to the rows of the table.
     commitChanges({ added, changed, deleted }) {
         let { rows } = this.state;
-        // if (added) {
-        //     const startingAddedId = rows.length > 0 ? rows[rows.length - 1].id + 1 : 0;
-        //     rows = [
-        //         ...rows,
-        //         ...added.map((row, index) => ({
-        //             id: startingAddedId + index,
-        //             ...row,
-        //         })),
-        //     ];
-        // }
+
         if (changed) {
             rows = rows.map(row => (changed[row.id] ? { ...row, ...changed[row.id] } : row));
-            // rows.map(row => (this.setState({ changedRows: this.state.changedRows.push(row.id) })));
-            // console.log(this.state);
             var i;
             for (i = 1; i <= rows.length; i++) {
                 if (changed[i] != null) {
-                    // console.log(changed[i]);
                     var copy = this.state.changedRows;
                     copy.push(i);
                     this.setState({ changedRows: copy });
                 }
             }
         }
-        // if (deleted) {
-        //     const deletedSet = new Set(deleted);
-        //     rows = rows.filter(row => !deletedSet.has(row.id));
-        // }
         this.setState({ rows });
-        // console.log(JSON.stringify(this.state.rows));
     }
 
     render() {
