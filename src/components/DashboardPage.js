@@ -81,32 +81,28 @@ export class DashboardPage extends React.Component {
         super(props);
         this.state = {
 
-            costCenterSelected: "",
-            producedData: {},
-            defectsData: {},
-            qiData: {},
-            safetyData: {},
-            workerData: {},
-            overtimeData: {},
-            downtimeData: {},
+            costCenterSelected: "CC6526", //FIXME: change this to be a different default cost center
+            costCenterData: {},
 
-            loadingData: false
+            loadingData: false,
         }
-        console.log("YEET");
         this.onViewTableClick = this.onViewTableClick.bind(this);
     }
 
+
     componentDidUpdate() {
+
+
         if (this.state.loadingData) {
             fetch(`https://asgard-api.azurewebsites.net/costcenters/${this.state.costCenterSelected}`)
                 .then(response => response.json())
                 .then(data => this.setState({
-                    producedData: {
+                    costCenterData: {
                         labels: ["10-15-2018", "10-16-2018", "10-17-2018", "10-18-2018"],
                         datasets:
                             [
                                 {
-                                    label: "Number of Units Produced",
+                                    label: this.state.costCenterSelected + ", Number of Units Produced",
                                     data: extractUnits(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -122,7 +118,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: "Number of Defects",
+                                    label: this.state.costCenterSelected + ", Number of Defects",
                                     data: extractDefects(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -138,7 +134,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: "Number of Workers at Line",
+                                    label: this.state.costCenterSelected + ", Number of Workers at Line",
                                     data: extractWorkerTotal(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -154,7 +150,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: "Number of Safety Incidents",
+                                    label: this.state.costCenterSelected + ", Number of Safety Incidents",
                                     data: extractSInc_Num(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -170,7 +166,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: "Number of Quality Incidents",
+                                    label: this.state.costCenterSelected + ", Number of Quality Incidents",
                                     data: extractQInc_Num(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -186,7 +182,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: "Assembly Line Overtime",
+                                    label: this.state.costCenterSelected + ", Assembly Line Overtime",
                                     data: extractOvertime(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -202,7 +198,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: "Assembly Line Downtime",
+                                    label: this.state.costCenterSelected + ", Assembly Line Downtime",
                                     data: extractDowntime(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -220,25 +216,13 @@ export class DashboardPage extends React.Component {
                             ]
                         // Set More Options
                     },
-                    loadingData: false
+                    loadingData: false,
                 }));
         }
     }
 
     render() {
         console.log("RENDER CALLED\nCURRENT COST CENTER: " + this.state.costCenterSelected);
-        const chartData = (canvas) => {
-            const ctx = canvas.getContext("2d")
-            const myChart = new Chart(ctx, {
-                type: 'line',
-                // data: productionData,
-                data: this.state.producedData,
-                options: chartOptions
-            });
-            return {
-                myChart
-            }
-        }
 
         return (
             <React.Fragment>
@@ -260,7 +244,7 @@ export class DashboardPage extends React.Component {
                     <Grid item xs={3} style={{ marginLeft: 45 }}>
                         <Typography variant="subheading" gutterBottom align="left">
                             <ul>
-                                <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6212", loadingData: true }) }}> 6212 YDC Receiving </Button></li>
+                                <li><Button variant="text" onClick={() => { console.log(this.state) }}> 6212 YDC Receiving </Button></li>
                                 <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6213", loadingData: true }) }}> 6213 YDC Stores </Button></li>
                                 <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6234", loadingData: true }) }}> 6234 YC Shipping </Button></li>
                                 <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6322", loadingData: true }) }}> 6322 Parts & Repair </Button></li>
@@ -280,7 +264,6 @@ export class DashboardPage extends React.Component {
                             </ul>
                         </Typography>
                     </Grid>
-
                     <Grid item xs={3}>
                         <Typography variant="subheading" gutterBottom align="left">
                             <ul>
@@ -307,13 +290,13 @@ export class DashboardPage extends React.Component {
 
                     <Grid item xs={12} style={{ marginTop: 25, marginBottom: 10 }}>
                         <Typography variant="title" gutterBottom align="center">
-                            Data Visualization
+                            Data for {this.state.costCenterSelected}
                         </Typography>
                     </Grid>
 
                     <Grid item xs={12} style={{ marginLeft: 15 }}>
                         < div id="chart" >
-                            <Line data={chartData} />
+                            <Line data={this.state.costCenterData} options={chartOptions} />
                         </div >
                     </Grid>
 
