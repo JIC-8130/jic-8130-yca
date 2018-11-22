@@ -26,6 +26,26 @@ a{text-decoration: none;
 color:inherit;
 }
 
+/* LANDING PAGE */ 
+
+.showcase{
+    color: #1e3c72;
+    padding-top: 20px;
+}
+
+.bio{
+    margin-top: 5px;
+}
+
+.landingPagebodyComponent{
+
+    background:url('../assets/img/bg.png') -50px -596px;  /* fallback for old browsers */
+ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+     min-height: 90.75vh;
+     /*text-align: center;*/
+}
+
 .iconbuttonsyle{
     margin-left:-12px;
     margin-right:20px
@@ -211,13 +231,6 @@ position: relative;
     font-family: inherit;
 }
 
-.landingPagebodyComponent{
-
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-     min-height: 85vh;
-     /*text-align: center;*/
-     
-}
 .getstartedpagepaper{
 
     padding:30px;
@@ -257,27 +270,27 @@ position: relative;
 @media only screen and (min-width: 600px) {
 
 
-       .contact-page-name-list-field{
-    width:400px;
-}
+    .contact-page-name-list-field{
+        width:400px;
+    }
 
-.loginPaper{
+    .loginPaper{
 
-       width: 420px;}
+        width: 420px;}
 
-       .loginheaderpart{
-        text-align: center;
-    margin-top: 3em;
-    opacity: 0.7;
-    padding: 15px;
-    background: #0766b9;
-}
+        .loginheaderpart{
+            text-align: center;
+        margin-top: 3em;
+        opacity: 0.7;
+        padding: 15px;
+        background: #0766b9;
+    }
 
-.loginformgroup div{
-    color:black;
-    margin-left:0.25em;
-    width:19em;
-   
-}
+    .loginformgroup div{
+        color:black;
+        margin-left:0.25em;
+        width:19em;
+    
+    }
 
 }

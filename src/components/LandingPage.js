@@ -5,55 +5,54 @@ import Typography from '@material-ui/core/Typography';
 import Image from 'material-ui-image';
 import bulb from '../assets/img/yokogawa-logo.png';
 import { Link } from 'react-router-dom';
+import theme from '../theme/theme.js';
 
 const LandingPage = () => (
     <div className="landingPagebodyComponent">
-        <Typography variant="display3" gutterBottom align="center">
-            Welcome to ASGARD
-        </Typography>
 
-        <Grid container justify="center" alignContent="center" alignItems="center">
-            <Grid item xs={12} md={12}>
-                <Typography variant="body2" gutterBottom align="center">
-                    YCA's Cost Center Data Collection Tool
-                </Typography>
-            </Grid>
+        <div className="showcase">
+            <u><Typography color="secondary" variant="display4" gutterBottom align="center" style={{ fontSize: '175px' }}>
+                ASGARD
+            </Typography></u>
+        </div>
 
-            <Grid container item xs={6} justify="center" alignContent="center" alignItems="center" direction="column">
-                <Typography gutterBottom align="center" style={{ paddingLeft: 20 }}>
+        <div className="bio">
+            <Grid container justify="center" alignContent="center" alignItems="center">
+                <Grid item xs={12} md={12}>
+                    <Typography variant="display1" gutterBottom align="center" style={{ color: 'white', fontSize: '50px' }}>
+                        Assembly Statistics Gatherer and Recorder
+                    </Typography>
+                </Grid>
+
+                <Grid container item xs={6} justify="center" alignContent="center" alignItems="center" direction="column">
+                    {/* <Typography gutterBottom align="center" style={{ paddingLeft: 20, color: 'white', border: '#fff 3px double' }}>
                     {`
-                  The application we have designed is called ASGARD, which stands for Assembly Statistics Gatherer and Recorder. The core functionality of our application is broken down into 2 parts: data gathering and data reporting.            
-                `}
-                </Typography>
+                        The Assembly Statistics Gatherer and Recorder application, better known as ASGARD, was developed by four Georgia Tech students in 2018. Their mission was to assist Yokogawa and tackle an efficiency problem within the company. 
+                        Therefore, the core functionality of their application can be seperated into 2 parts: data gathering and data reporting.           
+                    `}
+                </Typography> */}
 
-                <p></p>
+                    <Typography variant="headline" gutterBottom align="center" style={{ paddingLeft: 20, color: 'white' }}>
+                        {` Get started by creating an account or if you already have an account, please login `}
+                    </Typography>
 
-                <Typography variant="body2" gutterBottom align="center" style={{ paddingLeft: 20 }}>
-                    {`Get started by creating an account.   `}
-                </Typography>
+                    <Link to="/create-account">
+                        <Button color="outlined" variant="outlined" align="left" style={{ fontSize: '15px', marginTop: '40px', color: 'white' }}>
+                            Create Account
+                        </Button>
+                    </Link>
 
-                <Link to="/create-account">
-                    <Button color="primary" align="left" style={{ marginLeft: 20 }}>
-                        Create Account
-                    </Button>
-                </Link>
-
-                {/* <Link to ="/">
+                    {/* <Link to ="/">
                     <Button color="primary"  align="left" style={{marginLeft:20}}>
                         Know More
                     </Button>
                 </Link> */}
+                </Grid>
             </Grid>
-        </Grid>
-
-        <Grid item xs={8}>
-            <Image
-                src={bulb}
-                color="inherit" style={{ height: 40 }} imageStyle={{ width: '30', height: '30' }} />
-        </Grid>
+        </div>
 
 
-    </div>
+    </div >
 );
 
 export default LandingPage;
