@@ -89,6 +89,132 @@ export class DashboardPage extends React.Component {
         this.onViewTableClick = this.onViewTableClick.bind(this);
     }
 
+    componentDidMount() {
+        fetch(`https://asgard-api.azurewebsites.net/costcenters/${this.state.costCenterSelected}`)
+            .then(response => response.json())
+            .then(data => this.setState({
+                costCenterData: {
+                    labels: ["10-15-2018", "10-16-2018", "10-17-2018", "10-18-2018"],
+                    datasets:
+                        [
+                            {
+                                label: this.state.costCenterSelected + ", Number of Units Produced",
+                                data: extractUnits(data),
+                                lineTension: 0.3,
+                                fill: false,
+                                borderColor: 'rgba(51, 255, 107, 0.4)',
+                                backgroundColor: 'rgba(51, 255, 107, 0.5)',
+                                pointBorderColor: 'rgba(51, 255, 107, 0.4)',
+                                pointBackgroundColor: 'rgba(51, 255, 107, 1)',
+                                pointRadius: 5,
+                                pointHoverRadius: 15,
+                                pointHitRadius: 30,
+                                pointBorderWidth: 2,
+                                pointStyle: 'circle'
+                            },
+
+                            {
+                                label: this.state.costCenterSelected + ", Number of Defects",
+                                data: extractDefects(data),
+                                lineTension: 0.3,
+                                fill: false,
+                                borderColor: 'rgba(199, 0, 57, 0.4)',
+                                backgroundColor: 'rgba(199, 0, 57, 0.4)',
+                                borderColor: 'rgba(199, 0, 57, 0.4)',
+                                pointBackgroundColor: 'rgba(199, 0, 57, 1)',
+                                pointRadius: 5,
+                                pointHoverRadius: 15,
+                                pointHitRadius: 30,
+                                pointBorderWidth: 2,
+                                pointStyle: 'circle'
+                            },
+
+                            {
+                                label: this.state.costCenterSelected + ", Number of Workers at Line",
+                                data: extractWorkerTotal(data),
+                                lineTension: 0.3,
+                                fill: false,
+                                borderColor: 'rgba(51, 134, 255, 0.4)',
+                                backgroundColor: 'rgba(51, 134, 255, 0.4)',
+                                borderColor: 'rgba(51, 134, 255, 0.4)',
+                                pointBackgroundColor: 'rgba(51, 134, 255, 1)',
+                                pointRadius: 5,
+                                pointHoverRadius: 15,
+                                pointHitRadius: 30,
+                                pointBorderWidth: 2,
+                                pointStyle: 'circle'
+                            },
+
+                            {
+                                label: this.state.costCenterSelected + ", Number of Safety Incidents",
+                                data: extractSInc_Num(data),
+                                lineTension: 0.3,
+                                fill: false,
+                                borderColor: 'red',
+                                backgroundColor: 'red',
+                                borderColor: 'red',
+                                pointBackgroundColor: 'red',
+                                pointRadius: 5,
+                                pointHoverRadius: 15,
+                                pointHitRadius: 30,
+                                pointBorderWidth: 2,
+                                pointStyle: 'circle'
+                            },
+
+                            {
+                                label: this.state.costCenterSelected + ", Number of Quality Incidents",
+                                data: extractQInc_Num(data),
+                                lineTension: 0.3,
+                                fill: false,
+                                borderColor: 'rgba(255, 195, 0, 0.4)',
+                                backgroundColor: 'rgba(255, 195, 0, 0.4)',
+                                pointBorderColor: 'rgba(255, 195, 0, 0.4)',
+                                pointBackgroundColor: 'rgba(255, 195, 0, 1)',
+                                pointRadius: 5,
+                                pointHoverRadius: 15,
+                                pointHitRadius: 30,
+                                pointBorderWidth: 2,
+                                pointStyle: 'circle'
+                            },
+
+                            {
+                                label: this.state.costCenterSelected + ", Assembly Line Overtime",
+                                data: extractOvertime(data),
+                                lineTension: 0.3,
+                                fill: false,
+                                borderColor: 'rgba(95, 83, 100, 0.4)',
+                                backgroundColor: 'rgba(95, 83, 100, 0.4)',
+                                borderColor: 'rgba(95, 83, 100, 0.4)',
+                                pointBackgroundColor: 'rgba(95, 83, 100, 1)',
+                                pointRadius: 5,
+                                pointHoverRadius: 15,
+                                pointHitRadius: 30,
+                                pointBorderWidth: 2,
+                                pointStyle: 'circle'
+                            },
+
+                            {
+                                label: this.state.costCenterSelected + ", Assembly Line Downtime",
+                                data: extractDowntime(data),
+                                lineTension: 0.3,
+                                fill: false,
+                                borderColor: 'rgba(255, 159, 51, 0.7)',
+                                backgroundColor: 'rgba(255, 159, 51, 0.7)',
+                                borderColor: 'rgba(255, 159, 51, 0.7)',
+                                pointBackgroundColor: 'rgba(255, 159, 51, 1)',
+                                pointRadius: 5,
+                                pointHoverRadius: 15,
+                                pointHitRadius: 30,
+                                pointBorderWidth: 2,
+                                pointStyle: 'circle'
+                            }
+
+                        ]
+                    // Set More Options
+                },
+                loadingData: false,
+            }));
+    }
 
     componentDidUpdate() {
 
