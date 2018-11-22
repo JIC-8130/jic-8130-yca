@@ -20,8 +20,16 @@ var chartOptions = {
     }
 };
 
+function extractDates(data) {
+    var retVals = [];
+    data.forEach(row => {
+        retVals.push(row.InputDate);
+    });
+    return retVals;
+}
+
 function extractUnits(data) {
-    var retVals = []
+    var retVals = [];
     data.forEach(row => {
         retVals.push(row.UnitsProduced);
     });
@@ -29,7 +37,7 @@ function extractUnits(data) {
 }
 
 function extractDefects(data) {
-    var retVals = []
+    var retVals = [];
     data.forEach(row => {
         retVals.push(row.Defects);
     });
@@ -37,7 +45,7 @@ function extractDefects(data) {
 }
 
 function extractWorkerTotal(data) {
-    var retVals = []
+    var retVals = [];
     data.forEach(row => {
         retVals.push(row.WorkerTotal);
     });
@@ -45,7 +53,7 @@ function extractWorkerTotal(data) {
 }
 
 function extractSInc_Num(data) {
-    var retVals = []
+    var retVals = [];
     data.forEach(row => {
         retVals.push(row.SInc_Num);
     });
@@ -53,7 +61,7 @@ function extractSInc_Num(data) {
 }
 
 function extractQInc_Num(data) {
-    var retVals = []
+    var retVals = [];
     data.forEach(row => {
         retVals.push(row.QInc_Num);
     });
@@ -61,7 +69,7 @@ function extractQInc_Num(data) {
 }
 
 function extractOvertime(data) {
-    var retVals = []
+    var retVals = [];
     data.forEach(row => {
         retVals.push(row.Overtime);
     });
@@ -69,7 +77,7 @@ function extractOvertime(data) {
 }
 
 function extractDowntime(data) {
-    var retVals = []
+    var retVals = [];
     data.forEach(row => {
         retVals.push(row.Downtime);
     });
@@ -94,7 +102,7 @@ export class DashboardPage extends React.Component {
             .then(response => response.json())
             .then(data => this.setState({
                 costCenterData: {
-                    labels: ["10-15-2018", "10-16-2018", "10-17-2018", "10-18-2018"],
+                    labels: extractDates(data),
                     datasets:
                         [
                             {
@@ -224,7 +232,7 @@ export class DashboardPage extends React.Component {
                 .then(response => response.json())
                 .then(data => this.setState({
                     costCenterData: {
-                        labels: ["10-15-2018", "10-16-2018", "10-17-2018", "10-18-2018"],
+                        labels: extractDates(data),
                         datasets:
                             [
                                 {
