@@ -32,21 +32,21 @@ const LandingPage = () => (
                     `}
                 </Typography> */}
 
-                    <Typography variant="headline" gutterBottom align="center" style={{ paddingLeft: 20, color: 'white' }}>
-                        {` Get started by creating an account or if you already have an account, please login `}
+                    <Typography variant="headline" gutterBottom align="center" style={{ fontSize: '23px', color: 'white' }}>
+                        {` Get started by creating an account or if you already have an account please login `}
                     </Typography>
 
                     <Link to="/create-account">
-                        <Button color="outlined" variant="outlined" align="left" style={{ fontSize: '15px', marginTop: '40px', color: 'white' }}>
+                        <Button color="primary" variant="raised" align="left" style={{ fontSize: '15px', marginTop: '40px', color: 'white' }}>
                             Create Account
                         </Button>
                     </Link>
 
-                    {/* <Link to ="/">
-                    <Button color="primary"  align="left" style={{marginLeft:20}}>
-                        Know More
+                    {/* <Link to="/login">
+                        <Button color="primary" variant="raised" align="left" style={{ fontSize: '15px', marginTop: '40px', color: 'white' }}>
+                            Login
                     </Button>
-                </Link> */}
+                    </Link> */}
                 </Grid>
             </Grid>
         </div>

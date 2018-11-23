@@ -46,6 +46,11 @@ color:inherit;
      /*text-align: center;*/
 }
 
+ul {
+    list-style-type: square;
+  }  /*removes dashboard cc dots if uncommented */ 
+
+
 .iconbuttonsyle{
     margin-left:-12px;
     margin-right:20px
