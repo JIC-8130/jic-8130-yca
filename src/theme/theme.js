@@ -27,7 +27,7 @@ export const theme = createMuiTheme({
         primary: {
             main: '#1e3c72' // dark blu
         },
-        secondary: { main: '#fff' }, //purple?
+        secondary: { main: '#00a152' }, //purple?
 
         error: { main: '#ca0909' }, //red
 

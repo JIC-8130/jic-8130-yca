@@ -11,7 +11,7 @@ const LandingPage = () => (
     <div className="landingPagebodyComponent">
 
         <div className="showcase">
-            <u><Typography color="secondary" variant="display4" gutterBottom align="center" style={{ fontSize: '175px' }}>
+            <u><Typography color="secondary" variant="display4" gutterBottom align="center" style={{ color: 'white', fontSize: '175px' }}>
                 ASGARD
             </Typography></u>
         </div>
