@@ -26,7 +26,22 @@ export class InputDataPage extends React.Component {
 
     state = {
         messageopen: false,
-        messageInfo: {}
+        messageInfo: {},
+        values: {
+            InputDate: "",
+            UnitsProduced: "",
+            Defects: "",
+            WorkerTotal: "",
+            SInc_Num: "",
+            QInc_Num: "",
+            SInc_Reason: "",
+            QInc_Reason: "",
+            HighUtil: "",
+            LoUtil: "",
+            Overtime: "",
+            Downtime: "",
+            testing: "",
+        }
     }
 
     giveSuccessMessage = (message) => {
@@ -43,11 +58,27 @@ export class InputDataPage extends React.Component {
     };
 
     onSubmit = () => {
-        this.giveSuccessMessage('Sent Successfully ');
-        //this.props.startAddLogin(user);
-        // this.props.history.push('/');
-        // needs to only work with acceptable data
-        // only alpha + numbers
+        var reqBody = bodyConstructor.createBody(this.state.values);
+        async function addEntryToCostCenter(component) {
+            const response = fetch(`https://asgard-api.azurewebsites.net/costcenters/CC6526/add`, {
+                method: "POST", // *GET, POST, PUT, DELETE, etc.
+                mode: "no-cors", // no-cors, cors, *same-origin
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, contentType, Content-Type, Accept, Authorization",
+                    "X-Powered-By": "Express"
+
+                },
+                redirect: "follow", // manual, *follow, error
+                body: reqBody, // body data type must match "Content-Type" header
+            }).then(
+                component.giveSuccessMessage(' The entry was added!')
+            );
+        }
+        addEntryToCostCenter(this);
+        //this.giveSuccessMessage('Sent Successfully ');
     };
 
     handleClose = (event, reason) => {
@@ -111,6 +142,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="Number of Units Produced"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, UnitsProduced: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -121,6 +156,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="Number of Defects"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, Defects: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -141,6 +180,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="Assembly Line Downtime"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, Downtime: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -151,6 +194,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="Assembly Line Overtime"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, Overtime: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -161,6 +208,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="Number of Safety Incidents"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, SInc_Num: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -171,6 +222,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="Saftey Incident Reason"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, SInc_Reason: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -181,6 +236,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="Number of Quality Incidents"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, QInc_Num: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -191,6 +250,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="Quality Incident Reason"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, QInc_Reason: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -201,6 +264,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="Low Utility Reason"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, LoUtil: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -211,6 +278,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="High Utility Reason"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, HighUtil: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -221,6 +292,10 @@ export class InputDataPage extends React.Component {
                                         placeholder="Number of Workers at a Line"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            ...this.state, WorkerTotal: e.target.value
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
