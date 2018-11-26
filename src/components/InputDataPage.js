@@ -21,6 +21,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+import bodyConstructor from "../services/bodyConstructor";
+import regeneratorRuntime from "regenerator-runtime";
 
 export class InputDataPage extends React.Component {
 
@@ -28,7 +30,7 @@ export class InputDataPage extends React.Component {
         messageopen: false,
         messageInfo: {},
         values: {
-            InputDate: "",
+            InputDate: "None",
             UnitsProduced: "",
             Defects: "",
             WorkerTotal: "",
