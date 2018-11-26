@@ -30,7 +30,7 @@ export class InputDataPage extends React.Component {
         messageopen: false,
         messageInfo: {},
         values: {
-            InputDate: "None",
+            InputDate: "2018-10-10",
             UnitsProduced: "",
             Defects: "",
             WorkerTotal: "",
@@ -42,7 +42,6 @@ export class InputDataPage extends React.Component {
             LoUtil: "",
             Overtime: "",
             Downtime: "",
-            testing: "",
         }
     }
 
@@ -60,6 +59,7 @@ export class InputDataPage extends React.Component {
     };
 
     onSubmit = () => {
+        console.log(this.state.values);
         var reqBody = bodyConstructor.createBody(this.state.values);
         async function addEntryToCostCenter(component) {
             const response = fetch(`https://asgard-api.azurewebsites.net/costcenters/CC6526/add`, {
@@ -145,7 +145,21 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, UnitsProduced: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: e.target.value,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime,
+                                            }
+
                                         }
                                         )}
                                     />
@@ -159,7 +173,22 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, Defects: e.target.value
+                                            // ...this.state, Defects: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: e.target.value,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime,
+
+                                            }
                                         }
                                         )}
                                     />
@@ -183,7 +212,20 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, Downtime: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: e.target.value
+                                            }
                                         }
                                         )}
                                     />
@@ -197,7 +239,20 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, Overtime: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: e.target.value,
+                                                Downtime: this.state.values.Downtime
+                                            }
                                         }
                                         )}
                                     />
@@ -211,7 +266,20 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, SInc_Num: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: e.target.value,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
                                         }
                                         )}
                                     />
@@ -220,12 +288,25 @@ export class InputDataPage extends React.Component {
                                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 0 }}>
                                     <TextField
                                         id="Sinc_Reason"
-                                        label="Saftey Incident Reason"
-                                        placeholder="Saftey Incident Reason"
+                                        label="Safety Incident Reason"
+                                        placeholder="Safety Incident Reason"
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, SInc_Reason: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: e.target.value,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
                                         }
                                         )}
                                     />
@@ -239,7 +320,20 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, QInc_Num: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: e.target.value,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
                                         }
                                         )}
                                     />
@@ -253,7 +347,20 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, QInc_Reason: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: e.target.value,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
                                         }
                                         )}
                                     />
@@ -267,7 +374,20 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, LoUtil: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: e.target.value,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
                                         }
                                         )}
                                     />
@@ -281,7 +401,20 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, HighUtil: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: e.target.value,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
                                         }
                                         )}
                                     />
@@ -295,7 +428,20 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            ...this.state, WorkerTotal: e.target.value
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: e.target.value,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
                                         }
                                         )}
                                     />
