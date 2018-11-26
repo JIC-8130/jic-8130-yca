@@ -26,11 +26,14 @@ import regeneratorRuntime from "regenerator-runtime";
 
 export class InputDataPage extends React.Component {
 
+    today = new Date();
+    formDate = formatDate(this.today);
+
     state = {
         messageopen: false,
         messageInfo: {},
         values: {
-            InputDate: "2018-10-10",
+            InputDate: this.formDate,
             UnitsProduced: "",
             Defects: "",
             WorkerTotal: "",
@@ -477,6 +480,16 @@ export class InputDataPage extends React.Component {
 }
 
 
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
 export default InputDataPage;
