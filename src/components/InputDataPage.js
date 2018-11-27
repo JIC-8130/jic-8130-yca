@@ -83,7 +83,6 @@ export class InputDataPage extends React.Component {
             );
         }
         addEntryToCostCenter(this);
-        //this.giveSuccessMessage('Sent Successfully ');
     };
 
     handleClose = (event, reason) => {
@@ -176,7 +175,6 @@ export class InputDataPage extends React.Component {
                                         className="contact-page-name-list-field"
                                         margin="normal"
                                         onChange={e => this.setState({
-                                            // ...this.state, Defects: e.target.value
                                             values: {
                                                 InputDate: this.state.values.InputDate,
                                                 UnitsProduced: this.state.values.UnitsProduced,
@@ -196,17 +194,6 @@ export class InputDataPage extends React.Component {
                                         )}
                                     />
                                 </Grid>
-
-                                {/* <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="notes"
-                                        label="Notes"
-                                        placeholder="Notes"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid> */}
-
                                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 0 }}>
                                     <TextField
                                         id="Downtime"
