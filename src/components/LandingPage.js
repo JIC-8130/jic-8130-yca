@@ -25,12 +25,6 @@ const LandingPage = () => (
                 </Grid>
 
                 <Grid container item xs={6} justify="center" alignContent="center" alignItems="center" direction="column">
-                    {/* <Typography gutterBottom align="center" style={{ paddingLeft: 20, color: 'white', border: '#fff 3px double' }}>
-                    {`
-                        The Assembly Statistics Gatherer and Recorder application, better known as ASGARD, was developed by four Georgia Tech students in 2018. Their mission was to assist Yokogawa and tackle an efficiency problem within the company. 
-                        Therefore, the core functionality of their application can be seperated into 2 parts: data gathering and data reporting.           
-                    `}
-                </Typography> */}
 
                     <Typography variant="headline" gutterBottom align="center" style={{ fontSize: '23px', color: 'white' }}>
                         {` Get started by creating an account or if you already have an account please login `}
@@ -42,11 +36,6 @@ const LandingPage = () => (
                         </Button>
                     </Link>
 
-                    {/* <Link to="/login">
-                        <Button color="primary" variant="raised" align="left" style={{ fontSize: '15px', marginTop: '40px', color: 'white' }}>
-                            Login
-                    </Button>
-                    </Link> */}
                 </Grid>
             </Grid>
         </div>
