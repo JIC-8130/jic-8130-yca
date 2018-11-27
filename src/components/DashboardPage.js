@@ -234,7 +234,7 @@ export class DashboardPage extends React.Component {
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={12} style={{ marginTop: 25, marginBottom:10 }}>
+                    <Grid item xs={12} style={{ marginTop: 25, marginBottom: 10 }}>
                         <Typography variant="title" gutterBottom align="center">
                             Data Visualization
                         </Typography>

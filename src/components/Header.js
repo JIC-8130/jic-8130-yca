@@ -104,9 +104,6 @@ class Header extends React.Component {
 
           <AppBar position="static">
             <Toolbar>
-              <IconButton className="iconbuttonsyle" color="inherit" aria-label="Menu" onClick={this.onLeftIconButtonClick}>
-                <MenuIcon />
-              </IconButton>
               <Typography variant="title" color="inherit" className="headertypoclass" >
                 ASGARD
           </Typography>
