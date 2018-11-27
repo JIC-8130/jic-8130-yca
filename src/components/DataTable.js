@@ -26,8 +26,8 @@ class DataTable extends React.PureComponent {
                 { name: "UnitsProduced", title: "Units Produced" },
                 { name: "Defects", title: "Defects" },
                 { name: "WorkerTotal", title: "Worker Total" },
-                { name: "SInc_Num", title: "# of Safety Incidents" },
-                { name: "QInc_Num", title: "# of Quality Incidents" },
+                { name: "SInc_Num", title: "Safety Incidents" },
+                { name: "QInc_Num", title: "Quality Incidents" },
                 { name: "SInc_Reason", title: "Safety Incident Reasons" },
                 { name: "QInc_Reason", title: "Quality Incident Reasons" },
                 { name: "HighUtil", title: "High Utilization" },
@@ -42,6 +42,8 @@ class DataTable extends React.PureComponent {
 
         this.commitChanges = this.commitChanges.bind(this);
     }
+
+
 
     componentDidMount() {
         this.setState({ isLoading: true });
@@ -110,8 +112,8 @@ class DataTable extends React.PureComponent {
             );
         }
         return (
-            <Paper>
-                <Paper className="homepagepaper">
+            <Paper >
+                <Paper>
                     <Typography variant="display3" gutterBottom align="center">
                         {this.props.costcenter}
                     </Typography>
@@ -131,7 +133,6 @@ class DataTable extends React.PureComponent {
                         showEditCommand
                     />
                 </Grid>
-                <Button color="primary" variant="raised">Hello</Button>
             </Paper>
         );
     }

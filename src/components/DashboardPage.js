@@ -8,6 +8,8 @@ import { Chart, Line } from 'react-chartjs-2';
 import history from "../routers/asgard-history";
 import { Route } from "react-router-dom";
 import Data from "./DataModificationPage";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 var chartOptions = {
     legend: {
@@ -95,6 +97,20 @@ export class DashboardPage extends React.Component {
             loadingData: false,
         }
         this.onViewTableClick = this.onViewTableClick.bind(this);
+        this.printDocument = this.printDocument.bind(this);
+    }
+
+    printDocument() {
+        const input = document.getElementById('chart');
+        html2canvas(input)
+            .then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF();
+                pdf.addImage(imgData, 'PNG', 0, 0, 200, 100);
+                // pdf.output('dataurlnewwindow');
+                pdf.save("download.pdf");
+            })
+            ;
     }
 
     componentDidMount() {
@@ -436,7 +452,7 @@ export class DashboardPage extends React.Component {
 
 
                     <Grid item xs={12} align="right" style={{ marginTop: 15 }}>
-                        <Button color="primary" variant="raised" size="large" style={{ marginRight: 15 }}>
+                        <Button color="primary" variant="raised" size="large" style={{ marginRight: 15 }} onClick={this.printDocument}>
                             Generate Report
                         </Button>
                         <Button color="primary" variant="outlined" style={{ marginRight: 20 }} onClick={this.onViewTableClick}>
