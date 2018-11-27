@@ -364,7 +364,7 @@ export class DashboardPage extends React.Component {
                     <Grid item xs={12} style={{ marginTop: 5 }}>
                         <Paper className="homepagepaper">
                             <Typography variant="display3" gutterBottom align="center">
-                                Welcome
+                                QA Dashboard
                             </Typography>
                         </Paper>
                     </Grid>
