@@ -21,12 +21,31 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+import bodyConstructor from "../services/bodyConstructor";
+import regeneratorRuntime from "regenerator-runtime";
 
 export class InputDataPage extends React.Component {
 
+    today = new Date();
+    formDate = formatDate(this.today);
+
     state = {
         messageopen: false,
-        messageInfo: {}
+        messageInfo: {},
+        values: {
+            InputDate: this.formDate,
+            UnitsProduced: "",
+            Defects: "",
+            WorkerTotal: "",
+            SInc_Num: "",
+            QInc_Num: "",
+            SInc_Reason: "",
+            QInc_Reason: "",
+            HighUtil: "",
+            LoUtil: "",
+            Overtime: "",
+            Downtime: "",
+        }
     }
 
     giveSuccessMessage = (message) => {
@@ -43,11 +62,27 @@ export class InputDataPage extends React.Component {
     };
 
     onSubmit = () => {
-        this.giveSuccessMessage('Sent Successfully ');
-        //this.props.startAddLogin(user);
-        // this.props.history.push('/');
-        // needs to only work with acceptable data
-        // only alpha + numbers
+        console.log(this.state.values);
+        var reqBody = bodyConstructor.createBody(this.state.values);
+        async function addEntryToCostCenter(component) {
+            const response = fetch(`https://asgard-api.azurewebsites.net/costcenters/CC6526/add`, {
+                method: "POST", // *GET, POST, PUT, DELETE, etc.
+                mode: "no-cors", // no-cors, cors, *same-origin
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, contentType, Content-Type, Accept, Authorization",
+                    "X-Powered-By": "Express"
+
+                },
+                redirect: "follow", // manual, *follow, error
+                body: reqBody, // body data type must match "Content-Type" header
+            }).then(
+                component.giveSuccessMessage(' The entry was added!')
+            );
+        }
+        addEntryToCostCenter(this);
     };
 
     handleClose = (event, reason) => {
@@ -111,6 +146,24 @@ export class InputDataPage extends React.Component {
                                         placeholder="Number of Units Produced"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: e.target.value,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime,
+                                            }
+
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -121,19 +174,26 @@ export class InputDataPage extends React.Component {
                                         placeholder="Number of Defects"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: e.target.value,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime,
+
+                                            }
+                                        }
+                                        )}
                                     />
                                 </Grid>
-
-                                {/* <Grid item xs={12} lg={6} md={6} style={{ marginTop: 10 }}>
-                                    <TextField
-                                        id="notes"
-                                        label="Notes"
-                                        placeholder="Notes"
-                                        className="contact-page-name-list-field"
-                                        margin="normal"
-                                    />
-                                </Grid> */}
-
                                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 0 }}>
                                     <TextField
                                         id="Downtime"
@@ -141,6 +201,23 @@ export class InputDataPage extends React.Component {
                                         placeholder="Assembly Line Downtime"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: e.target.value
+                                            }
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -151,6 +228,23 @@ export class InputDataPage extends React.Component {
                                         placeholder="Assembly Line Overtime"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: e.target.value,
+                                                Downtime: this.state.values.Downtime
+                                            }
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -161,16 +255,50 @@ export class InputDataPage extends React.Component {
                                         placeholder="Number of Safety Incidents"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: e.target.value,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
                                 <Grid item xs={12} lg={6} md={6} style={{ marginTop: 0 }}>
                                     <TextField
                                         id="Sinc_Reason"
-                                        label="Saftey Incident Reason"
-                                        placeholder="Saftey Incident Reason"
+                                        label="Safety Incident Reason"
+                                        placeholder="Safety Incident Reason"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: e.target.value,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -181,6 +309,23 @@ export class InputDataPage extends React.Component {
                                         placeholder="Number of Quality Incidents"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: e.target.value,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -191,6 +336,23 @@ export class InputDataPage extends React.Component {
                                         placeholder="Quality Incident Reason"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: e.target.value,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -201,6 +363,23 @@ export class InputDataPage extends React.Component {
                                         placeholder="Low Utility Reason"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: e.target.value,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -211,6 +390,23 @@ export class InputDataPage extends React.Component {
                                         placeholder="High Utility Reason"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: this.state.values.WorkerTotal,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: e.target.value,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -221,6 +417,23 @@ export class InputDataPage extends React.Component {
                                         placeholder="Number of Workers at a Line"
                                         className="contact-page-name-list-field"
                                         margin="normal"
+                                        onChange={e => this.setState({
+                                            values: {
+                                                InputDate: this.state.values.InputDate,
+                                                UnitsProduced: this.state.values.UnitsProduced,
+                                                Defects: this.state.values.Defects,
+                                                WorkerTotal: e.target.value,
+                                                SInc_Num: this.state.values.SInc_Num,
+                                                QInc_Num: this.state.values.QInc_Num,
+                                                SInc_Reason: this.state.values.SInc_Reason,
+                                                QInc_Reason: this.state.values.QInc_Reason,
+                                                HighUtil: this.state.values.HighUtil,
+                                                LoUtil: this.state.values.LoUtil,
+                                                Overtime: this.state.values.Overtime,
+                                                Downtime: this.state.values.Downtime
+                                            }
+                                        }
+                                        )}
                                     />
                                 </Grid>
 
@@ -254,6 +467,16 @@ export class InputDataPage extends React.Component {
 }
 
 
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
 export default InputDataPage;
