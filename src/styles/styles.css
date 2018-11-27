@@ -42,7 +42,7 @@ color:inherit;
     background:url('../assets/img/bg.png') -50px -596px;  /* fallback for old browsers */
  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-     min-height: 90.75vh;
+     min-height: 95vh;
      /*text-align: center;*/
 }
 
@@ -286,9 +286,9 @@ position: relative;
         .loginheaderpart{
             text-align: center;
         margin-top: 3em;
-        opacity: 0.7;
+        opacity: 0.9;
         padding: 15px;
-        background: #0766b9;
+        background: #1e3c72;
     }
 
     .loginformgroup div{
