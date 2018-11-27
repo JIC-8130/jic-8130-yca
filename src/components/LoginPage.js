@@ -48,7 +48,7 @@ export class LoginPage extends React.Component {
           </div>
           <p></p>
           <Typography variant="headline" component="h3">
-            Login to your account
+            Sign into your account
           </Typography>
           <form onSubmit={this.onSubmit}>
             <div className="loginformgroup">

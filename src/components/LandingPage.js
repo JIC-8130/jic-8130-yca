@@ -5,55 +5,43 @@ import Typography from '@material-ui/core/Typography';
 import Image from 'material-ui-image';
 import bulb from '../assets/img/yokogawa-logo.png';
 import { Link } from 'react-router-dom';
+import theme from '../theme/theme.js';
 
 const LandingPage = () => (
     <div className="landingPagebodyComponent">
-        <Typography variant="display3" gutterBottom align="center">
-            Welcome to ASGARD
-        </Typography>
 
-        <Grid container justify="center" alignContent="center" alignItems="center">
-            <Grid item xs={12} md={12}>
-                <Typography variant="body2" gutterBottom align="center">
-                    YCA's Cost Center Data Collection Tool
-                </Typography>
+        <div className="showcase">
+            <u><Typography color="secondary" variant="display4" gutterBottom align="center" style={{ color: 'white', fontSize: '175px' }}>
+                ASGARD
+            </Typography></u>
+        </div>
+
+        <div className="bio">
+            <Grid container justify="center" alignContent="center" alignItems="center">
+                <Grid item xs={12} md={12}>
+                    <Typography variant="display1" gutterBottom align="center" style={{ color: 'white', fontSize: '50px' }}>
+                        Assembly Statistics Gatherer and Recorder
+                    </Typography>
+                </Grid>
+
+                <Grid container item xs={6} justify="center" alignContent="center" alignItems="center" direction="column">
+
+                    <Typography variant="headline" gutterBottom align="center" style={{ fontSize: '23px', color: 'white' }}>
+                        {` Get started by creating an account or if you already have an account please login `}
+                    </Typography>
+
+                    <Link to="/create-account">
+                        <Button color="primary" variant="raised" align="left" style={{ fontSize: '15px', marginTop: '40px', color: 'white' }}>
+                            Create Account
+                        </Button>
+                    </Link>
+
+                </Grid>
             </Grid>
-
-            <Grid container item xs={6} justify="center" alignContent="center" alignItems="center" direction="column">
-                <Typography gutterBottom align="center" style={{ paddingLeft: 20 }}>
-                    {`
-                  The application we have designed is called ASGARD, which stands for Assembly Statistics Gatherer and Recorder. The core functionality of our application is broken down into 2 parts: data gathering and data reporting.            
-                `}
-                </Typography>
-
-                <p></p>
-
-                <Typography variant="body2" gutterBottom align="center" style={{ paddingLeft: 20 }}>
-                    {`Get started by creating an account.   `}
-                </Typography>
-
-                <Link to="/create-account">
-                    <Button color="primary" align="left" style={{ marginLeft: 20 }}>
-                        Create Account
-                    </Button>
-                </Link>
-
-                {/* <Link to ="/">
-                    <Button color="primary"  align="left" style={{marginLeft:20}}>
-                        Know More
-                    </Button>
-                </Link> */}
-            </Grid>
-        </Grid>
-
-        <Grid item xs={8}>
-            <Image
-                src={bulb}
-                color="inherit" style={{ height: 40 }} imageStyle={{ width: '30', height: '30' }} />
-        </Grid>
+        </div>
 
 
-    </div>
+    </div >
 );
 
 export default LandingPage;
