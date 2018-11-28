@@ -108,7 +108,7 @@ export class DashboardPage extends React.Component {
                 const pdf = new jsPDF();
                 pdf.addImage(imgData, 'PNG', 0, 0, 200, 100);
                 // pdf.output('dataurlnewwindow');
-                pdf.save("download.pdf");
+                pdf.save(this.state.costCenterSelected + '.pdf');
             })
             ;
     }
