@@ -113,11 +113,6 @@ class DataTable extends React.PureComponent {
         }
         return (
             <Paper >
-                <Paper>
-                    <Typography variant="display3" gutterBottom align="center">
-                        {this.props.costcenter}
-                    </Typography>
-                </Paper>
                 <Grid
                     rows={rows}
                     columns={columns}
