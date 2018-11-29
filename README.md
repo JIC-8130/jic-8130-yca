@@ -26,9 +26,9 @@ There are a lot of new features to include in this version. Highlights include:
 
 ## Install Guide
 
-## 1. Pull Code
+### 1. Pull Code
 
 
-## 2a. IIS Server on Windows Server 2012 R2
+### 2a. IIS Server on Windows Server 2012 R2
 
-## 2b. Azure Web App Service
+### 2b. Azure Web App Service
