@@ -84,6 +84,15 @@ function extractDowntime(data) {
     return retVals;
 }
 
+// New extract function for first analytic
+function extractMhProd(data) {
+    var retVals = [];
+    data.forEach(row => {
+        retVals.push(row.mhProd);
+    });
+    return retVals;
+}
+
 export class DashboardPage extends React.Component {
     constructor(props) {
         super(props);
@@ -204,6 +213,22 @@ export class DashboardPage extends React.Component {
                             {
                                 label: this.state.costCenterSelected + ", Assembly Line Downtime",
                                 data: extractDowntime(data),
+                                lineTension: 0.3,
+                                fill: false,
+                                borderColor: 'rgba(255, 159, 51, 0.7)',
+                                backgroundColor: 'rgba(255, 159, 51, 0.7)',
+                                borderColor: 'rgba(255, 159, 51, 0.7)',
+                                pointBackgroundColor: 'rgba(255, 159, 51, 1)',
+                                pointRadius: 5,
+                                pointHoverRadius: 15,
+                                pointHitRadius: 30,
+                                pointBorderWidth: 2,
+                                pointStyle: 'circle'
+                            },
+
+                            {
+                                label: this.state.costCenterSelected + ", Manhour Productivity",
+                                data: extractMhProd(data),
                                 lineTension: 0.3,
                                 fill: false,
                                 borderColor: 'rgba(255, 159, 51, 0.7)',

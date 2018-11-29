@@ -30,7 +30,9 @@ class DataTable extends React.PureComponent {
                 { name: "QInc_Reason", title: "Quality Incident Reasons" },
                 { name: "HighUtil", title: "High Utilization" },
                 { name: "LoUtil", title: "Low Utilization" },
-                { name: "Overtime", title: "Overtime" }
+                { name: "Overtime", title: "Overtime" },
+                // New column
+                { name: "mhProd", title: "Manhour Prod." }
             ],
             rows: [],
             isLoading: false,
