@@ -7,6 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import regeneratorRuntime from "regenerator-runtime";
 import ReactGrid from "@material-ui/core/Grid";
 import bodyConstructor from "../services/bodyConstructor";
+import { Typography } from '@material-ui/core';
 
 const getRowId = row => row.id;
 
@@ -107,6 +108,11 @@ class DataTable extends React.PureComponent {
         }
         return (
             <Paper>
+                <Paper>
+                    <Typography variant="display3" gutterBottom align="center">
+                        {this.props.costcenter}
+                    </Typography>
+                </Paper>
                 <Grid
                     rows={rows}
                     columns={columns}
