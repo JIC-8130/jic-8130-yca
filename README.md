@@ -1,25 +1,34 @@
-# jic-8130-yca
+![yca-logo](http://industriaaldia.com/images/ialdia/logos/yokogawa_logo.jpg)
 
-Team 8130's Junior Design project.
+# ASGARD Delivery Docs
 
-We are designing a desktop application for Yokogawa Corporation of America (YCA) to allow our client to track and analyze data from their assembly processes and digitize their organizational processes. YCA manufactures equipment through assembly line processes and is a leading company in producing testing, measurement, and automation materials for businesses around the world. 
+## Release Notes
 
-### Team Conventions
+### Version 0.0.1
 
-Fork & Pull
-- Each teammate will fork the jic-8130-yca repository to create their own individual workspace for the project.
-- The team will follow a fork & pull model as described [here](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
+#### New Features
 
-Branches
-- Two epic branches will be split from master: Track and Report
-- Branches should follow the naming convention: EpicName/StoryName. Follow UpperCamelCase.
+You could say everything's a new feature 😝 
 
-Style
-- We will follow the style guide found here: https://github.com/airbnb/javascript
+We're very excited to share this first version with our client, Yokogawa Corporation of America! The goal of this app is to make data collection a little easier on the team at YCA. Being a manufacturing company, YCA is very interested in making data-driven decisions. Data is at the heart of their business, and ASGARD will make it easy for them to gather, process, and share data about their company's various cost centers.
 
-### Agile Ceremonies
+There are a lot of new features to include in this version. Highlights include:
 
-- The team will participate in sprint planning (grooming) for the upcoming sprint during the last week of the current sprint.
-  - This should include iterating over each story in the upcoming sprint to flesh out its acceptance criteria/definition of done, story pointing, and assigning.
-- The team will participate in a retrospective during the first week after a sprint has been completed to discuss what is and is not working and develop a plan for action based on the feedback from the retrospective for the next sprint.
-- The team will participate in a daily standup over Slack in the #general channel by each team member providing a summary of any work they have done, impediments they have, and work they plan to do that day.
+- Line manager data input
+- QA Engineer dashboard with comprehensive graph
+- Detailed Cost Center data view with editable table
+- Export function that creates PDF of a cost center's graph and chart
+
+#### Known Bugs
+
+
+------
+
+## Install Guide
+
+## 1. Pull Code
+
+
+## 2a. IIS Server on Windows Server 2012 R2
+
+## 2b. Azure Web App Service
