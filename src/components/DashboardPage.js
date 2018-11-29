@@ -89,7 +89,7 @@ export class DashboardPage extends React.Component {
         super(props);
         this.state = {
 
-            costCenterSelected: "CC6526", //FIXME: change this to be a different default cost center
+            costCenterSelected: "CC6212", //FIXME: change this to be a different default cost center
             costCenterData: {},
 
             loadingData: false,
