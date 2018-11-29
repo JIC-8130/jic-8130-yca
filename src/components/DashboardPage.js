@@ -378,7 +378,7 @@ export class DashboardPage extends React.Component {
                     <Grid item xs={3} style={{ marginLeft: 45 }}>
                         <Typography variant="subheading" gutterBottom align="left">
                             <ul>
-                                <li><Button variant="text" onClick={() => { console.log(this.state) }}> 6212 YDC Receiving </Button></li>
+                                <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6212", loadingData: true }) }}> 6212 YDC Receiving </Button></li>
                                 <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6213", loadingData: true }) }}> 6213 YDC Stores </Button></li>
                                 <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6234", loadingData: true }) }}> 6234 YC Shipping </Button></li>
                                 <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6322", loadingData: true }) }}> 6322 Parts & Repair </Button></li>
