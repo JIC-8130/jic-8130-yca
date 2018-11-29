@@ -7,6 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import regeneratorRuntime from "regenerator-runtime";
 import ReactGrid from "@material-ui/core/Grid";
 import bodyConstructor from "../services/bodyConstructor";
+import { Typography } from '@material-ui/core';
 
 const getRowId = row => row.id;
 
@@ -15,8 +16,6 @@ class DataTable extends React.PureComponent {
 
 
     constructor(props) {
-        console.log("IN THE DATATABLE");
-        console.log(props);
         super(props);
         this.state = {
             columns: [
@@ -32,6 +31,8 @@ class DataTable extends React.PureComponent {
                 { name: "LoUtil", title: "Low Utilization" },
                 { name: "Overtime", title: "Overtime" },
                 // New column
+
+                { name: "Downtime", title: "Downtime" },
                 { name: "mhProd", title: "Manhour Prod." }
             ],
             rows: [],
@@ -76,8 +77,6 @@ class DataTable extends React.PureComponent {
             });
             // Reset to accept the next set of changes
             this.setState({ changedRows: [] });
-        } else {
-            console.log("No changes");
         }
     }
 
@@ -88,9 +87,10 @@ class DataTable extends React.PureComponent {
         if (changed) {
             rows = rows.map(row => (changed[row.id] ? { ...row, ...changed[row.id] } : row));
             var i;
+            var copy;
             for (i = 1; i <= rows.length; i++) {
                 if (changed[i] != null) {
-                    var copy = this.state.changedRows;
+                    copy = this.state.changedRows;
                     copy.push(i);
                     this.setState({ changedRows: copy });
                 }
@@ -111,6 +111,11 @@ class DataTable extends React.PureComponent {
         }
         return (
             <Paper>
+                <Paper>
+                    <Typography variant="display3" gutterBottom align="center">
+                        {this.props.costcenter}
+                    </Typography>
+                </Paper>
                 <Grid
                     rows={rows}
                     columns={columns}
