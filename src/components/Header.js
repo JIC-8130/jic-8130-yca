@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
+import history from "../routers/asgard-history";
 
 
 
@@ -68,10 +69,15 @@ class Header extends React.Component {
   logOut = () => {
     // alert("LOGOUT");
     this.props.logout();
+    history.push("/");
+  }
+
+  goToLogin = () => {
+    history.push("/login");
   }
 
   conditRenderEssential = () => this.props.isLoginSuccess ? (
-    <Button color="inherit" align="right" onClick={this.logOut}> <Link to="/"> Logout</Link></Button>) : (<Button color="inherit" align="right"><Link to="/login"> Login</Link></Button>)
+    <Button color="inherit" align="right" onClick={this.logOut}> Logout</Button>) : (<Button color="inherit" align="right" onClick={this.goToLogin}> Login</Button>)
 
   render() {
 
