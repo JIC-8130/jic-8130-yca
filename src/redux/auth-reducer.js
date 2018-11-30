@@ -82,6 +82,16 @@ export function login(ID, password) {
   }
 }
 
+export function logout() {
+  // alert("you called logout!");
+  return dispatch => {
+    dispatch(setLoginPending(false));
+    dispatch(setLoginSuccess(false));
+    dispatch(setLoginError(null));
+    dispatch(setUserPath(null));
+  }
+}
+
 export default function auth_reducer(state = {
   isLoginSuccess: false,
   isLoginPending: false,

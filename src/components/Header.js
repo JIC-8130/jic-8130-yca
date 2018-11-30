@@ -6,6 +6,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { logout } from "../redux/auth-reducer";
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Divider from '@material-ui/core/Divider';
@@ -18,7 +19,6 @@ import { Link } from 'react-router-dom';
 import PublicNavList from '../navs/publicNav';
 import PrivateNavList from '../navs/privateNav';
 import ExpandNavList from '../navs/expandNavs'
-import { logout } from '../store/actions/auth';
 import { NavLink } from 'react-router-dom';
 
 
@@ -65,12 +65,13 @@ class Header extends React.Component {
     this.setState({ componentsmenuopen: false });
   };
 
-  logOut() {
-    alert("LOGOUT");
+  logOut = () => {
+    // alert("LOGOUT");
+    this.props.logout();
   }
 
   conditRenderEssential = () => this.props.isLoginSuccess ? (
-    <Button color="inherit" align="right" onClick={this.logOut}> Logout</Button>) : (<Button color="inherit" align="right"><Link to="/login"> Login</Link></Button>)
+    <Button color="inherit" align="right" onClick={this.logOut}> <Link to="/"> Logout</Link></Button>) : (<Button color="inherit" align="right"><Link to="/login"> Login</Link></Button>)
 
   render() {
 
@@ -136,7 +137,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password) => dispatch(login(email, password))
+    login: (email, password) => dispatch(login(email, password)),
+    logout: () => {
+      logout()(dispatch);
+    }
   };
 }
 
