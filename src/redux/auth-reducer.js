@@ -1,5 +1,6 @@
 import regeneratorRuntime from "regenerator-runtime";
 import jdCrypto from "../services/encryption";
+const isEmpty = require("is-empty-object");
 
 const SET_LOGIN_PENDING = 'SET_LOGIN_PENDING';
 const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
@@ -40,6 +41,14 @@ function callLoginApi(ID, password, callback) {
     let ID_NUM = idnum;
     const response = await fetch(`https://asgard-api.azurewebsites.net/users/${ID_NUM}`);
     const myJson = await response.json(); //extract JSON from the http response
+
+    // Case where you don't find the ID
+    console.log(myJson);
+    if (isEmpty(myJson)) {
+      console.log("we here");
+      return callback({ userPath: null, error: new Error("Invalid ID and password!") });
+    }
+
     if (jdCrypto.authenticate(password, myJson.password, myJson.Salt)) {
       // alert("Correct password!");
       if (myJson.UsrType == "QA") {

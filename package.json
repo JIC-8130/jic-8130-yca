@@ -29,6 +29,7 @@
     "fusioncharts": "^3.12.2",
     "history": "^4.7.2",
     "html2canvas": "^1.0.0-alpha.12",
+    "is-empty-object": "^1.1.1",
     "json-sql": "^0.4.11",
     "jspdf": "^1.4.1",
     "material-ui-image": "^3.0.0",
