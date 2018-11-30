@@ -8,6 +8,8 @@ import { Chart, Line } from 'react-chartjs-2';
 import history from "../routers/asgard-history";
 import { Route } from "react-router-dom";
 import Data from "./DataModificationPage";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 var chartOptions = {
     legend: {
@@ -95,6 +97,37 @@ export class DashboardPage extends React.Component {
             loadingData: false,
         }
         this.onViewTableClick = this.onViewTableClick.bind(this);
+        this.printDocument = this.printDocument.bind(this);
+    }
+
+    printDocument() {
+        const graph = document.getElementById('chart');
+        html2canvas(graph)
+            .then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF();
+                pdf.setFontSize(29);
+                pdf.setFont("courier");
+                pdf.text("QA Engineer Report for " + this.state.costCenterSelected, 15, 17);
+
+
+                // pdf.setFont("times");
+                // pdf.setFontType("italic");
+                // pdf.text(20, 90, 'This is times italic.');
+
+                // pdf.setFont("helvetica");
+                // pdf.setFontType("bold");
+                // pdf.text(20, 110, 'This is helvetica bold.');
+
+                // pdf.setFont("courier");
+                // pdf.setFontType("bolditalic");
+                // pdf.text(20, 120, 'This is courier bolditalic.');
+
+                pdf.addImage(imgData, 'PNG', 6, 27, 200, 110); //bot: 189
+                pdf.rect(3, 25, 205, 115); // chart border
+                pdf.rect(3, 3, 205, 290); // border
+                pdf.save(this.state.costCenterSelected + '.pdf');
+            });
     }
 
     componentDidMount() {
@@ -106,7 +139,7 @@ export class DashboardPage extends React.Component {
                     datasets:
                         [
                             {
-                                label: this.state.costCenterSelected + ", Number of Units Produced",
+                                label: "Number of Units Produced",
                                 data: extractUnits(data),
                                 lineTension: 0.3,
                                 fill: false,
@@ -122,7 +155,7 @@ export class DashboardPage extends React.Component {
                             },
 
                             {
-                                label: this.state.costCenterSelected + ", Number of Defects",
+                                label: "Number of Defects",
                                 data: extractDefects(data),
                                 lineTension: 0.3,
                                 fill: false,
@@ -138,7 +171,7 @@ export class DashboardPage extends React.Component {
                             },
 
                             {
-                                label: this.state.costCenterSelected + ", Number of Workers at Line",
+                                label: "Number of Workers at Line",
                                 data: extractWorkerTotal(data),
                                 lineTension: 0.3,
                                 fill: false,
@@ -154,7 +187,7 @@ export class DashboardPage extends React.Component {
                             },
 
                             {
-                                label: this.state.costCenterSelected + ", Number of Safety Incidents",
+                                label: "Number of Safety Incidents",
                                 data: extractSInc_Num(data),
                                 lineTension: 0.3,
                                 fill: false,
@@ -170,7 +203,7 @@ export class DashboardPage extends React.Component {
                             },
 
                             {
-                                label: this.state.costCenterSelected + ", Number of Quality Incidents",
+                                label: "Number of Quality Incidents",
                                 data: extractQInc_Num(data),
                                 lineTension: 0.3,
                                 fill: false,
@@ -186,7 +219,7 @@ export class DashboardPage extends React.Component {
                             },
 
                             {
-                                label: this.state.costCenterSelected + ", Assembly Line Overtime",
+                                label: "Assembly Line Overtime",
                                 data: extractOvertime(data),
                                 lineTension: 0.3,
                                 fill: false,
@@ -202,7 +235,7 @@ export class DashboardPage extends React.Component {
                             },
 
                             {
-                                label: this.state.costCenterSelected + ", Assembly Line Downtime",
+                                label: "Assembly Line Downtime",
                                 data: extractDowntime(data),
                                 lineTension: 0.3,
                                 fill: false,
@@ -236,7 +269,7 @@ export class DashboardPage extends React.Component {
                         datasets:
                             [
                                 {
-                                    label: this.state.costCenterSelected + ", Number of Units Produced",
+                                    label: "Number of Units Produced",
                                     data: extractUnits(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -252,7 +285,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Number of Defects",
+                                    label: "Number of Defects",
                                     data: extractDefects(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -268,7 +301,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Number of Workers at Line",
+                                    label: "Number of Workers at Line",
                                     data: extractWorkerTotal(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -284,7 +317,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Number of Safety Incidents",
+                                    label: "Number of Safety Incidents",
                                     data: extractSInc_Num(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -300,7 +333,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Number of Quality Incidents",
+                                    label: "Number of Quality Incidents",
                                     data: extractQInc_Num(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -316,7 +349,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Assembly Line Overtime",
+                                    label: "Assembly Line Overtime",
                                     data: extractOvertime(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -332,7 +365,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Assembly Line Downtime",
+                                    label: "Assembly Line Downtime",
                                     data: extractDowntime(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -436,7 +469,7 @@ export class DashboardPage extends React.Component {
 
 
                     <Grid item xs={12} align="right" style={{ marginTop: 15 }}>
-                        <Button color="primary" variant="raised" size="large" style={{ marginRight: 15 }}>
+                        <Button color="primary" variant="raised" size="large" style={{ marginRight: 15 }} onClick={this.printDocument}>
                             Generate Report
                         </Button>
                         <Button color="primary" variant="outlined" style={{ marginRight: 20 }} onClick={this.onViewTableClick}>
