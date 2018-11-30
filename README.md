@@ -82,11 +82,20 @@ If there are further problems installing the application, please refer to [this 
 
 ### IIS Server on Windows Server 2012 R2
 
-TODO: Include info and screenshots
+Set-up on an IIS Server on Windows Server 2012 R2 can be done in one of the two following ways:
+
+1.  iisnode 
+
+   - Official Set-up instructions can be found [here](https://github.com/tjanczuk/iisnode) 
+
+2. Allowing Port through the Windows Firewall
+
+- Official Set-up instructions can be found [here](https://coderwall.com/p/mbov6w/running-nodejs-and-express-on-windows) 
+
 
 ### Azure Web App Service
 
-TODO: Include info and screenshots
+Please follow Microsoft's official set-up instructions for Azure Web App Services [here](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs) 
 
 ------
 
