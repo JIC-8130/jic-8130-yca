@@ -509,7 +509,7 @@ export class DashboardPage extends React.Component {
                     </Grid>
 
 
-                    <Grid item xs={12} align="right" style={{ marginTop: 15 }}>
+                    <Grid item xs={12} align="right" style={{ marginTop: 35, paddingBottom: 40 }}>
                         <Button color="primary" variant="raised" size="large" style={{ marginRight: 15 }} onClick={this.printDocument}>
                             Generate Report
                         </Button>
