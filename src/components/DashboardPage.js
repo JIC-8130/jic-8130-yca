@@ -269,7 +269,7 @@ export class DashboardPage extends React.Component {
                         datasets:
                             [
                                 {
-                                    label: this.state.costCenterSelected + ", Number of Units Produced",
+                                    label: "Number of Units Produced",
                                     data: extractUnits(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -285,7 +285,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Number of Defects",
+                                    label: "Number of Defects",
                                     data: extractDefects(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -301,7 +301,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Number of Workers at Line",
+                                    label: "Number of Workers at Line",
                                     data: extractWorkerTotal(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -317,7 +317,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Number of Safety Incidents",
+                                    label: "Number of Safety Incidents",
                                     data: extractSInc_Num(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -333,7 +333,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Number of Quality Incidents",
+                                    label: "Number of Quality Incidents",
                                     data: extractQInc_Num(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -349,7 +349,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Assembly Line Overtime",
+                                    label: "Assembly Line Overtime",
                                     data: extractOvertime(data),
                                     lineTension: 0.3,
                                     fill: false,
@@ -365,7 +365,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Assembly Line Downtime",
+                                    label: "Assembly Line Downtime",
                                     data: extractDowntime(data),
                                     lineTension: 0.3,
                                     fill: false,
