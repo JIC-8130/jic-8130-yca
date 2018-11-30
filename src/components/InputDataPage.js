@@ -45,7 +45,8 @@ export class InputDataPage extends React.Component {
             LoUtil: "",
             Overtime: "",
             Downtime: "",
-        }
+        },
+        costCenter: "CC6212"
     }
 
     giveSuccessMessage = (message) => {
@@ -65,7 +66,7 @@ export class InputDataPage extends React.Component {
         console.log(this.state.values);
         var reqBody = bodyConstructor.createBody(this.state.values);
         async function addEntryToCostCenter(component) {
-            const response = fetch(`https://asgard-api.azurewebsites.net/costcenters/CC6526/add`, {
+            const response = fetch(`https://asgard-api.azurewebsites.net/costcenters/${component.state.costCenter}/add`, {
                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                 mode: "no-cors", // no-cors, cors, *same-origin
                 headers: {

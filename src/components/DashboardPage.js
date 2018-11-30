@@ -86,12 +86,21 @@ function extractDowntime(data) {
     return retVals;
 }
 
+// New extract function for first analytic
+function extractMhProd(data) {
+    var retVals = [];
+    data.forEach(row => {
+        retVals.push(row.mhProd);
+    });
+    return retVals;
+}
+
 export class DashboardPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
 
-            costCenterSelected: "CC6526", //FIXME: change this to be a different default cost center
+            costCenterSelected: "CC6212", //FIXME: change this to be a different default cost center
             costCenterData: {},
 
             loadingData: false,
@@ -248,6 +257,22 @@ export class DashboardPage extends React.Component {
                                 pointHitRadius: 30,
                                 pointBorderWidth: 2,
                                 pointStyle: 'circle'
+                            },
+
+                            {
+                                label: this.state.costCenterSelected + ", Manhour Productivity",
+                                data: extractMhProd(data),
+                                lineTension: 0.3,
+                                fill: false,
+                                borderColor: 'rgba(148,0,211, 0.7)',
+                                backgroundColor: 'rgba(148,0,211, 0.7)',
+                                borderColor: 'rgba(2148,0,211, 0.7)',
+                                pointBackgroundColor: 'rgba(148,0,211, 1)',
+                                pointRadius: 5,
+                                pointHoverRadius: 15,
+                                pointHitRadius: 30,
+                                pointBorderWidth: 2,
+                                pointStyle: 'circle'
                             }
 
                         ]
@@ -378,6 +403,22 @@ export class DashboardPage extends React.Component {
                                     pointHitRadius: 30,
                                     pointBorderWidth: 2,
                                     pointStyle: 'circle'
+                                },
+
+                                {
+                                    label: this.state.costCenterSelected + ", Manhour Productivity",
+                                    data: extractMhProd(data),
+                                    lineTension: 0.3,
+                                    fill: false,
+                                    borderColor: 'rgba(148,0,211, 0.7)',
+                                    backgroundColor: 'rgba(148,0,211, 0.7)',
+                                    borderColor: 'rgba(148,0,211, 0.7)',
+                                    pointBackgroundColor: 'rgba(148,0,211, 1)',
+                                    pointRadius: 5,
+                                    pointHoverRadius: 15,
+                                    pointHitRadius: 30,
+                                    pointBorderWidth: 2,
+                                    pointStyle: 'circle'
                                 }
 
                             ]
@@ -411,7 +452,7 @@ export class DashboardPage extends React.Component {
                     <Grid item xs={3} style={{ marginLeft: 45 }}>
                         <Typography variant="subheading" gutterBottom align="left">
                             <ul>
-                                <li><Button variant="text" onClick={() => { console.log(this.state) }}> 6212 YDC Receiving </Button></li>
+                                <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6212", loadingData: true }) }}> 6212 YDC Receiving </Button></li>
                                 <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6213", loadingData: true }) }}> 6213 YDC Stores </Button></li>
                                 <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6234", loadingData: true }) }}> 6234 YC Shipping </Button></li>
                                 <li><Button variant="text" onClick={() => { this.setState({ costCenterSelected: "CC6322", loadingData: true }) }}> 6322 Parts & Repair </Button></li>

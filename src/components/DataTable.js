@@ -31,7 +31,10 @@ class DataTable extends React.PureComponent {
                 { name: "HighUtil", title: "High Utilization" },
                 { name: "LoUtil", title: "Low Utilization" },
                 { name: "Overtime", title: "Overtime" },
-                { name: "Downtime", title: "Downtime" }
+                // New column
+
+                { name: "Downtime", title: "Downtime" },
+                { name: "mhProd", title: "Manhour Prod." }
             ],
             rows: [],
             isLoading: false,
