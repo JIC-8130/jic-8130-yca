@@ -26,9 +26,58 @@ There are a lot of new features to include in this version. Highlights include:
 
 ## Install Guide
 
-### 1. Pull Code
 
+### 1. Clone the ASGARD Repository
 
-### 2a. IIS Server on Windows Server 2012 R2
+Open a terminal window and navigate to a destination in your filesystem where you would like to keep ASGARD materials.
 
-### 2b. Azure Web App Service
+You can clone the repository by using the command:
+```
+git clone https://github.com/JIC-8130/jic-8130-yca.git
+```
+
+This will create a local copy of all of the code in your file system.
+
+### 2. Run the Application
+
+In order to run the application, you will need to take three simple steps. 
+In the same terminal window that you used to clone the repository, navigate to the project using:
+```
+cd jic-8130-yca
+```
+
+Then, use npm (node package manager) to install the project dependencies on your machine.
+If you do not have npm, you can download it [here](https://nodejs.org/en/).
+To install project dependencies, input the following command in your terminal window:
+```
+npm install
+```
+
+Finally, you can use the following command to start up the application in your browser:
+```
+npm start
+```
+
+Now, if you navigate to the link provided in the output of that command in your browser, you should see ASGARD!
+
+------
+
+## Maintenance and Resources
+
+### Project Code
+
+If you would like to make modifications to the code, you will need to open the local copy that you just created in a text editor of your choice.
+The primary frameworks used to develop the application are
+- React.js [see more](https://reactjs.org/)
+- HTML / CSS [see more](https://learn.shayhowe.com/html-css/)
+- node.js [see more](https://nodejs.org/en/about/)
+
+In order to learn more about the structure of our application, you may visit this [link](https://drive.google.com/open?id=1IRWXvqxzXfkr8TDX4VfOpGl3umd0hPc2).
+
+### IIS Server on Windows Server 2012 R2
+
+TODO: Include info and screenshots
+
+### Azure Web App Service
+
+TODO: Include info and screenshots
