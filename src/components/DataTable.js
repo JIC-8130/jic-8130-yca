@@ -7,6 +7,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import regeneratorRuntime from "regenerator-runtime";
 import ReactGrid from "@material-ui/core/Grid";
 import bodyConstructor from "../services/bodyConstructor";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
 const getRowId = row => row.id;
 
@@ -24,8 +26,8 @@ class DataTable extends React.PureComponent {
                 { name: "UnitsProduced", title: "Units Produced" },
                 { name: "Defects", title: "Defects" },
                 { name: "WorkerTotal", title: "Worker Total" },
-                { name: "SInc_Num", title: "# of Safety Incidents" },
-                { name: "QInc_Num", title: "# of Quality Incidents" },
+                { name: "SInc_Num", title: "Safety Incidents" },
+                { name: "QInc_Num", title: "Quality Incidents" },
                 { name: "SInc_Reason", title: "Safety Incident Reasons" },
                 { name: "QInc_Reason", title: "Quality Incident Reasons" },
                 { name: "HighUtil", title: "High Utilization" },
@@ -40,6 +42,8 @@ class DataTable extends React.PureComponent {
 
         this.commitChanges = this.commitChanges.bind(this);
     }
+
+
 
     componentDidMount() {
         this.setState({ isLoading: true });
@@ -108,7 +112,7 @@ class DataTable extends React.PureComponent {
             );
         }
         return (
-            <Paper>
+            <Paper >
                 <Grid
                     rows={rows}
                     columns={columns}
