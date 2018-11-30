@@ -260,7 +260,7 @@ export class DashboardPage extends React.Component {
                             },
 
                             {
-                                label: this.state.costCenterSelected + ", Manhour Productivity",
+                                label: "Manhour Productivity",
                                 data: extractMhProd(data),
                                 lineTension: 0.3,
                                 fill: false,
@@ -406,7 +406,7 @@ export class DashboardPage extends React.Component {
                                 },
 
                                 {
-                                    label: this.state.costCenterSelected + ", Manhour Productivity",
+                                    label: "Manhour Productivity",
                                     data: extractMhProd(data),
                                     lineTension: 0.3,
                                     fill: false,
