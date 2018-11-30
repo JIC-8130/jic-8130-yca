@@ -6,10 +6,12 @@ import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { logout } from "../redux/auth-reducer";
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
+import history from "../routers/asgard-history";
 
 
 
@@ -18,7 +20,6 @@ import { Link } from 'react-router-dom';
 import PublicNavList from '../navs/publicNav';
 import PrivateNavList from '../navs/privateNav';
 import ExpandNavList from '../navs/expandNavs'
-import { logout } from '../store/actions/auth';
 import { NavLink } from 'react-router-dom';
 
 
@@ -34,7 +35,8 @@ class Header extends React.Component {
     };
 
 
-    console.log('inside header component ', this.props.userid);
+    console.log('inside header component!');
+    console.log(this.props);
 
   }
 
@@ -63,8 +65,19 @@ class Header extends React.Component {
 
     this.setState({ componentsmenuopen: false });
   };
-  conditRenderEssential = () => this.props.userid ? (
-    <Button color="inherit" align="right" onClick={this.props.startLogout}> Logout</Button>) : (<Button color="inherit" align="right"><Link to="/login"> Login</Link></Button>)
+
+  logOut = () => {
+    // alert("LOGOUT");
+    this.props.logout();
+    history.push("/");
+  }
+
+  goToLogin = () => {
+    history.push("/login");
+  }
+
+  conditRenderEssential = () => this.props.isLoginSuccess ? (
+    <Button color="inherit" align="right" onClick={this.logOut}> Logout</Button>) : (<Button color="inherit" align="right" onClick={this.goToLogin}> Login</Button>)
 
   render() {
 
@@ -130,7 +143,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (email, password) => dispatch(login(email, password))
+    login: (email, password) => dispatch(login(email, password)),
+    logout: () => {
+      logout()(dispatch);
+    }
   };
 }
 

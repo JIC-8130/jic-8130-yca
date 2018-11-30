@@ -20,6 +20,8 @@ export class LoginPage extends React.Component {
       password: ""
     };
     this.onSubmit = this.onSubmit.bind(this);
+    console.log("IN THE LOGIN COMP");
+    console.log(props);
   }
 
   onSubmit(e) {
