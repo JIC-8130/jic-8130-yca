@@ -34,7 +34,8 @@ class Header extends React.Component {
     };
 
 
-    console.log('inside header component ', this.props.userid);
+    console.log('inside header component!');
+    console.log(this.props);
 
   }
 
@@ -63,8 +64,13 @@ class Header extends React.Component {
 
     this.setState({ componentsmenuopen: false });
   };
-  conditRenderEssential = () => this.props.userid ? (
-    <Button color="inherit" align="right" onClick={this.props.startLogout}> Logout</Button>) : (<Button color="inherit" align="right"><Link to="/login"> Login</Link></Button>)
+
+  logOut() {
+    alert("LOGOUT");
+  }
+
+  conditRenderEssential = () => this.props.isLoginSuccess ? (
+    <Button color="inherit" align="right" onClick={this.logOut}> Logout</Button>) : (<Button color="inherit" align="right"><Link to="/login"> Login</Link></Button>)
 
   render() {
 
