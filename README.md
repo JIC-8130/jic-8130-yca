@@ -20,11 +20,12 @@ There are a lot of new features included in this version. Highlights include:
 #### Known Bugs
 
 - In case a call to the API fails, a timeout will occur and the user will have to re-input their data in the correct format. 
+- Incorrect data types will temporarily crash the API server
+- No mechanism for switching cost centers for a line manager
 
 ------
 
 ## Install Guide
-
 
 ### 1. Clone the ASGARD Repository
 
@@ -40,7 +41,8 @@ This will create a local copy of all of the code in your file system.
 ### 2. Run the Application
 
 Prerequisites:
-- None! As long as you have your computer and the ability to open up a terminal window, you are all set.
+- [Node.js](https://nodejs.org/en/) is the JavaScript runtime in which ASGARD runs. `npm`, the Node.js package manager, is included in the Node.js install.
+- Install Node, and then open up a terminal/command prompt and run `node -v` and `npm -v`, and make sure you've got at least version 10.13 and version 6.4.1, respectively.
 
 In order to run the application, you will need to take three simple steps. 
 In the same terminal window that you used to clone the repository, navigate to the project using:
@@ -80,20 +82,10 @@ If there are further problems installing the application, please refer to [this 
 
 ## Further Set-Up
 
-### IIS Server on Windows Server 2012 R2
-
-Set-up on an IIS Server on Windows Server 2012 R2 can be done in one of the two following ways:
-
-1.  iisnode 
-
-   - Official Set-up instructions can be found [here](https://github.com/tjanczuk/iisnode) 
-
-2. Allowing Port through the Windows Firewall
-
-- Official Set-up instructions can be found [here](https://coderwall.com/p/mbov6w/running-nodejs-and-express-on-windows) 
-
 
 ### Azure Web App Service
+
+
 
 Please follow Microsoft's official set-up instructions for Azure Web App Services [here](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs) 
 
@@ -105,7 +97,7 @@ If you would like to make modifications to the code, you will need to open the l
 The primary frameworks used to develop the application are
 - React.js [see more](https://reactjs.org/)
 - HTML / CSS [see more](https://learn.shayhowe.com/html-css/)
-- node.js [see more](https://nodejs.org/en/about/)
+- Node.js [see more](https://nodejs.org/en/about/)
 
 To submit changes to the code, you can submit a pull request to the jic-8130-yca Github repository. If you are unfamiliar with using Github, a detailed guide to getting started with git can be found [here](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics).
 
