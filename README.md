@@ -20,11 +20,13 @@ There are a lot of new features included in this version. Highlights include:
 #### Known Bugs
 
 - In case a call to the API fails, a timeout will occur and the user will have to re-input their data in the correct format. 
+- Incorrect data types will temporarily crash the API server
+- No mechanism for switching cost centers for a line manager
+- No mechanism for routing based on user authentication
 
 ------
 
 ## Install Guide
-
 
 ### 1. Clone the ASGARD Repository
 
@@ -40,7 +42,8 @@ This will create a local copy of all of the code in your file system.
 ### 2. Run the Application
 
 Prerequisites:
-- None! As long as you have your computer and the ability to open up a terminal window, you are all set.
+- [Node.js](https://nodejs.org/en/) is the JavaScript runtime in which ASGARD runs. `npm`, the Node.js package manager, is included in the Node.js install.
+- Install Node, and then open up a terminal/command prompt and run `node -v` and `npm -v`, and make sure you've got at least version 10.13 and version 6.4.1, respectively.
 
 In order to run the application, you will need to take three simple steps. 
 In the same terminal window that you used to clone the repository, navigate to the project using:
@@ -48,8 +51,7 @@ In the same terminal window that you used to clone the repository, navigate to t
 cd jic-8130-yca
 ```
 
-Then, use npm (node package manager) to install the project dependencies on your machine.
-If you do not have npm, you can download it [here](https://nodejs.org/en/).
+Our app has a lot of dependencies (the full list is in `package.json`), but `npm` will take care of gathering and installing all of them.
 To install project dependencies, input the following command in your terminal window:
 ```
 npm install
@@ -60,7 +62,7 @@ Finally, you can use the following command to start up the application in your b
 npm start
 ```
 
-Now, if you navigate to the link provided in the output of that command in your browser, you should see ASGARD!
+Now, if you navigate to the link provided (usually [http://localhost:8080](http://localhost:8080)) in the output of that command in your browser, you should see ASGARD!
 
 ### Troubleshooting
 
@@ -78,15 +80,27 @@ If there are further problems installing the application, please refer to [this 
 
 ------
 
-## Further Set-Up
+## Deploying ASGARD
 
-### IIS Server on Windows Server 2012 R2
+Getting ASGARD to run on your servers will take a case-by-case series of steps, based on the environment to which you want to deploy the app. There are great guides on the Internet to show you how each of those installations are done. Here are two of the most common:
 
-TODO: Include info and screenshots
+
+### Windows Server (IIS)
+
+While Windows Server isn't designed especially for Node applications, they can still run under a Windows Server system. You'll need to install some software called [iisnode](https://github.com/Azure/iisnode) to get optimal performance from ASGARD. Installation instructions for iisnode can be found [here](https://github.com/Azure/iisnode#hosting-nodejs-applications-in-iis-on-windows).
+
+Once you have iisnode installed, you can begin to configure your system. You'll need to create a `web.config` file that will tell IIS to serve a Node application:
+```
+<configuration><system.webServer><handlers><add name="iisnode" path="/path/to/asgard/app.js" verb="*" modules="iisnode" /></handlers>    
+  </system.webServer></configuration>
+```
+
+For full details on how to install ASGARD on a Windows Server instance with IIS, see these links: [Guide 1](https://www.hanselman.com/blog/InstallingAndRunningNodejsApplicationsWithinIISOnWindowsAreYouMad.aspx), [Guide 2](https://tomasz.janczuk.org/2011/08/hosting-nodejs-applications-in-iis-on.html)
 
 ### Azure Web App Service
 
-TODO: Include info and screenshots
+Please follow Microsoft's official set-up instructions for Azure Web App Services [here](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs).
+
 
 ------
 
@@ -96,7 +110,7 @@ If you would like to make modifications to the code, you will need to open the l
 The primary frameworks used to develop the application are
 - React.js [see more](https://reactjs.org/)
 - HTML / CSS [see more](https://learn.shayhowe.com/html-css/)
-- node.js [see more](https://nodejs.org/en/about/)
+- Node.js [see more](https://nodejs.org/en/about/)
 
 To submit changes to the code, you can submit a pull request to the jic-8130-yca Github repository. If you are unfamiliar with using Github, a detailed guide to getting started with git can be found [here](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics).
 
