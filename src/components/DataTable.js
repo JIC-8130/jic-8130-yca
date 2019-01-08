@@ -14,7 +14,7 @@ const getRowId = row => row.id;
 
 
 class DataTable extends React.PureComponent {
-
+    // comment!
 
     constructor(props) {
         super(props);
