@@ -4,7 +4,7 @@
 
 ## Release Notes
 
-### Version 0.0.1
+### Version 0.0.1 
 
 #### New Features
 
@@ -16,6 +16,8 @@ There are a lot of new features included in this version. Highlights include:
 - QA Engineer dashboard with comprehensive graph
 - Detailed Cost Center data view with editable table
 - Export function that creates PDF of a cost center's graph and chart
+
+DEMO: https://drive.google.com/file/d/1O0toj9WJowP8zXn_LlicOmgb4Tj2fUAa/view?usp=sharing
 
 #### Known Bugs
 
